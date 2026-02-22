@@ -26,7 +26,6 @@
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; border: none; background: none; }
 
     /* =============================================
        CUSTOM PROPERTIES
@@ -37,21 +36,14 @@
       --navy-light: #2b4a6e;
       --accent: #c49a6c;
       --accent-dark: #a8804f;
-      --accent-bg: rgba(196, 154, 108, 0.08);
       --bg: #faf9f7;
-      --bg-alt: #f3f1ed;
       --white: #ffffff;
       --border: #e5e2dc;
       --border-light: #eeedea;
       --text: #0f2137;
       --text-secondary: #4d5f73;
       --text-muted: #7a8a9a;
-      --shadow-sm: 0 1px 3px rgba(15, 33, 55, 0.04), 0 1px 2px rgba(15, 33, 55, 0.06);
-      --shadow-md: 0 4px 16px rgba(15, 33, 55, 0.06), 0 2px 6px rgba(15, 33, 55, 0.04);
-      --shadow-lg: 0 12px 40px rgba(15, 33, 55, 0.08), 0 4px 12px rgba(15, 33, 55, 0.04);
-      --radius-sm: 6px;
       --radius-md: 10px;
-      --radius-lg: 16px;
       --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
       --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
       --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -64,7 +56,6 @@
     h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.2; }
     h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); letter-spacing: -0.01em; }
     h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); letter-spacing: -0.01em; }
-    h3 { font-size: clamp(1.15rem, 2vw, 1.35rem); }
 
     .section-tag {
       display: inline-block;
@@ -85,53 +76,6 @@
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 24px;
-    }
-
-    /* =============================================
-       BUTTONS
-       ============================================= */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 32px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      border-radius: var(--radius-sm);
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--navy);
-      color: var(--white);
-    }
-    .btn-primary:hover {
-      background: var(--navy-mid);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-large {
-      padding: 18px 40px;
-      font-size: 1.05rem;
-    }
-
-    /* =============================================
-       CALENDAR EMBED
-       ============================================= */
-    .calendar-embed {
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-md);
-      background: var(--white);
-    }
-    .calendar-embed iframe {
-      display: block;
     }
 
     /* =============================================
@@ -225,104 +169,75 @@
     }
 
     /* =============================================
-       CTA SECTION
+       WHAT HAPPENS NEXT
        ============================================= */
-    .cta-section {
+    .next-section {
       padding: 80px 0;
       background: var(--white);
     }
 
-    .cta-inner {
-      max-width: 900px;
+    .next-inner {
+      max-width: 600px;
       margin: 0 auto;
       text-align: center;
     }
 
-    .cta-inner h2 {
-      margin-bottom: 16px;
+    .next-inner h2 {
+      margin-bottom: 32px;
     }
 
-    .cta-text {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--text-secondary);
-      margin-bottom: 40px;
-    }
-
-    /* =============================================
-       NEXT STEPS
-       ============================================= */
-    .next-steps {
-      padding: 80px 0;
-      background: var(--bg);
-    }
-
-    .next-steps-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .next-steps h2 {
-      margin-bottom: 16px;
-    }
-
-    .next-steps-text {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--text-secondary);
-      margin-bottom: 48px;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .next-list {
+      text-align: left;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
       gap: 24px;
-      text-align: center;
     }
 
-    .next-step-item {
-      padding: 32px 20px;
-      background: var(--white);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-light);
+    .next-list-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
     }
 
-    .next-step-number {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
+    .next-list-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(196, 154, 108, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .next-list-icon svg {
+      width: 16px;
+      height: 16px;
       color: var(--accent);
-      opacity: 0.3;
-      line-height: 1;
-      margin-bottom: 16px;
     }
 
-    .next-step-item h3 {
+    .next-list-text h3 {
       font-family: var(--font-body);
       font-weight: 600;
       font-size: 1rem;
       color: var(--navy);
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
-    .next-step-item p {
-      font-size: 0.9rem;
+    .next-list-text p {
+      font-size: 0.95rem;
       line-height: 1.6;
       color: var(--text-secondary);
     }
 
-    .next-step-item.active {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent);
-    }
-
     /* =============================================
-       CONTACT / QUESTIONS
+       CONTACT
        ============================================= */
     .contact {
       background: var(--navy);
       color: var(--white);
-      padding: 100px 0;
+      padding: 80px 0;
       position: relative;
       overflow: hidden;
     }
@@ -435,12 +350,9 @@
       .hero h1 { font-size: 2.2rem; }
       .hero-sub { font-size: 1rem; }
 
-      .cta-section { padding: 56px 0; }
+      .next-section { padding: 56px 0; }
 
-      .next-steps { padding: 56px 0; }
-      .steps-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
-
-      .contact { padding: 72px 0; }
+      .contact { padding: 56px 0; }
     }
 
     @media (max-width: 480px) {
@@ -452,14 +364,7 @@
       .hero-checkmark { width: 60px; height: 60px; margin-bottom: 24px; }
       .hero-checkmark svg { width: 28px; height: 28px; }
 
-      .cta-section { padding: 40px 0; }
-      .cta-inner .btn { width: 100%; text-align: center; }
-
-      .next-steps { padding: 48px 0; }
-      .next-step-item { padding: 24px 16px; }
-      .next-step-number { font-size: 2rem; }
-
-      .contact { padding: 56px 0; }
+      .contact { padding: 48px 0; }
       .contact h2 { font-size: 1.5rem; }
       .contact-text { font-size: 0.95rem; margin-bottom: 28px; }
       .contact-email { font-size: 1.2rem; }
@@ -494,9 +399,9 @@
               <path d="M20 6L9 17l-5-5"/>
             </svg>
           </div>
-          <h1 class="reveal reveal-delay-1">Vielen Dank für<br>deine Buchung!</h1>
+          <h1 class="reveal reveal-delay-1">Vielen Dank.<br>Ihre Website geht jetzt in die Umsetzung.</h1>
           <p class="hero-sub reveal reveal-delay-2">
-            Deine Buchung ist bei uns eingegangen. Damit wir direkt loslegen können, buch jetzt dein persönliches Kick-off-Meeting.
+            Ihre Buchung ist eingegangen. Ich kümmere mich ab sofort um Ihre neue Website.
           </p>
         </div>
       </div>
@@ -504,72 +409,57 @@
 
 
     <!-- ==========================================
-         CTA – MEETING BUCHEN
+         WHAT HAPPENS NEXT
          ========================================== -->
-    <section class="cta-section">
+    <section class="next-section">
       <div class="container">
-        <div class="cta-inner">
-          <span class="section-tag reveal">Nächster Schritt</span>
-          <h2 class="reveal">Buch jetzt dein 30-Minuten-Meeting</h2>
-          <p class="cta-text reveal">
-            Im Meeting besprechen wir die Inhalte für deine Website – Texte, Bilder, Struktur. So können wir direkt mit dem Aufbau starten.
-          </p>
-          <div class="calendar-embed reveal">
-            <iframe
-              src="https://calendar.notion.so/meet/justus-weweler/30min"
-              width="100%"
-              height="700"
-              frameborder="0"
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ==========================================
-         NEXT STEPS
-         ========================================== -->
-    <section class="next-steps">
-      <div class="container">
-        <div class="next-steps-inner">
+        <div class="next-inner">
           <span class="section-tag reveal">So geht's weiter</span>
-          <h2 class="reveal">Was passiert als Nächstes?</h2>
-          <p class="next-steps-text reveal">
-            In drei einfachen Schritten von der Buchung zur fertigen Website.
-          </p>
-          <div class="steps-grid">
-            <div class="next-step-item active reveal">
-              <div class="next-step-number">01</div>
-              <h3>Meeting buchen</h3>
-              <p>Im 30-Minuten-Meeting besprechen wir die Inhalte für deine Website.</p>
-            </div>
-            <div class="next-step-item reveal reveal-delay-1">
-              <div class="next-step-number">02</div>
-              <h3>Wir bauen deine Website</h3>
-              <p>Auf Basis unseres Gesprächs erstellen wir deine individuelle Website.</p>
-            </div>
-            <div class="next-step-item reveal reveal-delay-2">
-              <div class="next-step-number">03</div>
-              <h3>Deine Website geht live</h3>
-              <p>Nach deinem Feedback geht deine neue Website online.</p>
-            </div>
-          </div>
+          <h2 class="reveal">Was jetzt passiert</h2>
+          <ul class="next-list">
+            <li class="next-list-item reveal">
+              <div class="next-list-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <div class="next-list-text">
+                <h3>Feedback-Runde</h3>
+                <p>Ich setze Ihre Änderungswünsche aus unserem Gespräch um und schicke Ihnen die überarbeitete Version zur finalen Freigabe.</p>
+              </div>
+            </li>
+            <li class="next-list-item reveal reveal-delay-1">
+              <div class="next-list-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="next-list-text">
+                <h3>Live-Gang innerhalb von 7 Tagen</h3>
+                <p>Nach Ihrer Freigabe geht Ihre neue Website online – inklusive eigener Domain und SSL-Zertifikat.</p>
+              </div>
+            </li>
+            <li class="next-list-item reveal reveal-delay-2">
+              <div class="next-list-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="next-list-text">
+                <h3>Fertig</h3>
+                <p>Ihre Praxis hat einen zeitgemäßen Online-Auftritt. Bei Fragen bin ich jederzeit erreichbar.</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
 
     <!-- ==========================================
-         CONTACT / QUESTIONS
+         CONTACT
          ========================================== -->
     <section class="contact">
       <div class="container">
         <div class="contact-inner">
           <span class="section-tag reveal" style="color: var(--accent);">Fragen?</span>
-          <h2 class="reveal">Du hast Fragen?</h2>
+          <h2 class="reveal">Ich bin für Sie da.</h2>
           <p class="contact-text reveal">
-            Schreib uns einfach eine E-Mail – wir melden uns schnellstmöglich bei dir.
+            Falls zwischendurch Fragen aufkommen – schreiben Sie mir einfach eine E-Mail.
           </p>
           <a href="mailto:hallo@weweler.co" class="contact-email reveal">hallo@weweler.co</a>
         </div>
@@ -603,7 +493,6 @@
        JAVASCRIPT
        ========================================== -->
   <script>
-    // --- Scroll reveal ---
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -615,7 +504,6 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // --- Header shadow on scroll ---
     const header = document.getElementById('header');
     let ticking = false;
     window.addEventListener('scroll', () => {
