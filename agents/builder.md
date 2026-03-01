@@ -16,7 +16,7 @@ Du bekommst:
 
 1. Kopiere `praxen/_vorlage/index.html` nach `praxen/{{SLUG}}/index.html`
 2. Ersetze folgende Platzhalter:
-   - `Herr Dr. Mustermann` → `{{ANREDE}} {{NAME}}`
+   - `Herr Dr. Mustermann` → `{{ANREDE}} {{NAME}}` (in der H1-Zeile)
    - `{{PUNKT_1}}` → Stichpunkt 1 aus Analyse
    - `{{PUNKT_2}}` → Stichpunkt 2 aus Analyse
    - `{{PUNKT_3}}` → Stichpunkt 3 aus Analyse
