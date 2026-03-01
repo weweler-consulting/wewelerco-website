@@ -220,47 +220,28 @@
        ANALYSE-PUNKTE
        ============================================= */
     .analysis-points {
-      max-width: 600px;
+      max-width: 960px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
       text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
 
     .analysis-point {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 14px 20px;
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-md);
-      transition: box-shadow var(--transition);
-    }
-    .analysis-point:hover {
-      box-shadow: var(--shadow-sm);
+      position: relative;
+      padding-left: 0;
     }
 
-    .analysis-point-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(196, 154, 108, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-    .analysis-point-icon svg {
-      width: 14px;
-      height: 14px;
-      color: var(--accent-dark);
+    .analysis-point-num {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
 
     .analysis-point p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.65;
       color: var(--text-secondary);
     }
@@ -387,6 +368,16 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+    }
+
+    .comparison-cta {
+      text-align: center;
+      margin-top: 36px;
+    }
+    .comparison-cta p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
     }
 
     /* =============================================
@@ -590,6 +581,8 @@
       .hero h1 { font-size: 2.2rem; }
       .hero-sub { font-size: 1rem; }
 
+      .analysis-points { grid-template-columns: 1fr; max-width: 400px; gap: 20px; }
+
       .comparison-section { padding: 12px 0 56px; }
 
       .next-steps { padding: 56px 0; }
@@ -607,10 +600,7 @@
       .hero h1 { font-size: 1.9rem; line-height: 1.2; }
       .hero-sub { font-size: 0.95rem; margin-bottom: 20px; }
 
-      .analysis-point { padding: 12px 14px; gap: 10px; }
-      .analysis-point p { font-size: 0.88rem; }
-      .analysis-point-icon { width: 24px; height: 24px; }
-      .analysis-point-icon svg { width: 12px; height: 12px; }
+      .analysis-point p { font-size: 0.85rem; }
 
       .comparison-section { padding: 8px 0 40px; }
       .comparison-container { border-radius: var(--radius-md); }
@@ -661,35 +651,27 @@
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <span class="section-tag reveal">Persönliche Website-Analyse</span>
-
           <!-- ✏️ ANPASSEN: Anrede + Name (z.B. "Herr Dr. Paetzold" / "Frau Dr. Müller") -->
-          <h1 class="reveal reveal-delay-1"><em>Herr Dr. Mustermann,</em><br>ich habe mir Ihre Praxis-Website angeschaut.</h1>
+          <h1 class="reveal"><em>Herr Dr. Mustermann,</em><br>ich habe mir Ihre Praxis-Website angeschaut.</h1>
 
-          <p class="hero-sub reveal reveal-delay-2">
-            Dabei sind mir drei Dinge aufgefallen, die Patienten abschrecken können:
+          <p class="hero-sub reveal reveal-delay-1">
+            Dabei sind mir drei Dinge aufgefallen:
           </p>
 
           <!-- ✏️ ANPASSEN: Die 3 Analyse-Stichpunkte (Output vom Claude-Analyse-Prompt) -->
-          <div class="analysis-points reveal reveal-delay-3">
+          <div class="analysis-points reveal reveal-delay-2">
             <div class="analysis-point">
-              <div class="analysis-point-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </div>
+              <div class="analysis-point-num">01</div>
               <!-- ✏️ PUNKT 1 -->
               <p>{{PUNKT_1}}</p>
             </div>
             <div class="analysis-point">
-              <div class="analysis-point-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              </div>
+              <div class="analysis-point-num">02</div>
               <!-- ✏️ PUNKT 2 -->
               <p>{{PUNKT_2}}</p>
             </div>
             <div class="analysis-point">
-              <div class="analysis-point-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-              </div>
+              <div class="analysis-point-num">03</div>
               <!-- ✏️ PUNKT 3 -->
               <p>{{PUNKT_3}}</p>
             </div>
@@ -723,6 +705,13 @@
           <div class="comparison-hint">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
             Schieben Sie den Regler, um zu vergleichen
+          </div>
+          <div class="comparison-cta reveal">
+            <p>Gefällt Ihnen, was Sie sehen? In 30 Minuten zeige ich Ihnen den vollständigen Entwurf.</p>
+            <a href="https://calendar.notion.so/meet/justus-weweler/30min" class="btn btn-primary" target="_blank" rel="noopener">
+              Termin buchen
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
         </div>
       </div>
