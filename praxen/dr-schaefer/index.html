@@ -691,6 +691,15 @@
         ticking = true;
       }
     });
+
+    // --- GA4 CTA click tracking ---
+    document.querySelectorAll('.btn-primary').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        gtag('event', 'cta_click', {
+          page_path: window.location.pathname
+        });
+      });
+    });
   </script>
 
 </body>
