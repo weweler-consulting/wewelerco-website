@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praxis Hero Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      background: #f8f7f4;
+      color: #1a1a1a;
+    }
+    img { max-width: 100%; display: block; }
+
+    :root {
+      --deep: #1b2b3a;
+      --deep-mid: #2a3f52;
+      --warm: #c4a882;
+      --warm-light: #d4be9f;
+      --warm-subtle: rgba(196, 168, 130, 0.08);
+      --cream: #f8f7f4;
+      --cream-dark: #f0ede7;
+      --text: #1b2b3a;
+      --text-soft: #5a6b7a;
+      --text-muted: #8a95a0;
+      --white: #ffffff;
+      --border: #e8e4dd;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+    }
+
+    /* =========================================
+       NAV
+       ========================================= */
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 0 48px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--deep);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span {
+      color: var(--warm);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links li a {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links li a:hover {
+      color: var(--deep);
+    }
+    .nav-cta {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--white) !important;
+      background: var(--deep);
+      padding: 10px 24px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--deep-mid);
+      transform: translateY(-1px);
+    }
+
+    /* =========================================
+       HERO
+       ========================================= */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left: Content */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 64px 80px 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 32px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 32px;
+      height: 1.5px;
+      background: var(--warm);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--deep);
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--deep-mid);
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-soft);
+      max-width: 480px;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .btn-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--deep);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 500;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: 0.01em;
+    }
+    .btn-book:hover {
+      background: var(--deep-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(27, 43, 58, 0.15);
+    }
+    .btn-book svg {
+      transition: transform 0.2s;
+    }
+    .btn-book:hover svg {
+      transform: translateX(3px);
+    }
+
+    .btn-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 24px;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .btn-phone:hover {
+      border-color: var(--deep);
+      color: var(--deep);
+    }
+
+    /* Trust bar */
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .trust-number {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--deep);
+      line-height: 1.2;
+    }
+    .trust-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+    .trust-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+    }
+
+    /* Right: Image */
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-container {
+      position: absolute;
+      inset: 0;
+      background: var(--cream-dark);
+    }
+
+    /* Placeholder photo area */
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #e8e4dd 0%, #d8d2c8 50%, #c8c0b4 100%);
+      position: relative;
+    }
+    .hero-photo-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(27, 43, 58, 0.08) 100%);
+    }
+
+    .photo-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px dashed var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    .photo-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Overlay accent strip */
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--warm);
+      z-index: 2;
+    }
+
+    /* Decorative detail */
+    .hero-accent-line {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+    .hero-accent-line::before {
+      content: '';
+      width: 48px;
+      height: 1.5px;
+      background: var(--warm);
+    }
+    .hero-accent-line span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+
+    /* =========================================
+       RESPONSIVE
+       ========================================= */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-content {
+        padding: 120px 32px 64px;
+      }
+      .hero-visual {
+        height: 50vh;
+      }
+      .nav {
+        padding: 0 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav { padding: 0 20px; height: 64px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 96px 20px 48px; }
+      .hero-title { font-size: 2.2rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-trust { gap: 20px; }
+      .trust-number { font-size: 1.3rem; }
+    }
+
+    /* =========================================
+       PRINT / SCREENSHOT HELPERS
+       ========================================= */
+    @media print {
+      .hero { min-height: auto; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">Praxis <span>·</span> Nachname</div>
+    <ul class="nav-links">
+      <li><a href="#">Über mich</a></li>
+      <li><a href="#">Leistungen</a></li>
+      <li><a href="#">Praxis</a></li>
+      <li><a href="#" class="nav-cta">Termin vereinbaren</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Left: Content -->
+    <div class="hero-content">
+      <div class="hero-badge">Privatpraxis für Fachrichtung</div>
+
+      <h1 class="hero-title">
+        Ihre Gesundheit in <em>erfahrenen Händen.</em>
+      </h1>
+
+      <p class="hero-description">
+        Einfühlsame und evidenzbasierte Behandlung in ruhiger Atmosphäre. Ich nehme mir die Zeit, die Sie verdienen – für eine Therapie, die wirklich zu Ihnen passt.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn-book">
+          Termin vereinbaren
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn-phone">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 3.5L5.2 5.8a1 1 0 00.2 1.1l3.7 3.7a1 1 0 001.1.2l2.3-1.3a1 1 0 011 .1l1.3 1a1 1 0 01.2 1.4l-1.2 1.5a2 2 0 01-2.2.6C8.8 13 6.2 11.5 4.3 9.7 2.5 7.8 1 5.2.9 2.6a2 2 0 01.6-2.2L3 .2A1 1 0 014.4.4l1 1.3a1 1 0 01.1 1z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          000 000 0000
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-number">20+</span>
+          <span class="trust-label">Jahre Erfahrung</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="trust-number">Privat</span>
+          <span class="trust-label">& Selbstzahler</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="trust-number">Kurzfristig</span>
+          <span class="trust-label">Termine verfügbar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Photo -->
+    <div class="hero-visual">
+      <div class="hero-image-container">
+        <div class="hero-photo-placeholder">
+          <div class="photo-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="photo-label">Arztfoto</span>
+        </div>
+      </div>
+
+      <div class="hero-accent-line">
+        <span>Musterstadt</span>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>

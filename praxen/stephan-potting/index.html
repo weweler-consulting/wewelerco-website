@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ihre neue Praxis-Website – weweler.co</title>
+  <title>Ihre Website-Analyse – weweler.co</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +74,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent-dark);
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
 
     /* =============================================
@@ -145,7 +145,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 56px;
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 24px;
@@ -177,7 +177,7 @@
        HERO
        ============================================= */
     .hero {
-      padding: 140px 0 80px;
+      padding: 92px 0 24px;
       background: linear-gradient(180deg, var(--bg) 0%, var(--white) 100%);
       position: relative;
       text-align: center;
@@ -201,7 +201,7 @@
 
     .hero h1 {
       color: var(--navy);
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
     .hero h1 em {
       font-style: italic;
@@ -212,65 +212,181 @@
       font-size: 1.1rem;
       line-height: 1.75;
       color: var(--text-secondary);
-      max-width: 560px;
-      margin: 0 auto;
+      max-width: none;
+      margin: 0 auto 16px;
     }
 
     /* =============================================
-       VIDEO SECTION
+       ANALYSE-PUNKTE
        ============================================= */
-    .video-section {
-      padding: 0 0 80px;
+    .analysis-points {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .analysis-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 20px;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      transition: box-shadow var(--transition);
+    }
+    .analysis-point:hover {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .analysis-point-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(196, 154, 108, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .analysis-point-icon svg {
+      width: 14px;
+      height: 14px;
+      color: var(--accent-dark);
+    }
+
+    .analysis-point p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    /* =============================================
+       VORHER/NACHHER SLIDER
+       ============================================= */
+    .comparison-section {
+      padding: 16px 0 80px;
       background: var(--white);
     }
 
-    .video-wrapper {
+    .comparison-wrapper {
       max-width: 960px;
       margin: 0 auto;
-      position: relative;
     }
 
-    .video-frame {
+    .comparison-container {
       position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-lg);
-      background: var(--navy);
+      cursor: col-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      aspect-ratio: 16 / 9;
+      background: var(--bg-alt);
     }
 
-    .video-frame iframe {
-      display: block;
+    .comparison-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      border: none;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      pointer-events: none;
     }
 
-    /* Placeholder wenn noch kein Video eingebettet */
-    .video-placeholder {
-      aspect-ratio: 16 / 9;
+    .comparison-after {
+      clip-path: inset(0 0 0 50%);
+      z-index: 2;
+    }
+
+    .comparison-before {
+      z-index: 1;
+    }
+
+    .comparison-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: var(--white);
+      z-index: 10;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .comparison-handle-knob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.9rem;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .video-placeholder svg {
-      opacity: 0.3;
+    .comparison-container:hover .comparison-handle-knob,
+    .comparison-container.active .comparison-handle-knob {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+      transform: translate(-50%, -50%) scale(1.05);
     }
 
-    .video-note {
+    .comparison-handle-knob svg {
+      width: 20px;
+      height: 20px;
+      color: var(--navy);
+    }
+
+    .comparison-label {
+      position: absolute;
+      top: 16px;
+      z-index: 5;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      pointer-events: none;
+    }
+    .comparison-label-before {
+      left: 16px;
+      background: rgba(15, 33, 55, 0.7);
+      color: var(--white);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .comparison-label-after {
+      right: 16px;
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--navy);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(15, 33, 55, 0.08);
+    }
+
+    .comparison-hint {
       text-align: center;
-      margin-top: 20px;
-      font-size: 0.85rem;
+      margin-top: 16px;
+      font-size: 0.82rem;
       color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     /* =============================================
@@ -296,6 +412,7 @@
       line-height: 1.75;
       color: var(--text-secondary);
       margin-bottom: 48px;
+      white-space: nowrap;
     }
 
     .steps-grid {
@@ -469,11 +586,11 @@
        RESPONSIVE
        ============================================= */
     @media (max-width: 820px) {
-      .hero { padding: 110px 0 56px; }
+      .hero { padding: 72px 0 20px; }
       .hero h1 { font-size: 2.2rem; }
       .hero-sub { font-size: 1rem; }
 
-      .video-section { padding: 0 0 56px; }
+      .comparison-section { padding: 12px 0 56px; }
 
       .next-steps { padding: 56px 0; }
       .steps-grid { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
@@ -486,12 +603,22 @@
     @media (max-width: 480px) {
       .container { padding: 0 20px; }
 
-      .hero { padding: 100px 0 40px; }
+      .hero { padding: 64px 0 16px; }
       .hero h1 { font-size: 1.9rem; line-height: 1.2; }
-      .hero-sub { font-size: 0.95rem; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 20px; }
 
-      .video-section { padding: 0 0 40px; }
-      .video-frame { border-radius: var(--radius-md); }
+      .analysis-point { padding: 12px 14px; gap: 10px; }
+      .analysis-point p { font-size: 0.88rem; }
+      .analysis-point-icon { width: 24px; height: 24px; }
+      .analysis-point-icon svg { width: 12px; height: 12px; }
+
+      .comparison-section { padding: 8px 0 40px; }
+      .comparison-container { border-radius: var(--radius-md); }
+      .comparison-handle-knob { width: 36px; height: 36px; }
+      .comparison-handle-knob svg { width: 16px; height: 16px; }
+      .comparison-label { font-size: 0.65rem; padding: 5px 10px; top: 10px; }
+      .comparison-label-before { left: 10px; }
+      .comparison-label-after { right: 10px; }
 
       .next-steps { padding: 48px 0; }
       .next-step-item { padding: 24px 16px; }
@@ -520,7 +647,7 @@
       <a href="https://weweler.co" class="logo" target="_blank">weweler.co</a>
       <div class="header-badge">
         <span class="header-badge-dot"></span>
-        <span>Persönliche Vorschau</span>
+        <span>Persönliche Analyse</span>
       </div>
     </div>
   </header>
@@ -529,40 +656,73 @@
   <main>
 
     <!-- ==========================================
-         HERO
+         HERO + ANALYSE-PUNKTE
          ========================================== -->
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <span class="section-tag reveal">Ihre neue Website</span>
-          <h1 class="reveal reveal-delay-1"><em>Stephan,</em><br>deine Praxis-Website ist fertig.</h1>
+          <span class="section-tag reveal">Persönliche Website-Analyse</span>
+
+          <!-- ✏️ ANPASSEN: Anrede + Name (z.B. "Herr Dr. Paetzold" / "Frau Dr. Müller") -->
+          <h1 class="reveal reveal-delay-1"><em>Herr Potting,</em><br>ich habe mir Ihre Praxis-Website angeschaut.</h1>
+
           <p class="hero-sub reveal reveal-delay-2">
-            Im Video zeige ich dir deine neue Website im Detail. Schau es dir in Ruhe an – ich freue mich auf dein Feedback.
+            Dabei sind mir drei Dinge aufgefallen, die Patienten abschrecken können:
           </p>
+
+          <!-- ✏️ ANPASSEN: Die 3 Analyse-Stichpunkte (Output vom Claude-Analyse-Prompt) -->
+          <div class="analysis-points reveal reveal-delay-3">
+            <div class="analysis-point">
+              <div class="analysis-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <!-- ✏️ PUNKT 1 -->
+              <p>Wer Ihre Seite auf dem Handy öffnet, sieht nur einen kleinen Ausschnitt – die Seite lässt sich kaum bedienen und wirkt nicht mehr zeitgemäß.</p>
+            </div>
+            <div class="analysis-point">
+              <div class="analysis-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <!-- ✏️ PUNKT 2 -->
+              <p>Ein neuer Patient findet keinen direkten Weg, einen Termin zu buchen oder Sie zu kontaktieren – es fehlt ein sichtbarer Kontaktbereich.</p>
+            </div>
+            <div class="analysis-point">
+              <div class="analysis-point-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </div>
+              <!-- ✏️ PUNKT 3 -->
+              <p>Die Seite verrät wenig darüber, wer Sie sind und wie Sie arbeiten – ein Patient kann sich kein Bild von Ihnen und Ihrer Praxis machen.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
 
     <!-- ==========================================
-         VIDEO
+         VORHER / NACHHER SLIDER
          ========================================== -->
-    <section class="video-section">
+    <section class="comparison-section">
       <div class="container">
-        <div class="video-wrapper reveal">
-          <div class="video-frame">
-            <iframe
-              src="https://www.loom.com/embed/ddb9ab7f5ca54d5ba1c5f5c232481988"
-              frameborder="0"
-              webkitallowfullscreen
-              mozallowfullscreen
-              allowfullscreen
-              allow="autoplay; fullscreen"
-            ></iframe>
+        <div class="comparison-wrapper reveal">
+          <div class="comparison-container" id="comparison">
+            <!-- ✏️ ANPASSEN: Screenshot der aktuellen Website (Hero-Bereich) -->
+            <img src="screenshot-vorher.png" alt="Aktuelle Website" class="comparison-before">
+            <!-- ✏️ ANPASSEN: Screenshot des hero-template.html (einmal erstellt, für alle gleich) -->
+            <img src="screenshot-nachher.png" alt="Neuer Entwurf" class="comparison-after" id="afterImage">
+
+            <span class="comparison-label comparison-label-before">Aktuell</span>
+            <span class="comparison-label comparison-label-after">Entwurf</span>
+
+            <div class="comparison-handle" id="handle">
+              <div class="comparison-handle-knob">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(6, 0)"/></svg>
+              </div>
+            </div>
           </div>
-          <div class="video-note">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3.5v3.5m0 2.1h.007" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg>
-            Dauer: ca. 3 Minuten
+          <div class="comparison-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 2 12 5 15"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            Schieben Sie den Regler, um zu vergleichen
           </div>
         </div>
       </div>
@@ -576,30 +736,30 @@
       <div class="container">
         <div class="next-steps-inner">
           <span class="section-tag reveal">So geht's weiter</span>
-          <h2 class="reveal">Die nächsten Schritte</h2>
+          <h2 class="reveal">Interesse geweckt?</h2>
           <p class="next-steps-text reveal">
-            So einfach geht's – von der Vorschau bis zur fertigen Website.
+            In einem kurzen Gespräch zeige ich Ihnen den vollständigen Entwurf für Ihre neue Praxis-Website.
           </p>
           <div class="steps-grid">
             <div class="next-step-item reveal">
               <div class="next-step-number">01</div>
-              <h3>Video anschauen</h3>
-              <p>Schau dir deine individuelle Website-Vorschau in Ruhe an.</p>
+              <h3>Termin buchen</h3>
+              <p>Wählen Sie einen passenden Zeitpunkt für ein 30-Minuten-Gespräch.</p>
             </div>
             <div class="next-step-item reveal reveal-delay-1">
               <div class="next-step-number">02</div>
-              <h3>Direkt buchen</h3>
-              <p>Überzeugt? Dann buch direkt – eine Feedbackrunde ist inklusive, damit alles perfekt passt.</p>
+              <h3>Entwurf besprechen</h3>
+              <p>Ich zeige Ihnen den vollständigen Entwurf und wir klären Ihre Fragen.</p>
             </div>
             <div class="next-step-item reveal reveal-delay-2">
               <div class="next-step-number">03</div>
-              <h3>Oder Fragen klären</h3>
-              <p>Du hast noch Fragen? Schreib mir eine E-Mail – ich melde mich innerhalb von 24 Stunden.</p>
+              <h3>Website fertigstellen</h3>
+              <p>Nach dem Gespräch setze ich Ihr Feedback um – und Ihre neue Website geht online.</p>
             </div>
           </div>
           <div class="next-steps-actions reveal">
-            <a href="https://buy.stripe.com/aFa7sK7WWbJrgXRcxl0Ny01" class="btn btn-primary" target="_blank" rel="noopener">
-              Buchen
+            <a href="https://calendar.notion.so/meet/justus-weweler/30min" class="btn btn-primary" target="_blank" rel="noopener">
+              Termin buchen
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -615,16 +775,12 @@
       <div class="container">
         <div class="contact-inner">
           <span class="section-tag reveal" style="color: var(--accent);">Fragen?</span>
-          <h2 class="reveal">Du hast Fragen oder Änderungswünsche?</h2>
+          <h2 class="reveal">Lieber erstmal per E-Mail?</h2>
           <p class="contact-text reveal">
-            Schreib mir einfach eine E-Mail. Ich melde mich innerhalb von 24 Stunden bei dir.
+            Kein Problem. Schreiben Sie mir – ich melde mich innerhalb von 24 Stunden bei Ihnen.
           </p>
-          <a href="mailto:hallo@weweler.co" class="contact-email reveal">hallo@weweler.co</a>
-          <br>
-          <a href="mailto:hallo@weweler.co?subject=Frage%20zur%20Website%20-%20Stephan%20Potting" class="btn btn-primary reveal">
-            E-Mail schreiben
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <!-- ✏️ ANPASSEN: Kundenname im Email-Subject -->
+          <a href="mailto:hallo@weweler.co?subject=Frage%20zur%20Website%20-%20Stephan%20Potting" class="contact-email reveal">hallo@weweler.co</a>
         </div>
       </div>
     </section>
@@ -679,6 +835,54 @@
         });
         ticking = true;
       }
+    });
+
+    // --- Vorher/Nachher Slider ---
+    const container = document.getElementById('comparison');
+    const afterImage = document.getElementById('afterImage');
+    const handle = document.getElementById('handle');
+    let isDragging = false;
+
+    function setPosition(x) {
+      const rect = container.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      pos = Math.max(0.02, Math.min(0.98, pos));
+      const pct = pos * 100;
+      afterImage.style.clipPath = `inset(0 0 0 ${pct}%)`;
+      handle.style.left = pct + '%';
+    }
+
+    container.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      container.classList.add('active');
+      setPosition(e.clientX);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      setPosition(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      container.classList.add('active');
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    container.addEventListener('touchend', () => {
+      isDragging = false;
+      container.classList.remove('active');
     });
   </script>
 
