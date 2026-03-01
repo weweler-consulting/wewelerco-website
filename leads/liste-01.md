@@ -1,6 +1,6 @@
 # Lead-Liste 01 – 01.03.2026
 
-## Leads (10)
+## Leads (9)
 
 | # | Name | Fachrichtung | Stadt | Website | Status |
 |---|------|-------------|-------|---------|--------|
@@ -13,7 +13,6 @@
 | 7 | Dr. Simmelbauer & Dr. Langhoff | Orthopädie | Stuttgart | stuttgart-praxis.de | offen |
 | 8 | Despina Grigoriadou | Psychotherapie | Stuttgart | psychotherapiestuttgart.net | offen |
 | 9 | Sebastian Müller-Ost | Psychotherapie | Köln | psychotherapie-koeln-mueller-ost.de | offen |
-| 10 | Stephan Potting | Psychotherapie | Köln | potting.de | Pipeline fertig |
 
 ## Veraltet-Indikatoren
 
@@ -26,8 +25,6 @@
 7. **Simmelbauer/Langhoff** – IONOS MyWebsite (1&1 Builder), altes Template, veraltetes Design
 8. **Grigoriadou** – Kein HTTPS, statisches HTML, Sidebar-Layout, kein Framework
 9. **Müller-Ost** – WebSite X5 Professional (Desktop-Builder), IE-Kommentare, veraltet
-10. **Potting** – HTML4-Framesets, nicht mobilfähig, kein HTTPS
-
 ## Nächster Schritt
 
 Jede URL in die Lead-Pipeline füttern: `AGENT.md` nimmt die URL und erledigt den Rest.
