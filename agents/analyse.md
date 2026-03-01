@@ -14,9 +14,10 @@ Du bekommst eine URL einer Praxis-Website.
 
 ## Regeln für die 3 Stichpunkte
 
-- Aus Patientensicht formuliert ("Ein Patient sieht...", "Wer Ihre Seite besucht...", "Beim ersten Besuch...")
 - KEINE technischen Fachbegriffe (kein "responsive", kein "SSL", kein "SEO", kein "mobile-optimiert", kein "CMS")
-- Jeder Punkt: 1-2 Sätze, maximal 30 Wörter
+- Jeder Punkt besteht aus zwei Teilen:
+  - **HEADLINE**: 2-4 Wörter, knapp und direkt (z.B. "Nicht mobilfähig", "Kein Kontaktweg sichtbar")
+  - **DETAIL**: 1 Satz, max 20 Wörter, aus Patientensicht formuliert
 - Fokus auf diese 3 Bereiche (in dieser Reihenfolge):
   1. **Erster Eindruck / Vertrauen** – Wirkt die Seite veraltet? Unprofessionell? Vermittelt sie Kompetenz?
   2. **Erreichbarkeit / Kontakt** – Kann ein Patient schnell einen Termin buchen oder anrufen?
@@ -24,12 +25,15 @@ Du bekommst eine URL einer Praxis-Website.
 
 ## Output-Format
 
-Gib NUR diese 3 Zeilen zurück, nichts anderes:
+Gib NUR diese 6 Zeilen zurück, nichts anderes:
 
 ```
-PUNKT_1: [Schwachstelle Erster Eindruck]
-PUNKT_2: [Schwachstelle Erreichbarkeit]
-PUNKT_3: [Schwachstelle Persönlichkeit]
+PUNKT_1_HEADLINE: [Kurze Headline]
+PUNKT_1_DETAIL: [Erklärung aus Patientensicht]
+PUNKT_2_HEADLINE: [Kurze Headline]
+PUNKT_2_DETAIL: [Erklärung aus Patientensicht]
+PUNKT_3_HEADLINE: [Kurze Headline]
+PUNKT_3_DETAIL: [Erklärung aus Patientensicht]
 ```
 
-Kein Intro, keine Erklärung, keine Nummerierung, nur die 3 Zeilen im exakten Format oben.
+Kein Intro, keine Erklärung, keine Nummerierung, nur die 6 Zeilen im exakten Format oben.

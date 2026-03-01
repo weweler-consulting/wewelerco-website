@@ -40,7 +40,7 @@ Starte diese beiden Agents gleichzeitig:
 **Agent A – Analyse:**
 - Lies `agents/analyse.md` für die vollständigen Anweisungen
 - Nutze die bereits gefetchte Website-Inhalte aus Schritt 1 (nicht nochmal fetchen)
-- Output: 3 Stichpunkte im Format `PUNKT_1:`, `PUNKT_2:`, `PUNKT_3:`
+- Output: 6 Zeilen im Format `PUNKT_1_HEADLINE:`, `PUNKT_1_DETAIL:`, `PUNKT_2_HEADLINE:`, `PUNKT_2_DETAIL:`, `PUNKT_3_HEADLINE:`, `PUNKT_3_DETAIL:`
 
 **Agent B – Screenshots:**
 - Führe das Puppeteer-Script aus:
@@ -55,9 +55,12 @@ Starte diese beiden Agents gleichzeitig:
 - Kopiere `praxen/_vorlage/index.html` → `praxen/{{SLUG}}/index.html`
 - Ersetze alle Platzhalter:
   - `Herr Dr. Mustermann` → `{{ANREDE}} {{NAME}}` (nur Titel + Nachname, z.B. "Herr Dr. Paetzold")
-  - `{{PUNKT_1}}` → Analyse-Output Punkt 1
-  - `{{PUNKT_2}}` → Analyse-Output Punkt 2
-  - `{{PUNKT_3}}` → Analyse-Output Punkt 3
+  - `{{PUNKT_1_HEADLINE}}` → Headline Punkt 1
+  - `{{PUNKT_1_DETAIL}}` → Detail Punkt 1
+  - `{{PUNKT_2_HEADLINE}}` → Headline Punkt 2
+  - `{{PUNKT_2_DETAIL}}` → Detail Punkt 2
+  - `{{PUNKT_3_HEADLINE}}` → Headline Punkt 3
+  - `{{PUNKT_3_DETAIL}}` → Detail Punkt 3
   - `Dr.%20Mustermann` im mailto → URL-encodierter Name (z.B. `Dr.%20Paetzold`)
   - `Dr. Mustermann` im mailto → Name (z.B. `Dr. Paetzold`)
 - Prüfe ob Screenshots im Ordner liegen
@@ -66,7 +69,7 @@ Starte diese beiden Agents gleichzeitig:
 
 - Lies `agents/email.md` für die vollständigen Anweisungen
 - Generiere 4 Emails: Erst-Email + 3 Follow-ups
-- Übergib dem Agent alle Lead-Daten: ANREDE, NAME, STADT, FACHRICHTUNG, URL, PUNKT_1, PUNKT_2, PUNKT_3
+- Übergib dem Agent alle Lead-Daten: ANREDE, NAME, STADT, FACHRICHTUNG, URL, PUNKT_1_HEADLINE, PUNKT_1_DETAIL, PUNKT_2_HEADLINE, PUNKT_2_DETAIL, PUNKT_3_HEADLINE, PUNKT_3_DETAIL
 - Landing Page URL: `https://weweler.co/praxen/{{SLUG}}/`
 - Speichere als 4 separate Dateien im Lead-Ordner:
   - `praxen/{{SLUG}}/email-1.txt` (Tag 0: Erst-Email)

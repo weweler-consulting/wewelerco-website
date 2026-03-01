@@ -240,9 +240,18 @@
       margin-bottom: 6px;
     }
 
-    .analysis-point p {
-      font-size: 0.9rem;
-      line-height: 1.65;
+    .analysis-point strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .analysis-point span {
+      font-size: 0.82rem;
+      line-height: 1.55;
       color: var(--text-secondary);
     }
 
@@ -600,7 +609,8 @@
       .hero h1 { font-size: 1.9rem; line-height: 1.2; }
       .hero-sub { font-size: 0.95rem; margin-bottom: 20px; }
 
-      .analysis-point p { font-size: 0.85rem; }
+      .analysis-point strong { font-size: 0.88rem; }
+      .analysis-point span { font-size: 0.78rem; }
 
       .comparison-section { padding: 8px 0 40px; }
       .comparison-container { border-radius: var(--radius-md); }
@@ -662,18 +672,21 @@
           <div class="analysis-points reveal reveal-delay-2">
             <div class="analysis-point">
               <div class="analysis-point-num">01</div>
-              <!-- ✏️ PUNKT 1 -->
-              <p>{{PUNKT_1}}</p>
+              <!-- ✏️ PUNKT 1: "Headline – Erklärung" -->
+              <strong>{{PUNKT_1_HEADLINE}}</strong>
+              <span>{{PUNKT_1_DETAIL}}</span>
             </div>
             <div class="analysis-point">
               <div class="analysis-point-num">02</div>
-              <!-- ✏️ PUNKT 2 -->
-              <p>{{PUNKT_2}}</p>
+              <!-- ✏️ PUNKT 2: "Headline – Erklärung" -->
+              <strong>{{PUNKT_2_HEADLINE}}</strong>
+              <span>{{PUNKT_2_DETAIL}}</span>
             </div>
             <div class="analysis-point">
               <div class="analysis-point-num">03</div>
-              <!-- ✏️ PUNKT 3 -->
-              <p>{{PUNKT_3}}</p>
+              <!-- ✏️ PUNKT 3: "Headline – Erklärung" -->
+              <strong>{{PUNKT_3_HEADLINE}}</strong>
+              <span>{{PUNKT_3_DETAIL}}</span>
             </div>
           </div>
         </div>

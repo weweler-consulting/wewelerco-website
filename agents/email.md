@@ -9,9 +9,9 @@ Du schreibst eine Cold-Outreach-Sequenz (1 Erst-Email + 3 Follow-ups) an einen A
 - `STADT`: Stadt der Praxis
 - `FACHRICHTUNG`: z.B. "Psychiatrie", "Psychotherapie"
 - `URL`: Link zur personalisierten Landing Page
-- `PUNKT_1`: Schwachstelle 1 aus der Analyse
-- `PUNKT_2`: Schwachstelle 2 aus der Analyse
-- `PUNKT_3`: Schwachstelle 3 aus der Analyse
+- `PUNKT_1_HEADLINE` + `PUNKT_1_DETAIL`: Schwachstelle 1 (Headline + Erklärung)
+- `PUNKT_2_HEADLINE` + `PUNKT_2_DETAIL`: Schwachstelle 2 (Headline + Erklärung)
+- `PUNKT_3_HEADLINE` + `PUNKT_3_DETAIL`: Schwachstelle 3 (Headline + Erklärung)
 
 ## Generelle Regeln für ALLE Emails
 

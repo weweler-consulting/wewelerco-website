@@ -240,9 +240,18 @@
       margin-bottom: 6px;
     }
 
-    .analysis-point p {
-      font-size: 0.9rem;
-      line-height: 1.65;
+    .analysis-point strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .analysis-point span {
+      font-size: 0.82rem;
+      line-height: 1.55;
       color: var(--text-secondary);
     }
 
@@ -600,7 +609,8 @@
       .hero h1 { font-size: 1.9rem; line-height: 1.2; }
       .hero-sub { font-size: 0.95rem; margin-bottom: 20px; }
 
-      .analysis-point p { font-size: 0.85rem; }
+      .analysis-point strong { font-size: 0.88rem; }
+      .analysis-point span { font-size: 0.78rem; }
 
       .comparison-section { padding: 8px 0 40px; }
       .comparison-container { border-radius: var(--radius-md); }
@@ -660,15 +670,18 @@
           <div class="analysis-points reveal reveal-delay-2">
             <div class="analysis-point">
               <div class="analysis-point-num">01</div>
-              <p>Wer Ihre Seite auf dem Handy öffnet, sieht nur einen kleinen Ausschnitt – die Seite lässt sich kaum bedienen und wirkt nicht mehr zeitgemäß.</p>
+              <strong>Nicht mobilfähig</strong>
+              <span>Auf dem Handy sieht Ihre Seite nur einen kleinen Ausschnitt – sie lässt sich kaum bedienen.</span>
             </div>
             <div class="analysis-point">
               <div class="analysis-point-num">02</div>
-              <p>Ein neuer Patient findet keinen direkten Weg, einen Termin zu buchen oder Sie zu kontaktieren – es fehlt ein sichtbarer Kontaktbereich.</p>
+              <strong>Kein Kontaktweg sichtbar</strong>
+              <span>Ein neuer Patient findet keinen direkten Weg, einen Termin zu buchen oder Sie zu erreichen.</span>
             </div>
             <div class="analysis-point">
               <div class="analysis-point-num">03</div>
-              <p>Die Seite verrät wenig darüber, wer Sie sind und wie Sie arbeiten – ein Patient kann sich kein Bild von Ihnen und Ihrer Praxis machen.</p>
+              <strong>Kein persönlicher Eindruck</strong>
+              <span>Die Seite verrät wenig darüber, wer Sie sind – Patienten können sich kein Bild von Ihnen machen.</span>
             </div>
           </div>
         </div>
