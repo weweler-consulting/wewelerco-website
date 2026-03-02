@@ -4,16 +4,16 @@
 
 | # | Name | Fachrichtung | Stadt | Website | Status |
 |---|------|-------------|-------|---------|--------|
-| 1 | Claudia Pardon | Psychiatrie | München | psychiatrische-privatpraxis.de | offen |
-| 2 | Robert Weiss | Psychotherapie | München | robert-weiss.de | offen |
-| 3 | Julija Schönweiß | Psychiatrie | München | privat-psychiater-muenchen.de | offen |
-| 4 | Dr. Jürgen Ellwanger | Dermatologie | München | dermatologemuenchen.com | offen |
-| 5 | Dr. Andrea Moll | Psychotherapie | Düsseldorf | psychotherapie-dr-moll.de | offen |
-| 6 | Tatjana Hänselmann | Psychotherapie | Düsseldorf | psychotherapie-haenselmann.de | offen |
-| 7 | Dr. Simmelbauer & Dr. Langhoff | Orthopädie | Stuttgart | stuttgart-praxis.de | offen |
-| 8 | Despina Grigoriadou | Psychotherapie | Stuttgart | psychotherapiestuttgart.net | offen |
-| 9 | Sebastian Müller-Ost | Psychotherapie | Köln | psychotherapie-koeln-mueller-ost.de | offen |
-| 10 | Dr. Tobias Schmook | Dermatologie | Berlin | dermaprivat.de | offen |
+| 1 | Claudia Pardon | Psychiatrie | München | psychiatrische-privatpraxis.de | bereit – Email 1 versenden |
+| 2 | Robert Weiss | Psychotherapie | München | robert-weiss.de | bereit – Email 1 versenden |
+| 3 | Julija Schönweiß | Psychiatrie | München | privat-psychiater-muenchen.de | bereit – Email 1 versenden |
+| 4 | Dr. Jürgen Ellwanger | Dermatologie | München | dermatologemuenchen.com | bereit – Email 1 versenden |
+| 5 | Dr. Andrea Moll | Psychotherapie | Düsseldorf | psychotherapie-dr-moll.de | bereit – Email 1 versenden |
+| 6 | Tatjana Hänselmann | Psychotherapie | Düsseldorf | psychotherapie-haenselmann.de | bereit – Email 1 versenden |
+| 7 | Dr. Simmelbauer & Dr. Langhoff | Orthopädie | Stuttgart | stuttgart-praxis.de | bereit – Email 1 versenden |
+| 8 | Despina Grigoriadou | Psychotherapie | Stuttgart | psychotherapiestuttgart.net | bereit – Email 1 versenden |
+| 9 | Sebastian Müller-Ost | Psychotherapie | Köln | psychotherapie-koeln-mueller-ost.de | bereit – Email 1 versenden |
+| 10 | Dr. Tobias Schmook | Dermatologie | Berlin | dermaprivat.de | bereit – Email 1 versenden |
 
 ## Veraltet-Indikatoren
 
@@ -29,4 +29,6 @@
 10. **Schmook** – Strato Homepage Builder, jQuery 1.7, Prototype.js, Canonical-URL auf Strato-Subdomain
 ## Nächster Schritt
 
-Jede URL in die Lead-Pipeline füttern: `AGENT.md` nimmt die URL und erledigt den Rest.
+Alle 10 Leads sind durch die Pipeline gelaufen (02.03.2026). Landing Pages live, Email-Sequenzen erstellt.
+
+**Jetzt:** Email 1 für alle 10 Leads versenden. Follow-ups nach Zeitplan (Tag 3, 7, 14).
