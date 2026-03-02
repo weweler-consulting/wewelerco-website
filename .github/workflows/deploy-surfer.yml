@@ -1,0 +1,50 @@
+name: Deploy to Cloudron Surfer
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Surfer CLI
+        run: npm install -g cloudron-surfer
+
+      - name: Delete removed files from server
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+            echo "Initial push, skipping deletion step"
+            exit 0
+          fi
+
+          DELETED=$(git diff --name-only --diff-filter=D "$BEFORE" "${{ github.sha }}" -- public/ 2>/dev/null || true)
+          for file in $DELETED; do
+            # Strip public/ prefix for the server path
+            SERVER_PATH="/${file#public/}"
+            echo "Deleting removed file: $SERVER_PATH"
+            surfer del \
+              --server ${{ secrets.SURFER_URL }} \
+              --token ${{ secrets.SURFER_TOKEN }} \
+              "$SERVER_PATH" 2>/dev/null || true
+          done
+
+      - name: Upload current files
+        run: |
+          surfer put \
+            --server ${{ secrets.SURFER_URL }} \
+            --token ${{ secrets.SURFER_TOKEN }} \
+            public/* /
