@@ -2,20 +2,20 @@
 
 ## Leads (12)
 
-| # | Name | Fachrichtung | Stadt | Website | Status |
-|---|------|-------------|-------|---------|--------|
-| 1 | Claudia Pardon | Psychiatrie | München | psychiatrische-privatpraxis.de | bereit – Email 1 versenden |
-| 2 | Robert Weiss | Psychotherapie | München | robert-weiss.de | bereit – Email 1 versenden |
-| 3 | Julija Schönweiß | Psychiatrie | München | privat-psychiater-muenchen.de | bereit – Email 1 versenden |
-| 4 | Dr. Jürgen Ellwanger | Dermatologie | München | dermatologemuenchen.com | bereit – Email 1 versenden |
-| 5 | Dr. Andrea Moll | Psychotherapie | Düsseldorf | psychotherapie-dr-moll.de | bereit – Email 1 versenden |
-| 6 | Tatjana Hänselmann | Psychotherapie | Düsseldorf | psychotherapie-haenselmann.de | bereit – Email 1 versenden |
-| 7 | Dr. Simmelbauer & Dr. Langhoff | Orthopädie | Stuttgart | stuttgart-praxis.de | bereit – Email 1 versenden |
-| 8 | Despina Grigoriadou | Psychotherapie | Stuttgart | psychotherapiestuttgart.net | bereit – Email 1 versenden |
-| 9 | Sebastian Müller-Ost | Psychotherapie | Köln | psychotherapie-koeln-mueller-ost.de | bereit – Email 1 versenden |
-| 10 | Dr. Tobias Schmook | Dermatologie | Berlin | dermaprivat.de | bereit – Email 1 versenden |
-| 11 | Dr. Wolfgang Paetzold | Psychiatrie | Hamburg | dr-paetzold.de | bereit – Email 1 versenden |
-| 12 | Stephan Potting | Psychotherapie | Köln | potting.de | bereit – Email 1 versenden |
+| # | Name | Fachrichtung | Stadt | Website | Email | Status |
+|---|------|-------------|-------|---------|-------|--------|
+| 1 | Claudia Pardon | Psychiatrie | München | psychiatrische-privatpraxis.de | pardon@psychiatrische-privatpraxis.de | bereit – Email 1 versenden |
+| 2 | Robert Weiss | Psychotherapie | München | robert-weiss.de | mail@robert-weiss.de | bereit – Email 1 versenden |
+| 3 | Julija Schönweiß | Psychiatrie | München | privat-psychiater-muenchen.de | praxis@schoenweiss-psychiater.de | bereit – Email 1 versenden |
+| 4 | Dr. Jürgen Ellwanger | Dermatologie | München | dermatologemuenchen.com | info@hautarzt-dr-ellwanger.de | bereit – Email 1 versenden |
+| 5 | Dr. Andrea Moll | Psychotherapie | Düsseldorf | psychotherapie-dr-moll.de | am@psychotherapie-dr-moll.de | bereit – Email 1 versenden |
+| 6 | Tatjana Hänselmann | Psychotherapie | Düsseldorf | psychotherapie-haenselmann.de | info@psychotherapie-haenselmann.de | bereit – Email 1 versenden |
+| 7 | Dr. Simmelbauer & Dr. Langhoff | Orthopädie | Stuttgart | stuttgart-praxis.de | info@stuttgart-praxis.de | bereit – Email 1 versenden |
+| 8 | Despina Grigoriadou | Psychotherapie | Stuttgart | psychotherapiestuttgart.net | praxis@psychotherapiestuttgart.net | bereit – Email 1 versenden |
+| 9 | Sebastian Müller-Ost | Psychotherapie | Köln | psychotherapie-koeln-mueller-ost.de | anfrage@psychotherapie-koeln-mueller-ost.de | bereit – Email 1 versenden |
+| 10 | Dr. Tobias Schmook | Dermatologie | Berlin | dermaprivat.de | info@dermaprivat.de | bereit – Email 1 versenden |
+| 11 | Dr. Wolfgang Paetzold | Psychiatrie | Hamburg | dr-paetzold.de | Wolfgangpaetzold@aol.com | bereit – Email 1 versenden |
+| 12 | Stephan Potting | Psychotherapie | Köln | potting.de | kontakt@potting.de | bereit – Email 1 versenden |
 
 ## Veraltet-Indikatoren
 

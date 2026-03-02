@@ -14,35 +14,38 @@
   <title>Praxis Hero Template</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Outfit', system-ui, sans-serif;
+      font-family: 'DM Sans', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
-      background: #f8f7f4;
-      color: #1a1a1a;
+      background: var(--ivory);
+      color: var(--text);
     }
     img { max-width: 100%; display: block; }
 
     :root {
-      --deep: #1b2b3a;
-      --deep-mid: #2a3f52;
-      --warm: #c4a882;
-      --warm-light: #d4be9f;
-      --warm-subtle: rgba(196, 168, 130, 0.08);
-      --cream: #f8f7f4;
-      --cream-dark: #f0ede7;
-      --text: #1b2b3a;
-      --text-soft: #5a6b7a;
-      --text-muted: #8a95a0;
-      --white: #ffffff;
-      --border: #e8e4dd;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Outfit', system-ui, sans-serif;
+      --forest: #2C4A3E;
+      --forest-light: #3A6152;
+      --forest-glow: #4A7B68;
+      --clay: #C17F59;
+      --clay-light: #D4956E;
+      --clay-soft: rgba(193, 127, 89, 0.12);
+      --ivory: #FAF8F5;
+      --ivory-warm: #F5F0EA;
+      --sage: #E8EDE6;
+      --sage-mid: #D1D9CE;
+      --text: #2C3E35;
+      --text-soft: #5E7268;
+      --text-muted: #8A9B92;
+      --white: #FFFFFF;
+      --border: #DDD8D0;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
     }
 
     /* =========================================
@@ -54,8 +57,8 @@
       left: 0;
       right: 0;
       z-index: 10;
-      padding: 0 48px;
-      height: 80px;
+      padding: 0 52px;
+      height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -63,44 +66,37 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 500;
-      color: var(--deep);
+      color: var(--forest);
       letter-spacing: -0.02em;
     }
-    .nav-logo span {
-      color: var(--warm);
+    .nav-logo .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--clay);
+      border-radius: 50%;
+      margin: 0 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links li a {
-      font-size: 0.88rem;
-      font-weight: 400;
-      color: var(--text-soft);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-    .nav-links li a:hover {
-      color: var(--deep);
-    }
     .nav-cta {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 500;
-      color: var(--white) !important;
-      background: var(--deep);
+      color: var(--white);
+      background: var(--forest);
       padding: 10px 24px;
-      border-radius: 6px;
-      transition: background 0.2s, transform 0.2s;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.25s;
     }
     .nav-cta:hover {
-      background: var(--deep-mid);
+      background: var(--forest-light);
       transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(44, 74, 62, 0.2);
     }
 
     /* =========================================
@@ -114,12 +110,12 @@
       overflow: hidden;
     }
 
-    /* Left: Content */
+    /* Left content */
     .hero-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 64px 80px 48px;
+      padding: 120px 60px 80px 52px;
       position: relative;
       z-index: 2;
     }
@@ -127,102 +123,107 @@
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
+      gap: 10px;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--warm);
-      margin-bottom: 32px;
+      color: var(--clay);
+      margin-bottom: 28px;
     }
     .hero-badge::before {
       content: '';
-      width: 32px;
-      height: 1.5px;
-      background: var(--warm);
+      width: 28px;
+      height: 2px;
+      background: var(--clay);
+      border-radius: 1px;
     }
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+      font-size: clamp(2.4rem, 3.8vw, 3.4rem);
       font-weight: 400;
-      line-height: 1.15;
-      color: var(--deep);
-      letter-spacing: -0.01em;
-      margin-bottom: 28px;
+      line-height: 1.18;
+      color: var(--forest);
+      letter-spacing: -0.015em;
+      margin-bottom: 24px;
     }
     .hero-title em {
       font-style: italic;
-      color: var(--deep-mid);
+      font-weight: 300;
+      color: var(--forest-light);
     }
 
     .hero-description {
-      font-size: 1.05rem;
-      line-height: 1.8;
+      font-size: 1rem;
+      line-height: 1.75;
       color: var(--text-soft);
-      max-width: 480px;
-      margin-bottom: 40px;
+      max-width: 440px;
+      margin-bottom: 36px;
       font-weight: 300;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 56px;
+      gap: 14px;
+      margin-bottom: 48px;
     }
 
-    .btn-book {
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 36px;
-      background: var(--deep);
+      padding: 15px 32px;
+      background: var(--forest);
       color: var(--white);
       font-family: var(--font-body);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
-      transition: all 0.25s;
+      transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
       letter-spacing: 0.01em;
+      box-shadow: 0 2px 8px rgba(44, 74, 62, 0.15);
     }
-    .btn-book:hover {
-      background: var(--deep-mid);
+    .btn-primary:hover {
+      background: var(--forest-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(27, 43, 58, 0.15);
+      box-shadow: 0 8px 28px rgba(44, 74, 62, 0.22);
     }
-    .btn-book svg {
-      transition: transform 0.2s;
+    .btn-primary svg {
+      transition: transform 0.25s;
     }
-    .btn-book:hover svg {
+    .btn-primary:hover svg {
       transform: translateX(3px);
     }
 
-    .btn-phone {
+    .btn-secondary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 16px 24px;
-      font-size: 0.92rem;
+      padding: 15px 24px;
+      font-size: 0.9rem;
       font-weight: 400;
       color: var(--text-soft);
       text-decoration: none;
       border: 1.5px solid var(--border);
-      border-radius: 6px;
-      transition: all 0.2s;
+      border-radius: 8px;
+      transition: all 0.25s;
+      background: var(--white);
     }
-    .btn-phone:hover {
-      border-color: var(--deep);
-      color: var(--deep);
+    .btn-secondary:hover {
+      border-color: var(--forest);
+      color: var(--forest);
+      background: var(--sage);
     }
 
     /* Trust bar */
     .hero-trust {
       display: flex;
       align-items: center;
-      gap: 32px;
-      padding-top: 32px;
+      gap: 28px;
+      padding-top: 28px;
       border-top: 1px solid var(--border);
     }
     .trust-item {
@@ -231,107 +232,90 @@
     }
     .trust-number {
       font-family: var(--font-display);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 500;
-      color: var(--deep);
+      color: var(--forest);
       line-height: 1.2;
     }
     .trust-label {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       letter-spacing: 0.02em;
       margin-top: 2px;
     }
     .trust-divider {
       width: 1px;
-      height: 36px;
+      height: 32px;
       background: var(--border);
     }
 
-    /* Right: Image */
+    /* =========================================
+       RIGHT: IMAGE
+       ========================================= */
     .hero-visual {
       position: relative;
       overflow: hidden;
     }
 
-    .hero-image-container {
+    .hero-image {
       position: absolute;
       inset: 0;
-      background: var(--cream-dark);
     }
-
-    /* Placeholder photo area */
-    .hero-photo-placeholder {
+    .hero-image img {
       width: 100%;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(160deg, #e8e4dd 0%, #d8d2c8 50%, #c8c0b4 100%);
-      position: relative;
+      object-fit: cover;
+      object-position: center 30%;
     }
-    .hero-photo-placeholder::after {
+
+    /* Warm overlay for cohesion */
+    .hero-image::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(27, 43, 58, 0.08) 100%);
+      background:
+        linear-gradient(180deg, rgba(250,248,245,0.15) 0%, transparent 20%),
+        linear-gradient(270deg, transparent 70%, rgba(250,248,245,0.5) 100%);
+      pointer-events: none;
     }
 
-    .photo-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px dashed var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-      opacity: 0.5;
-    }
-    .photo-label {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      opacity: 0.6;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    /* Overlay accent strip */
+    /* Inner edge softening on left side of image */
     .hero-visual::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
+      width: 40px;
       height: 100%;
-      background: var(--warm);
+      background: linear-gradient(90deg, var(--ivory) 0%, transparent 100%);
       z-index: 2;
+      pointer-events: none;
     }
 
-    /* Decorative detail */
-    .hero-accent-line {
+    /* Location badge floating over image */
+    .hero-location {
       position: absolute;
-      bottom: 48px;
-      left: 48px;
-      display: flex;
+      bottom: 36px;
+      left: 36px;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      z-index: 2;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 8px;
+      z-index: 3;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
-    .hero-accent-line::before {
-      content: '';
-      width: 48px;
-      height: 1.5px;
-      background: var(--warm);
+    .hero-location svg {
+      color: var(--clay);
+      flex-shrink: 0;
     }
-    .hero-accent-line span {
-      font-size: 0.75rem;
+    .hero-location span {
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--warm);
+      color: var(--forest);
+      letter-spacing: 0.02em;
     }
 
     /* =========================================
@@ -350,6 +334,9 @@
       }
       .nav {
         padding: 0 32px;
+      }
+      .hero-visual::before {
+        display: none;
       }
     }
 
@@ -375,13 +362,8 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <div class="nav-logo">Praxis <span>·</span> Nachname</div>
-    <ul class="nav-links">
-      <li><a href="#">Über mich</a></li>
-      <li><a href="#">Leistungen</a></li>
-      <li><a href="#">Praxis</a></li>
-      <li><a href="#" class="nav-cta">Termin vereinbaren</a></li>
-    </ul>
+    <div class="nav-logo">Praxis <span class="dot"></span> Nachname</div>
+    <a href="#" class="nav-cta">Termin vereinbaren</a>
   </nav>
 
   <!-- HERO -->
@@ -392,7 +374,7 @@
       <div class="hero-badge">Privatpraxis für Fachrichtung</div>
 
       <h1 class="hero-title">
-        Ihre Gesundheit in <em>erfahrenen Händen.</em>
+        Ihre Gesundheit in<br><em>erfahrenen Händen.</em>
       </h1>
 
       <p class="hero-description">
@@ -400,11 +382,11 @@
       </p>
 
       <div class="hero-actions">
-        <a href="#" class="btn-book">
+        <a href="#" class="btn-primary">
           Termin vereinbaren
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="#" class="btn-phone">
+        <a href="#" class="btn-secondary">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 3.5L5.2 5.8a1 1 0 00.2 1.1l3.7 3.7a1 1 0 001.1.2l2.3-1.3a1 1 0 011 .1l1.3 1a1 1 0 01.2 1.4l-1.2 1.5a2 2 0 01-2.2.6C8.8 13 6.2 11.5 4.3 9.7 2.5 7.8 1 5.2.9 2.6a2 2 0 01.6-2.2L3 .2A1 1 0 014.4.4l1 1.3a1 1 0 01.1 1z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           000 000 0000
         </a>
@@ -430,16 +412,16 @@
 
     <!-- Right: Photo -->
     <div class="hero-visual">
-      <div class="hero-image-container">
-        <div class="hero-photo-placeholder">
-          <div class="photo-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
-          <span class="photo-label">Arztfoto</span>
-        </div>
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=1600&fit=crop&crop=center&q=85"
+          alt="Praxisräume"
+          loading="eager"
+        >
       </div>
 
-      <div class="hero-accent-line">
+      <div class="hero-location">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1.5a4.5 4.5 0 014.5 4.5c0 3.5-4.5 8.5-4.5 8.5S3.5 9.5 3.5 6A4.5 4.5 0 018 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
         <span>Musterstadt</span>
       </div>
     </div>
