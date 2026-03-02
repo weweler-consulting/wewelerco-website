@@ -1,6 +1,6 @@
 # Lead-Liste 01 – 01.03.2026
 
-## Leads (10)
+## Leads (12)
 
 | # | Name | Fachrichtung | Stadt | Website | Status |
 |---|------|-------------|-------|---------|--------|
@@ -14,6 +14,8 @@
 | 8 | Despina Grigoriadou | Psychotherapie | Stuttgart | psychotherapiestuttgart.net | bereit – Email 1 versenden |
 | 9 | Sebastian Müller-Ost | Psychotherapie | Köln | psychotherapie-koeln-mueller-ost.de | bereit – Email 1 versenden |
 | 10 | Dr. Tobias Schmook | Dermatologie | Berlin | dermaprivat.de | bereit – Email 1 versenden |
+| 11 | Dr. Wolfgang Paetzold | Psychiatrie | Hamburg | dr-paetzold.de | bereit – Email 1 versenden |
+| 12 | Stephan Potting | Psychotherapie | Köln | potting.de | bereit – Email 1 versenden |
 
 ## Veraltet-Indikatoren
 
@@ -27,8 +29,11 @@
 8. **Grigoriadou** – Kein HTTPS, statisches HTML, Sidebar-Layout, kein Framework
 9. **Müller-Ost** – WebSite X5 Professional (Desktop-Builder), IE-Kommentare, veraltet
 10. **Schmook** – Strato Homepage Builder, jQuery 1.7, Prototype.js, Canonical-URL auf Strato-Subdomain
+11. **Paetzold** – WordPress/GOX Theme, übermäßiges Inline-Styling, Telefonzeiten nur 2x/Woche je 2h, AOL-Email
+12. **Potting** – HTML4-Framesets, nicht mobilfähig, kein HTTPS
+
 ## Nächster Schritt
 
-Alle 10 Leads sind durch die Pipeline gelaufen (02.03.2026). Landing Pages live, Email-Sequenzen erstellt.
+Alle 12 Leads sind durch die Pipeline gelaufen (02.03.2026). Landing Pages live, Email-Sequenzen erstellt.
 
-**Jetzt:** Email 1 für alle 10 Leads versenden. Follow-ups nach Zeitplan (Tag 3, 7, 14).
+**Jetzt:** Email 1 für alle 12 Leads versenden. Follow-ups nach Zeitplan (Tag 3, 7, 14).
