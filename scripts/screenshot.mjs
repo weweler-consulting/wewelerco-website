@@ -64,7 +64,7 @@ async function run() {
     // --- Screenshot Nachher (hero-template.html) ---
     // Bei 1024px wechselt das Template zu Single-Column,
     // Content-Bereich füllt den sichtbaren Bereich
-    const templatePath = resolve(ROOT, 'hero-template.html');
+    const templatePath = resolve(ROOT, 'public', 'hero-template.html');
     console.log(`📸 Nachher-Screenshot: hero-template.html`);
     const pageAfter = await browser.newPage();
     await pageAfter.setViewport(VIEWPORT);
