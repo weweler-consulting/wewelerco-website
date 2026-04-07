@@ -198,6 +198,14 @@
             overflow: hidden;
         }
 
+        .hero__bg img,
+        .hero__bg picture { width: 100%; height: 100%; }
+        .hero__bg picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
         .hero__bg img {
             width: 100%;
             height: 100%;
@@ -321,7 +329,8 @@
             letter-spacing: 0.12em;
         }
 
-        .about__image img {
+        .about__image img,
+        .about__image picture img {
             width: 100%;
             aspect-ratio: 3/4;
             object-fit: cover;
@@ -857,7 +866,7 @@
     <!-- Hero -->
     <header class="hero" id="hero">
         <div class="hero__bg">
-            <img src="hero02.jpeg" alt="Brautpaar" loading="eager">
+            <picture><source srcset="hero02.webp" type="image/webp"><img src="hero02.jpeg" alt="Brautpaar" loading="eager"></picture>
         </div>
         <div class="hero__content">
             <p class="hero__tagline fade-in">Fotografin aus Berlin</p>
@@ -886,7 +895,7 @@
                 <a href="#kontakt" class="about__link">Lass uns sprechen &rarr;</a>
             </div>
             <div class="about__image fade-in">
-                <img src="stella01.jpeg" alt="Stella – Fotografin aus Berlin" loading="lazy">
+                <picture><source srcset="stella01.webp" type="image/webp"><img src="stella01.jpeg" alt="Stella – Fotografin aus Berlin" loading="lazy"></picture>
             </div>
         </div>
     </section>
@@ -907,49 +916,49 @@
 
             <div class="portfolio__item fade-in" data-category="hochzeit">
                 <div class="portfolio__img-wrap">
-                    <img src="hero01.jpeg" alt="Hochzeit – Auszug mit Konfetti" loading="lazy">
+                    <picture><source srcset="hero01.webp" type="image/webp"><img src="hero01.jpeg" alt="Hochzeit – Auszug mit Konfetti" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Konfetti & Freude</span></div>
                 </div>
             </div>
 
             <div class="portfolio__item fade-in" data-category="familie">
                 <div class="portfolio__img-wrap">
-                    <img src="fam01.jpeg" alt="Neugeborenen-Shooting" loading="lazy">
+                    <picture><source srcset="fam01.webp" type="image/webp"><img src="fam01.jpeg" alt="Neugeborenen-Shooting" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Kleine Hände</span></div>
                 </div>
             </div>
 
             <div class="portfolio__item fade-in" data-category="portrait">
                 <div class="portfolio__img-wrap">
-                    <img src="fam02.jpeg" alt="Paarshooting im Herbst" loading="lazy">
+                    <picture><source srcset="fam02.webp" type="image/webp"><img src="fam02.jpeg" alt="Paarshooting im Herbst" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Herbstlachen</span></div>
                 </div>
             </div>
 
             <div class="portfolio__item fade-in" data-category="hochzeit">
                 <div class="portfolio__img-wrap">
-                    <img src="hoch01.jpeg" alt="Anstoßen mit Champagner" loading="lazy">
+                    <picture><source srcset="hoch01.webp" type="image/webp"><img src="hoch01.jpeg" alt="Anstoßen mit Champagner" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Auf die Liebe</span></div>
                 </div>
             </div>
 
             <div class="portfolio__item fade-in" data-category="hochzeit">
                 <div class="portfolio__img-wrap">
-                    <img src="hero03.jpeg" alt="Brautstrauß aus Lavendel" loading="lazy">
+                    <picture><source srcset="hero03.webp" type="image/webp"><img src="hero03.jpeg" alt="Brautstrauß aus Lavendel" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Lavendel & Liebe</span></div>
                 </div>
             </div>
 
             <div class="portfolio__item fade-in" data-category="hochzeit">
                 <div class="portfolio__img-wrap">
-                    <img src="hoch02.jpeg" alt="Kuss auf die Stirn" loading="lazy">
+                    <picture><source srcset="hoch02.webp" type="image/webp"><img src="hoch02.jpeg" alt="Kuss auf die Stirn" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Stirnkuss im Wind</span></div>
                 </div>
             </div>
 
             <div class="portfolio__item fade-in" data-category="hochzeit">
                 <div class="portfolio__img-wrap">
-                    <img src="hero02.jpeg" alt="Brautpaar mit Lavendelstrauß" loading="lazy">
+                    <picture><source srcset="hero02.webp" type="image/webp"><img src="hero02.jpeg" alt="Brautpaar mit Lavendelstrauß" loading="lazy"></picture>
                     <div class="portfolio__overlay"><span>Inniger Moment</span></div>
                 </div>
             </div>
