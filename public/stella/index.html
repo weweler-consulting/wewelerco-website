@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stella Fotografie – Echte Momente, für immer festgehalten</title>
+    <meta name="description" content="Stella – Fotografin aus Berlin. Natürliche, authentische Fotografie für Hochzeiten, Paare und Familien.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Base ───────────────────────────────────── */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #FAFAF8;
+            --text: #1A1A1A;
+            --text-light: #6B6B6B;
+            --accent: #8B7355;
+            --subtle: #E8E4DE;
+            --white: #FFFFFF;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 300;
+            line-height: 1.15;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ── Fade-in Animation ─────────────────────────────── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Navigation ────────────────────────────────────── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.4s ease;
+        }
+
+        .nav--scrolled {
+            background: rgba(250, 250, 248, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            box-shadow: 0 1px 0 var(--subtle);
+        }
+
+        .nav__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo img {
+            height: 11rem;
+            width: auto;
+            margin: -3.5rem 0;
+        }
+
+        .nav__links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav__links a {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav__links a:hover::after {
+            width: 100%;
+        }
+
+        .nav__cta {
+            padding: 0.6rem 1.5rem !important;
+            border: 1px solid var(--text);
+            transition: all 0.3s ease !important;
+        }
+
+        .nav__cta:hover {
+            background: var(--text);
+            color: var(--bg) !important;
+        }
+
+        .nav__cta::after {
+            display: none !important;
+        }
+
+        .nav__toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav__toggle span {
+            width: 24px;
+            height: 1.5px;
+            background: var(--text);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .nav__toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 5px);
+        }
+
+        .nav__toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav__toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -5px);
+        }
+
+        /* ── Hero ──────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .hero__bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--bg) 0%, rgba(250,250,248,0.3) 50%, rgba(250,250,248,0) 100%);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        .hero__tagline {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .hero__title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.08;
+            margin-bottom: 2.5rem;
+            color: var(--text);
+            max-width: 650px;
+        }
+
+        .hero__title em {
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .hero__dash {
+            color: var(--accent);
+        }
+
+        .hero__scroll {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .hero__scroll:hover {
+            color: var(--accent);
+        }
+
+        .hero__scroll svg {
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+
+        /* ── Section Label (shared) ────────────────────────── */
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── About ─────────────────────────────────────────── */
+        .about {
+            padding: 8rem 2rem;
+        }
+
+        .about__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about__text h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .about__text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .about__link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            transition: letter-spacing 0.3s;
+        }
+
+        .about__link:hover {
+            letter-spacing: 0.12em;
+        }
+
+        .about__image img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* ── Portfolio ─────────────────────────────────────── */
+        .portfolio {
+            padding: 6rem 2rem 8rem;
+        }
+
+        .portfolio__header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .portfolio__header h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .portfolio__filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid var(--subtle);
+            padding: 0.5rem 1.5rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--text);
+            color: var(--text);
+        }
+
+        .portfolio__grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            columns: 3;
+            column-gap: 1.25rem;
+        }
+
+        .portfolio__item {
+            break-inside: avoid;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+        }
+
+        .portfolio__item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio__img-wrap {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .portfolio__img-wrap img {
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio__img-wrap:hover img {
+            transform: scale(1.03);
+        }
+
+        .portfolio__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            transition: background 0.4s ease;
+        }
+
+        .portfolio__overlay span {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio__img-wrap:hover .portfolio__overlay {
+            background: rgba(26, 26, 26, 0.25);
+        }
+
+        .portfolio__img-wrap:hover .portfolio__overlay span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Contact ───────────────────────────────────────── */
+        .contact {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .contact__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact__info h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            margin-bottom: 2.5rem;
+        }
+
+        .contact__details p {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .contact__details strong {
+            display: block;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact__social {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact__social a {
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            transition: letter-spacing 0.3s;
+        }
+
+        .contact__social a:hover {
+            letter-spacing: 0.12em;
+        }
+
+        .contact__mailto {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text);
+            color: var(--bg);
+            border: 1px solid var(--text);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 2rem 0 0;
+        }
+
+        .contact__mailto:hover {
+            background: transparent;
+            color: var(--text);
+        }
+
+        .contact__process {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .contact__step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact__step p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── Pricing ───────────────────────────────────────── */
+        .pricing {
+            padding: 8rem 2rem;
+        }
+
+        .pricing__inner {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .pricing__header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .pricing__header h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing__note {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .pricing__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .pricing__card {
+            border: 1px solid var(--subtle);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing__card:hover {
+            border-color: var(--accent);
+        }
+
+        .pricing__card--featured {
+            border-color: var(--accent);
+            box-shadow: 0 8px 40px rgba(139, 115, 85, 0.12);
+            position: relative;
+        }
+
+        .pricing__card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing__type {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .pricing__tier {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+
+        .pricing__price {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .pricing__desc {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .pricing__features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .pricing__features li {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            padding: 0.4rem 0;
+            border-bottom: 1px solid var(--subtle);
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .pricing__features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+            transform: translateY(-50%);
+        }
+
+        .pricing__cta {
+            display: block;
+            text-align: center;
+            padding: 0.85rem 1.5rem;
+            border: 1px solid var(--text);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .pricing__cta:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .pricing__card--featured .pricing__cta {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .pricing__card--featured .pricing__cta:hover {
+            background: transparent;
+            color: var(--text);
+        }
+
+        /* ── Footer ────────────────────────────────────────── */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--subtle);
+        }
+
+        .footer__inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__logo {
+            height: 8rem;
+            width: auto;
+            margin-bottom: -0.5rem;
+        }
+
+        .footer__left p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .footer__right {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer__right a {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .footer__right a:hover {
+            color: var(--text);
+        }
+
+        /* ── Lightbox ──────────────────────────────────────── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            padding: 2rem;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 0;
+        }
+
+        .lightbox__close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        /* ── Responsive ────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .portfolio__grid {
+                columns: 2;
+            }
+
+            .hero__bg {
+                width: 50%;
+            }
+
+            .pricing__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav__toggle {
+                display: flex;
+            }
+
+            .nav__links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 280px;
+                background: var(--bg);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                padding: 2rem;
+                transition: right 0.4s ease;
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav__links.open {
+                right: 0;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero__bg {
+                width: 100%;
+                opacity: 0.3;
+            }
+
+            .hero__bg::after {
+                background: linear-gradient(90deg, var(--bg) 0%, rgba(250, 250, 248, 0.6) 100%);
+            }
+
+            .hero__title {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            .about__inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about__image {
+                order: -1;
+            }
+
+            .about__image img {
+                aspect-ratio: 4/3;
+                object-position: center 15%;
+            }
+
+            .portfolio__grid {
+                columns: 1;
+            }
+
+            .contact__inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .pricing__grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .footer__inner {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav__inner">
+            <a href="#" class="nav__logo"><img src="logo.png" alt="Stella Fotografie"></a>
+            <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="#ueber">Über mich</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#preise">Preise</a></li>
+                <li><a href="#kontakt" class="nav__cta">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="hero">
+        <div class="hero__bg">
+            <img src="hero02.jpeg" alt="Brautpaar" loading="eager">
+        </div>
+        <div class="hero__content">
+            <p class="hero__tagline fade-in">Fotografin aus Berlin</p>
+            <h1 class="hero__title fade-in">
+                Echte Momente<span class="hero__dash"> –</span><br>
+                <em>für immer festgehalten.</em>
+            </h1>
+            <a href="#portfolio" class="hero__scroll fade-in">
+                <span>Arbeiten entdecken</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Über mich -->
+    <section class="about" id="ueber">
+        <div class="about__inner">
+            <div class="about__text fade-in">
+                <p class="section-label">Meine Philosophie</p>
+                <h2>Ich bin Stella.</h2>
+                <p>Die besten Fotos entstehen, wenn man sich wohl und entspannt fühlt. Deshalb lege ich großen Wert darauf, eine angenehme Atmosphäre zu schaffen, in der Ihr ganz Ihr selbst sein könnt. Ob draußen in der Natur, in der quirligen und bunten Stadt oder bei Euch zu Hause – ich sorge dafür, dass wir gemeinsam Momente festhalten, die Eure Geschichte erzählen.</p>
+                <p>Dabei lege ich den Fokus auf natürliche Aufnahmen ohne starres Posing, um die echten und ungestellten Emotionen einzufangen.</p>
+                <p>Um die anfängliche Anspannung zu nehmen, gebe ich immer wieder Impulse und Anregungen. So könnt Ihr Euch ganz auf den Moment einlassen und die Kamera wird fast zur Nebensache.</p>
+                <a href="#kontakt" class="about__link">Lass uns sprechen &rarr;</a>
+            </div>
+            <div class="about__image fade-in">
+                <img src="stella01.jpeg" alt="Stella – Fotografin aus Berlin" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio__header fade-in">
+            <p class="section-label">Portfolio</p>
+            <h2>Momente, die bleiben</h2>
+            <div class="portfolio__filters">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="hochzeit">Hochzeit</button>
+                <button class="filter-btn" data-filter="portrait">Portrait</button>
+                <button class="filter-btn" data-filter="familie">Familie</button>
+            </div>
+        </div>
+        <div class="portfolio__grid" id="portfolioGrid">
+
+            <div class="portfolio__item fade-in" data-category="hochzeit">
+                <div class="portfolio__img-wrap">
+                    <img src="hero01.jpeg" alt="Hochzeit – Auszug mit Konfetti" loading="lazy">
+                    <div class="portfolio__overlay"><span>Konfetti & Freude</span></div>
+                </div>
+            </div>
+
+            <div class="portfolio__item fade-in" data-category="familie">
+                <div class="portfolio__img-wrap">
+                    <img src="fam01.jpeg" alt="Neugeborenen-Shooting" loading="lazy">
+                    <div class="portfolio__overlay"><span>Kleine Hände</span></div>
+                </div>
+            </div>
+
+            <div class="portfolio__item fade-in" data-category="portrait">
+                <div class="portfolio__img-wrap">
+                    <img src="fam02.jpeg" alt="Paarshooting im Herbst" loading="lazy">
+                    <div class="portfolio__overlay"><span>Herbstlachen</span></div>
+                </div>
+            </div>
+
+            <div class="portfolio__item fade-in" data-category="hochzeit">
+                <div class="portfolio__img-wrap">
+                    <img src="hoch01.jpeg" alt="Anstoßen mit Champagner" loading="lazy">
+                    <div class="portfolio__overlay"><span>Auf die Liebe</span></div>
+                </div>
+            </div>
+
+            <div class="portfolio__item fade-in" data-category="hochzeit">
+                <div class="portfolio__img-wrap">
+                    <img src="hero03.jpeg" alt="Brautstrauß aus Lavendel" loading="lazy">
+                    <div class="portfolio__overlay"><span>Lavendel & Liebe</span></div>
+                </div>
+            </div>
+
+            <div class="portfolio__item fade-in" data-category="hochzeit">
+                <div class="portfolio__img-wrap">
+                    <img src="hoch02.jpeg" alt="Kuss auf die Stirn" loading="lazy">
+                    <div class="portfolio__overlay"><span>Stirnkuss im Wind</span></div>
+                </div>
+            </div>
+
+            <div class="portfolio__item fade-in" data-category="hochzeit">
+                <div class="portfolio__img-wrap">
+                    <img src="hero02.jpeg" alt="Brautpaar mit Lavendelstrauß" loading="lazy">
+                    <div class="portfolio__overlay"><span>Inniger Moment</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="contact" id="kontakt">
+        <div class="contact__inner">
+            <div class="contact__info fade-in">
+                <p class="section-label">Kontakt</p>
+                <h2>Lasst uns gemeinsam<br>eure Momente festhalten.</h2>
+                <div class="contact__details">
+                    <p><strong>E-Mail</strong>hallo@stellafotografie.de</p>
+                    <p><strong>Standort</strong>Berlin & Umgebung</p>
+                </div>
+                <a href="mailto:hallo@stellafotografie.de" class="contact__mailto">Schreibt mir eine E-Mail &rarr;</a>
+                <div class="contact__social">
+                    <a href="https://www.instagram.com/stella_fotografie_berlin" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
+            <div class="contact__process fade-in">
+                <div class="contact__step">
+                    <h3>Unser Kennenlernen</h3>
+                    <p>Wenn ich an Eurem Wunschdatum verfügbar bin, machen wir einen Termin für ein telefonisches Vorgespräch aus. Hierbei ist ausreichend Zeit für ein erstes Kennenlernen und all Eure Fragen.</p>
+                    <p>Bei der Buchung einer Hochzeitsreportage werden wir uns vor Eurem großen Tag noch zu einem weiteren Gespräch verabreden, um Eure Planung, Wünsche etc. ausführlich besprechen zu können.</p>
+                </div>
+                <div class="contact__step">
+                    <h3>Los geht's!</h3>
+                    <p>Nach der verbindlichen Buchung freue ich mich darauf, Euch zu einem unvergesslichen Shooting zu treffen. Gemeinsam werden wir authentische Momente einfangen und zeitlose Erinnerungen schaffen.</p>
+                </div>
+                <div class="contact__step">
+                    <h3>Das Ergebnis</h3>
+                    <p>Spätestens 14 Tage nach unserem Shooting erhaltet ihr Eure Bilder in einer Online-Galerie zum Bestaunen und Herunterladen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preise -->
+    <section class="pricing" id="preise">
+        <div class="pricing__inner">
+            <div class="pricing__header fade-in">
+                <p class="section-label">Preise</p>
+                <h2>Pakete & Preise</h2>
+                <p class="pricing__note">Die Preise gelten für Shootings in Berlin. Bei längeren Anreisen berechne ich zusätzliche Anfahrtskosten. Auf Wunsch ist auch die Erstellung eines Fotobuchs gegen Aufpreis möglich.</p>
+            </div>
+            <div class="pricing__grid">
+                <div class="pricing__card fade-in">
+                    <div class="pricing__card-header">
+                        <p class="pricing__type">Shooting</p>
+                        <p class="pricing__tier">klassisch</p>
+                    </div>
+                    <p class="pricing__price">&euro;300</p>
+                    <p class="pricing__desc">Perfekt geeignet für ein Familien- oder Paarshooting.</p>
+                    <ul class="pricing__features">
+                        <li>60 - 90 Minuten Shooting</li>
+                        <li>Online-Galerie mit 60 bearbeiteten Fotos zum Download</li>
+                        <li>Outfit Wechsel</li>
+                    </ul>
+                    <a href="mailto:hallo@stellafotografie.de?subject=Anfrage%20Shooting%20klassisch" class="pricing__cta">Anfragen</a>
+                </div>
+                <div class="pricing__card fade-in">
+                    <div class="pricing__card-header">
+                        <p class="pricing__type">Hochzeitsreportage</p>
+                        <p class="pricing__tier">klein</p>
+                    </div>
+                    <p class="pricing__price">&euro;550</p>
+                    <p class="pricing__desc">Die wichtigsten Stunden Eures Tages – kompakt und authentisch dokumentiert.</p>
+                    <ul class="pricing__features">
+                        <li>2 - 3 h Begleitung</li>
+                        <li>Online-Galerie mit 150 bearbeiteten Fotos zum Download</li>
+                        <li>Inklusive Paar- und Gästeshooting</li>
+                        <li>Ortswechsel</li>
+                        <li>Ausführliches Planungsgespräch</li>
+                    </ul>
+                    <a href="mailto:hallo@stellafotografie.de?subject=Anfrage%20Hochzeitsreportage%20klein" class="pricing__cta">Anfragen</a>
+                </div>
+                <div class="pricing__card pricing__card--featured fade-in">
+                    <div class="pricing__card-header">
+                        <p class="pricing__type">Hochzeitsreportage</p>
+                        <p class="pricing__tier">mittel</p>
+                    </div>
+                    <p class="pricing__price">&euro;1.100</p>
+                    <p class="pricing__desc">Genug Zeit für die großen Momente und die kleinen Gesten dazwischen.</p>
+                    <ul class="pricing__features">
+                        <li>6 h Begleitung</li>
+                        <li>Online-Galerie mit 300 bearbeiteten Fotos zum Download</li>
+                        <li>Inklusive Paar- und Gästeshooting</li>
+                        <li>Ortswechsel</li>
+                        <li>Ausführliches Planungsgespräch</li>
+                    </ul>
+                    <a href="mailto:hallo@stellafotografie.de?subject=Anfrage%20Hochzeitsreportage%20mittel" class="pricing__cta">Anfragen</a>
+                </div>
+                <div class="pricing__card fade-in">
+                    <div class="pricing__card-header">
+                        <p class="pricing__type">Hochzeitsreportage</p>
+                        <p class="pricing__tier">groß</p>
+                    </div>
+                    <p class="pricing__price">&euro;1.500</p>
+                    <p class="pricing__desc">Vom Getting Ready bis zur Tanzparty – Euer kompletter Tag in Bildern.</p>
+                    <ul class="pricing__features">
+                        <li>8 h Begleitung</li>
+                        <li>Online-Galerie mit 420 bearbeiteten Fotos zum Download</li>
+                        <li>Inklusive Paar- und Gästeshooting</li>
+                        <li>Ortswechsel</li>
+                        <li>Ausführliches Planungsgespräch</li>
+                    </ul>
+                    <a href="mailto:hallo@stellafotografie.de?subject=Anfrage%20Hochzeitsreportage%20groß" class="pricing__cta">Anfragen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__left">
+                <img src="logo.png" alt="Stella Fotografie" class="footer__logo">
+                <p>&copy; 2026 Stella Fotografie. Alle Rechte vorbehalten.</p>
+            </div>
+            <div class="footer__right">
+                <a href="impressum.html">Impressum</a>
+                <a href="impressum.html#datenschutz">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" aria-label="Schließen">&times;</button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <script>
+        // ── Navigation ──────────────────────────────────────
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+        });
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ── Smooth Scroll ───────────────────────────────────
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ── Scroll Animations ───────────────────────────────
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        fadeEls.forEach(el => fadeObserver.observe(el));
+
+        // ── Portfolio Filter ────────────────────────────────
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio__item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                portfolioItems.forEach(item => {
+                    const match = filter === 'all' || item.dataset.category === filter;
+                    item.style.display = match ? '' : 'none';
+                });
+            });
+        });
+
+        // ── Lightbox ────────────────────────────────────────
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        document.querySelectorAll('.portfolio__img-wrap').forEach(wrap => {
+            wrap.addEventListener('click', () => {
+                const img = wrap.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+
+    </script>
+</body>
+</html>
