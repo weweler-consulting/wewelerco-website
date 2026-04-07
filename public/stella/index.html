@@ -790,20 +790,33 @@
             }
 
             .hero {
-                min-height: 90vh;
+                min-height: auto;
+                flex-direction: column;
             }
 
             .hero__bg {
+                position: relative;
                 width: 100%;
-                opacity: 0.3;
+                height: 55vh;
+                opacity: 1;
             }
 
             .hero__bg::after {
-                background: linear-gradient(90deg, var(--bg) 0%, rgba(250, 250, 248, 0.6) 100%);
+                background: linear-gradient(180deg, rgba(250,250,248,0) 60%, var(--bg) 100%);
+            }
+
+            .hero__content {
+                padding: 0 1.5rem 3rem;
+                text-align: center;
             }
 
             .hero__title {
-                font-size: clamp(2.5rem, 10vw, 4rem);
+                font-size: clamp(2.2rem, 9vw, 3.5rem);
+                max-width: 100%;
+            }
+
+            .hero__tagline {
+                margin-bottom: 1rem;
             }
 
             .about__inner {
