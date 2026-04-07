@@ -790,11 +790,19 @@
             }
 
             .nav__logo {
-                display: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                pointer-events: none;
             }
 
-            .nav__inner {
-                justify-content: flex-end;
+            .nav--scrolled .nav__logo {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav__logo img {
+                height: 7rem;
+                margin: -2rem 0;
             }
 
             .nav__toggle {
