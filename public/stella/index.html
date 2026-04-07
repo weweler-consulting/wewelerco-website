@@ -161,8 +161,8 @@
         }
 
         .nav__toggle span {
-            width: 24px;
-            height: 1.5px;
+            width: 26px;
+            height: 2px;
             background: var(--text);
             transition: all 0.3s ease;
             transform-origin: center;
@@ -178,6 +178,18 @@
 
         .nav__toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(4px, -5px);
+        }
+
+        .nav__overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+        }
+
+        .nav__overlay.open {
+            display: block;
         }
 
         /* ── Hero ──────────────────────────────────────────── */
@@ -766,8 +778,22 @@
         }
 
         @media (max-width: 768px) {
+            .nav {
+                background: rgba(250, 250, 248, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 1rem 0;
+            }
+
+            .nav__logo img {
+                height: 7rem;
+                margin: -2rem 0;
+            }
+
             .nav__toggle {
                 display: flex;
+                position: relative;
+                z-index: 1002;
             }
 
             .nav__links {
@@ -783,6 +809,7 @@
                 padding: 2rem;
                 transition: right 0.4s ease;
                 box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+                z-index: 1001;
             }
 
             .nav__links.open {
@@ -1101,6 +1128,9 @@
         </div>
     </footer>
 
+    <!-- Mobile Nav Overlay -->
+    <div class="nav__overlay" id="navOverlay"></div>
+
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox__close" aria-label="Schließen">&times;</button>
@@ -1112,21 +1142,34 @@
         const nav = document.getElementById('nav');
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+
+        function closeMenu() {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+            navOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function openMenu() {
+            navToggle.classList.add('active');
+            navLinks.classList.add('open');
+            navOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
 
         window.addEventListener('scroll', () => {
             nav.classList.toggle('nav--scrolled', window.scrollY > 60);
         });
 
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('open');
+            navLinks.classList.contains('open') ? closeMenu() : openMenu();
         });
 
+        navOverlay.addEventListener('click', closeMenu);
+
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('open');
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         // ── Smooth Scroll ───────────────────────────────────
