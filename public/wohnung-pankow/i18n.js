@@ -19,7 +19,6 @@ window.I18N = {
 
     "hero.meta.1": "Pankow-Rosenthal",
     "hero.meta.2": "Privat angeboten",
-    "hero.meta.3": "Frühjahr 2026",
     "hero.h1": "Familien&shy;wohnung in Berlin-Pankow zur <em>Übernahme</em>.",
     "hero.sub": "115 m², 4 Zimmer, 2. Stock mit umlaufender Süd­terrasse. Wir geben unsere Wohnung zum 1. September 2026 ab — direkt von Familie an Familie, ohne Makler dazwischen. Preis verhandelbar.",
     "hero.fact.size.k": "Größe",
@@ -89,7 +88,7 @@ window.I18N = {
     "detail.in.14": "Hunde erlaubt — Nachbarn haben ebenfalls Hunde",
     "detail.out.1": "Großer Gemeinschafts­garten für alle Bewohner",
     "detail.out.2": "Privates Gartenabteil zum Grillen",
-    "detail.out.3": "Pool, der im Sommer aufgestellt werden kann",
+    "detail.out.3": "Platz für einen Aufstell-Pool im Sommer",
     "detail.out.4": "Eigene Terrasse in Süd­lage — im Sommer faktisch ein zweites Wohnzimmer",
 
     "gal2.title": "Schlafen, baden, <em>nach draußen</em>.",
@@ -229,7 +228,6 @@ window.I18N = {
 
     "hero.meta.1": "Pankow-Rosenthal",
     "hero.meta.2": "Offered privately",
-    "hero.meta.3": "Spring 2026",
     "hero.h1": "Family apartment in Berlin-Pankow, available for <em>takeover</em>.",
     "hero.sub": "115 m², 4 rooms, 2nd floor with a wraparound south-facing terrace. We're handing over our apartment on 1 September 2026 — directly from one family to the next, no agent in between. Price negotiable.",
     "hero.fact.size.k": "Size",
@@ -299,7 +297,7 @@ window.I18N = {
     "detail.in.14": "Dogs allowed — neighbours have dogs too",
     "detail.out.1": "Large communal garden for all residents",
     "detail.out.2": "Private garden plot for grilling",
-    "detail.out.3": "Pool that can be set up in summer",
+    "detail.out.3": "Space for a pop-up pool in summer",
     "detail.out.4": "Own south-facing terrace — effectively a second living room in summer",
 
     "gal2.title": "Sleeping, bathing, <em>going outside</em>.",
