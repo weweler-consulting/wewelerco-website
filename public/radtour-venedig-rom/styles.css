@@ -1,0 +1,519 @@
+/* Vintage Giro d'Italia Plakat-Stil */
+:root {
+  --paper: #f4ead5;
+  --paper-dark: #e8d9b8;
+  --ink: #2a1a0a;
+  --ink-soft: #4a3a26;
+  --rosso: #a8341f;
+  --rosso-deep: #7a1f10;
+  --senape: #d4a02a;
+  --verde: #4a6b3a;
+  --teal: #2d5963;
+  --shadow: rgba(60, 40, 20, 0.18);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.55;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(180, 140, 80, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(168, 52, 31, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='2'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.3  0 0 0 0 0.15  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.page { max-width: 1100px; margin: 0 auto; padding: 32px 28px 80px; }
+
+/* ===== HERO ===== */
+.hero {
+  margin: 24px auto 64px;
+}
+.hero__paper {
+  background: linear-gradient(180deg, var(--paper) 0%, #efe2c4 100%);
+  border: 1.5px solid var(--rosso-deep);
+  padding: 56px 64px 48px;
+  position: relative;
+  box-shadow: 0 2px 0 var(--ink) inset, 0 30px 80px -30px var(--shadow);
+}
+.hero__paper::before, .hero__paper::after {
+  content: ""; position: absolute; pointer-events: none;
+}
+.hero__paper::before {
+  inset: 8px; border: 1px solid var(--rosso-deep); opacity: 0.4;
+}
+.hero__paper::after {
+  inset: -2px;
+  background:
+    radial-gradient(circle at 0 0, transparent 8px, var(--paper) 9px),
+    radial-gradient(circle at 100% 0, transparent 8px, var(--paper) 9px);
+  z-index: -1;
+}
+
+.hero__top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+  font-family: 'Bodoni Moda', 'DM Serif Display', serif;
+}
+.hero__edition {
+  text-align: left;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 6px 0;
+}
+.hero__edition--right { text-align: right; }
+.hero__edition-line { font-size: 10px; letter-spacing: 4px; color: var(--ink-soft); }
+.hero__edition-num { font-size: 22px; font-weight: 700; letter-spacing: 2px; color: var(--rosso-deep); }
+
+.hero__stamp {
+  border: 2px solid var(--rosso-deep);
+  padding: 8px 18px;
+  text-align: center;
+  color: var(--rosso-deep);
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  transform: rotate(-2deg);
+  background: rgba(244, 234, 213, 0.6);
+}
+.hero__stamp-big { font-size: 13px; letter-spacing: 4px; margin: 2px 0; }
+
+.hero__title {
+  font-family: 'Bodoni Moda', 'DM Serif Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  line-height: 0.92;
+  color: var(--rosso-deep);
+  margin: 8px 0 4px;
+}
+.hero__title-line1 { display: block; font-size: clamp(56px, 11vw, 132px); }
+.hero__title-line2 { display: block; font-size: clamp(72px, 14vw, 168px); margin-top: -8px; }
+
+.hero__rule {
+  display: flex; gap: 20px; justify-content: center;
+  color: var(--rosso-deep); font-size: 18px;
+  margin: 18px 0 12px;
+}
+.hero__rule::before, .hero__rule::after {
+  content: ""; flex: 0 0 80px; border-top: 1px solid var(--rosso-deep); align-self: center;
+}
+
+.hero__sub {
+  text-align: center;
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(28px, 4.2vw, 52px);
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.hero__sub-sep { color: var(--rosso); margin: 0 16px; font-style: italic; }
+.hero__tag {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 18px;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+.hero__stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin: 36px 0 24px;
+  flex-wrap: wrap;
+}
+.hstat { text-align: center; font-family: 'Bodoni Moda', serif; }
+.hstat__v { font-size: 48px; font-weight: 700; color: var(--rosso-deep); line-height: 1; }
+.hstat__l { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
+.hstat__sep { font-size: 36px; color: var(--rosso); opacity: 0.5; }
+.hstat__sep .hstat__v { font-size: 36px; }
+
+.hero__route {
+  text-align: center;
+  font-family: 'Bodoni Moda', serif;
+  letter-spacing: 3px;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-top: 1px solid var(--rosso-deep);
+  border-bottom: 1px solid var(--rosso-deep);
+  padding: 14px 0;
+  margin: 24px 0;
+}
+.hero__route .dot { color: var(--rosso); margin: 0 8px; }
+.hero__route .bold { font-weight: 700; color: var(--rosso-deep); }
+
+.hero__bottom {
+  display: flex; justify-content: space-between;
+  font-style: italic; font-size: 13px; color: var(--ink-soft);
+  margin-top: 12px;
+  flex-wrap: wrap; gap: 12px;
+}
+.hero__bottom-org { font-family: 'Bodoni Moda', serif; letter-spacing: 1px; }
+
+/* ===== INTRO ===== */
+.intro {
+  max-width: 720px; margin: 80px auto;
+  text-align: center;
+}
+.intro__lead {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 32px;
+  color: var(--rosso-deep);
+  margin-bottom: 24px;
+}
+.intro__body {
+  font-size: 19px;
+  margin-bottom: 18px;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.intro__body em { color: var(--rosso); font-weight: 600; }
+.intro__signoff {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--rosso-deep);
+  margin-top: 24px;
+}
+
+/* ===== SECTION HEADERS ===== */
+.map__head, .stages__head, .rest__head, .costs__head, .train__head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.map__eyebrow, .stages__eyebrow, .rest__eyebrow, .costs__eyebrow, .train__eyebrow {
+  font-size: 11px; letter-spacing: 4px;
+  color: var(--rosso); text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.map__title, .stages__title, .rest__title, .costs__title, .train__title {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.map__sub { font-style: italic; color: var(--ink-soft); margin-top: 12px; }
+
+/* ===== MAP ===== */
+.map { margin: 80px 0; }
+.map__frame {
+  background: var(--paper);
+  border: 1.5px solid var(--rosso-deep);
+  padding: 16px;
+  box-shadow: 0 30px 60px -30px var(--shadow);
+  position: relative;
+  max-width: 720px; margin: 0 auto;
+}
+.map__frame::before {
+  content: ""; position: absolute; inset: 6px;
+  border: 1px solid var(--rosso-deep); opacity: 0.3; pointer-events: none;
+}
+
+/* ===== STAGES ===== */
+.stages { margin: 100px 0; }
+.stages__controls {
+  margin-top: 16px; font-style: italic; color: var(--ink-soft); font-size: 14px;
+  display: flex; justify-content: center; gap: 12px;
+}
+.stages__controls button {
+  background: none; border: none; cursor: pointer;
+  font: inherit; color: var(--rosso-deep); text-decoration: underline;
+  text-decoration-style: dotted; text-underline-offset: 4px;
+}
+.stages__controls button:hover { color: var(--rosso); }
+.stages__list { display: flex; flex-direction: column; gap: 16px; }
+
+.stage {
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  position: relative;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.stage:hover { box-shadow: 0 10px 30px -15px var(--shadow); }
+.stage--rest { background: linear-gradient(180deg, #f0e4c8 0%, #e8d9b8 100%); border-color: var(--senape); border-style: dashed; }
+.stage--train { background: linear-gradient(180deg, #e8e0d0 0%, #ddd2c0 100%); border-color: var(--teal); }
+.stage--queen { border-width: 2.5px; border-color: var(--rosso-deep); }
+.stage--queen::before {
+  content: "★ TAPPA REGINA";
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--rosso-deep); color: var(--paper);
+  padding: 4px 14px; font-size: 10px; letter-spacing: 3px; font-weight: 700;
+  font-family: 'Bodoni Moda', serif;
+}
+
+.stage__header {
+  display: grid;
+  grid-template-columns: 100px 1fr auto 30px;
+  gap: 24px;
+  padding: 24px 28px;
+  cursor: pointer;
+  align-items: center;
+  user-select: none;
+}
+.stage__num {
+  border-right: 1px solid var(--ink-soft);
+  padding-right: 24px;
+  text-align: center;
+}
+.stage__num-label { font-size: 10px; letter-spacing: 3px; color: var(--ink-soft); text-transform: uppercase; display: block; }
+.stage__num-val {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 56px; font-weight: 700;
+  color: var(--rosso-deep); line-height: 1;
+  font-style: italic;
+}
+.stage__date { font-size: 12px; letter-spacing: 2px; color: var(--ink-soft); text-transform: uppercase; }
+.stage__title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 600;
+  margin: 4px 0;
+  color: var(--ink);
+}
+.stage__arrow { color: var(--rosso); margin: 0 12px; font-style: italic; }
+.stage__profile {
+  font-style: italic; color: var(--ink-soft); font-size: 14px;
+}
+.stage--queen .stage__profile { color: var(--rosso-deep); font-weight: 600; }
+
+.stage__stats { display: flex; gap: 18px; align-items: baseline; }
+.stat { text-align: center; }
+.stat__v {
+  display: block;
+  font-family: 'Bodoni Moda', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.stat__u { font-size: 9px; letter-spacing: 2px; color: var(--ink-soft); text-transform: uppercase; }
+.stat--equiv .stat__v { color: var(--rosso-deep); }
+.stat--big .stat__v { font-size: 22px; letter-spacing: 4px; color: var(--rosso-deep); }
+
+.stage__chev {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 28px; color: var(--rosso-deep);
+  text-align: center;
+  transition: transform 0.3s;
+}
+.stage--open .stage__chev { transform: rotate(180deg); }
+
+.stage__body {
+  padding: 0 28px 28px;
+  border-top: 1px dashed var(--ink-soft);
+  padding-top: 24px;
+  animation: slideDown 0.3s ease-out;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stage__note {
+  font-style: italic; font-size: 18px;
+  color: var(--ink-soft); margin-bottom: 24px;
+  text-wrap: pretty;
+}
+
+.stage__elev { margin: 24px 0 32px; }
+.stage__elev-label {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: 11px; letter-spacing: 2px; color: var(--ink-soft);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.stage__climb { color: var(--rosso-deep); font-weight: 700; letter-spacing: 1px; }
+
+.stage__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+.stage__col-label {
+  font-size: 10px; letter-spacing: 3px;
+  color: var(--rosso); text-transform: uppercase; font-weight: 700;
+  border-bottom: 1px solid var(--rosso); padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+.kv { display: flex; gap: 12px; font-size: 14px; margin-bottom: 6px; }
+.kv span:first-child {
+  font-style: italic; color: var(--ink-soft);
+  min-width: 70px; flex-shrink: 0;
+}
+.kv span:last-child { color: var(--ink); }
+.hl-list { list-style: none; }
+.hl-list li {
+  font-size: 14px; padding: 4px 0 4px 14px; position: relative;
+  color: var(--ink); border-bottom: 1px dotted #c8b894;
+}
+.hl-list li::before {
+  content: "·"; position: absolute; left: 4px; color: var(--rosso); font-weight: 700;
+}
+.lodging__name {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 18px; font-weight: 600; color: var(--ink);
+}
+.lodging__type { font-style: italic; font-size: 13px; color: var(--rosso-deep); margin: 2px 0 8px; }
+.lodging__area { font-size: 13px; color: var(--ink-soft); margin-bottom: 6px; }
+.lodging__vibe { font-size: 13px; color: var(--ink-soft); font-style: italic; line-height: 1.5; }
+.lodging__price {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 14px; color: var(--rosso-deep); margin-top: 8px; font-weight: 600;
+}
+
+/* ===== REST ===== */
+.rest { margin: 100px 0; }
+.rest__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+.rest__card {
+  background: var(--paper);
+  border: 1.5px dashed var(--senape);
+  padding: 32px;
+  position: relative;
+}
+.rest__city {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-size: 48px; font-weight: 700;
+  color: var(--rosso-deep); line-height: 1;
+}
+.rest__day { font-size: 12px; letter-spacing: 3px; color: var(--ink-soft); text-transform: uppercase; margin: 8px 0 24px; border-bottom: 1px solid var(--rosso); padding-bottom: 12px; }
+.rest__card ul { list-style: none; }
+.rest__card li {
+  font-size: 15px; padding: 8px 0; border-bottom: 1px dotted #c8b894;
+  display: grid; grid-template-columns: 60px 1fr; gap: 12px;
+}
+.rest__card li b {
+  font-family: 'Bodoni Moda', serif;
+  color: var(--rosso); font-weight: 700; font-style: italic;
+}
+
+/* ===== COSTS ===== */
+.costs { margin: 100px auto; max-width: 720px; }
+.costs__sub { font-style: italic; color: var(--ink-soft); margin-top: 8px; }
+.costs__list {
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 32px 36px;
+  margin-top: 24px;
+}
+.costs__row, .costs__total {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: baseline; gap: 12px;
+  padding: 10px 0;
+  font-size: 16px;
+}
+.costs__label { color: var(--ink); }
+.costs__dots { border-bottom: 2px dotted var(--ink-soft); transform: translateY(-4px); }
+.costs__amt {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700; color: var(--ink);
+}
+.costs__total {
+  border-top: 2px solid var(--ink);
+  margin-top: 12px; padding-top: 18px;
+  font-size: 22px;
+}
+.costs__total .costs__label { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 700; }
+.costs__total .costs__amt { color: var(--rosso-deep); font-size: 28px; }
+
+/* ===== TRAIN ===== */
+.train { margin: 100px 0; }
+.train__card {
+  background: var(--paper);
+  border: 1.5px solid var(--teal);
+  padding: 32px 36px;
+  max-width: 820px; margin: 0 auto;
+}
+.train__line {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px dashed #b8a37a;
+  align-items: center;
+}
+.train__line--end { border-bottom: none; }
+.train__time {
+  font-family: 'Bodoni Moda', serif;
+  font-weight: 700; font-size: 28px;
+  color: var(--teal); font-style: italic;
+}
+.train__sta b { font-family: 'Bodoni Moda', serif; font-size: 18px; display: block; color: var(--ink); }
+.train__sta span { font-size: 13px; color: var(--ink-soft); font-style: italic; }
+.train__dur {
+  font-size: 12px; letter-spacing: 2px;
+  color: var(--ink-soft); text-transform: uppercase;
+  font-weight: 700;
+}
+.train__notes {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--ink);
+  font-size: 14px;
+}
+.train__notes div { margin-bottom: 8px; color: var(--ink-soft); }
+.train__notes b { color: var(--rosso-deep); font-weight: 700; }
+
+/* ===== OUTRO ===== */
+.outro {
+  text-align: center;
+  margin: 120px auto 40px;
+}
+.outro__rule { color: var(--rosso); font-size: 24px; letter-spacing: 12px; margin-bottom: 32px; }
+.outro__big {
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(48px, 8vw, 96px);
+  color: var(--rosso-deep);
+  line-height: 1;
+}
+.outro__small {
+  font-style: italic; font-size: 20px;
+  color: var(--ink-soft); margin-top: 16px;
+}
+.outro__sig {
+  margin-top: 48px;
+  font-family: 'Bodoni Moda', serif;
+  font-size: 13px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--ink);
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .page { padding: 16px 14px 60px; }
+  .hero__paper { padding: 32px 24px; }
+  .hero__top { grid-template-columns: 1fr; gap: 12px; }
+  .hero__edition, .hero__edition--right { text-align: center; }
+  .hero__stats { gap: 12px; }
+  .hstat__v { font-size: 36px; }
+  .stage__header {
+    grid-template-columns: 60px 1fr 30px;
+    gap: 12px; padding: 16px;
+  }
+  .stage__num-val { font-size: 36px; }
+  .stage__stats {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: 24px; padding-top: 8px; border-top: 1px dashed #c8b894;
+  }
+  .train__line { grid-template-columns: 70px 1fr; }
+  .train__dur { grid-column: 2; padding-top: 4px; }
+}
