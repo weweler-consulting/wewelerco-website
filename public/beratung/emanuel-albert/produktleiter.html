@@ -317,6 +317,126 @@
     border-radius: 3px;
   }
 
+  /* WEBINAR (Conversion Event – not a numbered step) */
+  .webinar {
+    display: grid;
+    grid-template-columns: 80px 1fr 200px;
+    background: linear-gradient(135deg, rgba(166,122,61,0.10), rgba(166,122,61,0.03));
+    border: 1.5px solid rgba(166,122,61,0.32);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 4px -10px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 6px 24px rgba(166,122,61,0.10);
+    transition: all 0.25s ease;
+  }
+
+  .webinar:hover {
+    transform: translateX(6px);
+    box-shadow: 0 10px 32px rgba(166,122,61,0.16);
+    border-color: rgba(166,122,61,0.45);
+  }
+
+  .webinar-icon-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    background: rgba(166,122,61,0.07);
+    border-right: 1px solid rgba(166,122,61,0.15);
+  }
+
+  .webinar-icon-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    box-shadow: 0 4px 12px rgba(166,122,61,0.30);
+  }
+
+  .webinar-stage-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--warm);
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .webinar-mid {
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .webinar-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .webinar-desc {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .webinar-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .webinar-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 11px;
+    border-radius: 3px;
+    background: rgba(166,122,61,0.10);
+    color: var(--warm);
+    border: 1px solid rgba(166,122,61,0.25);
+    font-weight: 600;
+  }
+
+  .webinar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    border-left: 1px solid rgba(166,122,61,0.15);
+    text-align: center;
+    gap: 4px;
+  }
+
+  .webinar-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--warm);
+    line-height: 1.2;
+  }
+
+  .webinar-badge-note {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+
   /* CONNECTOR */
   .connector {
     display: flex;
@@ -395,6 +515,29 @@
 
   .funnel-item:first-child { border-radius: 8px 0 0 8px; }
   .funnel-item:last-child { border-radius: 0 8px 8px 0; }
+
+  .funnel-item.is-highlight {
+    background: linear-gradient(135deg, rgba(166,122,61,0.12), rgba(166,122,61,0.04));
+    border-color: rgba(166,122,61,0.40);
+    border-width: 1.5px;
+    transform: scale(1.04);
+    box-shadow: 0 6px 22px rgba(166,122,61,0.18);
+    z-index: 2;
+    position: relative;
+  }
+
+  .funnel-item.is-highlight .funnel-item-name {
+    color: var(--warm);
+  }
+
+  .funnel-item.is-highlight .funnel-item-badge {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--warm);
+    font-weight: 700;
+    margin-top: 4px;
+  }
 
   .funnel-item-icon {
     font-size: 1.3rem;
@@ -526,6 +669,12 @@
     .header, .current, .ladder-section, .funnel-section, .insight, .next { padding-left: 20px; padding-right: 20px; }
     .step { grid-template-columns: 56px 1fr; }
     .step-right { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; padding: 12px 20px; border-left: none; border-top: 1px solid var(--border); }
+    .webinar { grid-template-columns: 56px 1fr; margin: 4px 0; }
+    .webinar-mid { padding: 22px 20px; }
+    .webinar-icon-cell { padding: 22px 6px; }
+    .webinar-icon-circle { width: 36px; height: 36px; font-size: 1rem; }
+    .webinar-right { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; padding: 12px 20px; border-left: none; border-top: 1px solid rgba(166,122,61,0.15); text-align: left; }
+    .funnel-item.is-highlight { transform: none; }
     .current-box { grid-template-columns: 1fr; gap: 16px; }
     .current-arrow { transform: rotate(90deg); }
     .connector { padding-left: 56px; }
@@ -617,7 +766,31 @@
       </div>
     </div>
 
-    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> Upsell-Sequenz <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
+    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> Einladung zum Webinar <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
+
+    <!-- WEBINAR – Conversion Event (keine nummerierte Stufe) -->
+    <div class="webinar">
+      <div class="webinar-icon-cell">
+        <div class="webinar-icon-circle">🎥</div>
+        <div class="webinar-stage-label">Conversion</div>
+      </div>
+      <div class="webinar-mid">
+        <div class="webinar-name">Webinar – Das Conversion-Event</div>
+        <div class="webinar-desc">Kostenloses Live-Webinar, 45 Minuten. Emanuel liefert echten Wert zum Kernthema und positioniert sich als Experte. Am Ende: klarer Call-to-Action auf das Erstgespräch. Erst live, später automatisiert.</div>
+        <div class="webinar-tags">
+          <span class="webinar-tag">Live oder Aufzeichnung</span>
+          <span class="webinar-tag">45 Min</span>
+          <span class="webinar-tag">Kostenlos</span>
+          <span class="webinar-tag">CTA → Erstgespräch</span>
+        </div>
+      </div>
+      <div class="webinar-right">
+        <div class="webinar-badge">Conversion-Event</div>
+        <div class="webinar-badge-note">Sales-Mechanismus</div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> Erstgespräch-Buchung <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
 
     <!-- STUFE 2 -->
     <div class="step step-2">
@@ -716,10 +889,11 @@
       <div class="funnel-item-desc">E-Mail-Sequenz</div>
     </div>
     <div class="funnel-arrow-cell">→</div>
-    <div class="funnel-item">
+    <div class="funnel-item is-highlight">
       <div class="funnel-item-icon">🎥</div>
       <div class="funnel-item-name">Webinar</div>
       <div class="funnel-item-desc">Live oder Aufzeichnung</div>
+      <div class="funnel-item-badge">Conversion</div>
     </div>
     <div class="funnel-arrow-cell">→</div>
     <div class="funnel-item">
