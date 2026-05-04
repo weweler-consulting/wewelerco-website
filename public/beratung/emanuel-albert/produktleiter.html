@@ -7,21 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --warm: #c8a26e;
-    --warm-light: #e8d5b5;
-    --warm-dim: rgba(200,162,110,0.08);
-    --dark: #0c0c0e;
-    --card: #131315;
-    --card-hover: #18181c;
-    --border: rgba(255,255,255,0.06);
-    --text: #c8c4bc;
-    --muted: #706b63;
-    --white: #f2efe9;
-    --blue: #5b9cf5;
-    --green: #4eca8b;
-    --yellow: #e4b94e;
-    --orange: #e88a3a;
-    --red: #d95555;
+    --warm: #a67a3d;
+    --warm-light: #d4b485;
+    --warm-dim: rgba(166,122,61,0.08);
+    --dark: #faf7f2;
+    --card: #ffffff;
+    --card-hover: #fbf8f3;
+    --border: rgba(20,20,25,0.10);
+    --text: #2a2a2e;
+    --muted: #6b6660;
+    --white: #14141a;
+    --blue: #2c6fc9;
+    --green: #2a9764;
+    --yellow: #c69427;
+    --orange: #c46422;
+    --red: #b8362f;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -118,9 +118,9 @@
   }
 
   .current-side p {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   .current-side.problem-side {
@@ -196,9 +196,9 @@
 
   .step:hover {
     background: var(--card-hover);
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(20,20,25,0.18);
     transform: translateX(6px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 12px 32px rgba(20,20,25,0.08);
   }
 
   .step-left {
@@ -207,7 +207,7 @@
     align-items: center;
     justify-content: center;
     padding: 24px 8px;
-    background: rgba(255,255,255,0.015);
+    background: rgba(20,20,25,0.025);
     border-right: 1px solid var(--border);
   }
 
@@ -221,7 +221,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--dark);
+    color: #ffffff;
     margin-bottom: 6px;
   }
 
@@ -256,9 +256,9 @@
   }
 
   .step-desc {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   .step-tags {
@@ -274,9 +274,9 @@
     letter-spacing: 0.8px;
     padding: 3px 10px;
     border-radius: 3px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(20,20,25,0.04);
     color: var(--text);
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(20,20,25,0.08);
   }
 
   .step-right {
@@ -313,7 +313,7 @@
     color: var(--muted);
     margin-top: 6px;
     padding: 2px 8px;
-    background: rgba(255,255,255,0.03);
+    background: rgba(20,20,25,0.04);
     border-radius: 3px;
   }
 
@@ -340,7 +340,7 @@
   .connector-line {
     width: 28px;
     height: 1px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(20,20,25,0.15);
   }
 
   .connector-arrow {
@@ -408,9 +408,9 @@
   }
 
   .funnel-item-desc {
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     color: var(--muted);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .funnel-arrow-cell {
@@ -445,10 +445,10 @@
   }
 
   .insight-box p {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--text);
-    line-height: 1.7;
-    margin-bottom: 12px;
+    line-height: 1.75;
+    margin-bottom: 14px;
   }
 
   .insight-box p:last-child { margin-bottom: 0; }
@@ -516,9 +516,9 @@
   }
 
   .next-text p {
-    font-size: 0.82rem;
+    font-size: 0.92rem;
     color: var(--muted);
-    line-height: 1.5;
+    line-height: 1.55;
   }
 
   /* RESPONSIVE */
