@@ -73,6 +73,39 @@
     font-weight: 300;
   }
 
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+
+  .header-meta-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .header-meta-label {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--warm);
+    font-weight: 600;
+  }
+
+  .header-meta-divider {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
   /* CURRENT PROBLEM */
   .current {
     max-width: 1100px;
@@ -691,9 +724,14 @@
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-tag">Strategiekonzept</div>
+  <div class="header-tag">Strategiepapier · Für Emanuel Albert</div>
   <h1>Die <em>Produktleiter</em> für dein Coaching-Business</h1>
   <p class="header-sub">Von kaltem Lead zu Premium-Kunde – systematisch, messbar, skalierbar.</p>
+  <div class="header-meta">
+    <span class="header-meta-item"><span class="header-meta-label">Erstellt von</span> Weweler Consulting</span>
+    <span class="header-meta-divider"></span>
+    <span class="header-meta-item"><span class="header-meta-label">Stand</span> 4. Mai 2026</span>
+  </div>
 </div>
 
 <!-- CURRENT PROBLEM -->
