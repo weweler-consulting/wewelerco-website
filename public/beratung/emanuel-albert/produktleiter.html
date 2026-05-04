@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produktleiter – Emanuel Albert Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --warm: #c8a26e;
+    --warm-light: #e8d5b5;
+    --warm-dim: rgba(200,162,110,0.08);
+    --dark: #0c0c0e;
+    --card: #131315;
+    --card-hover: #18181c;
+    --border: rgba(255,255,255,0.06);
+    --text: #c8c4bc;
+    --muted: #706b63;
+    --white: #f2efe9;
+    --blue: #5b9cf5;
+    --green: #4eca8b;
+    --yellow: #e4b94e;
+    --orange: #e88a3a;
+    --red: #d95555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 60px 40px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--warm);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--warm);
+  }
+
+  .header-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  /* CURRENT PROBLEM */
+  .current {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px;
+  }
+
+  .current-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .current h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .current-box {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+    gap: 0;
+  }
+
+  .current-side {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 24px;
+  }
+
+  .current-side h3 {
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .current-side p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .current-side.problem-side {
+    border-color: rgba(217,85,85,0.2);
+  }
+
+  .current-side.solution-side {
+    border-color: rgba(78,202,139,0.2);
+  }
+
+  .current-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--warm);
+  }
+
+  /* LADDER */
+  .ladder-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+
+  .ladder-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--warm);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .ladder-section > h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 40px;
+  }
+
+  /* STEPS */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  /* Vertical connector line */
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 39px;
+    top: 48px;
+    bottom: 48px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--blue), var(--green), var(--yellow), var(--orange), var(--red));
+    opacity: 0.3;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 80px 1fr 180px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step:hover {
+    background: var(--card-hover);
+    border-color: rgba(255,255,255,0.1);
+    transform: translateX(6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 8px;
+    background: rgba(255,255,255,0.015);
+    border-right: 1px solid var(--border);
+  }
+
+  .step-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .step-stage-label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .step-0 .step-icon { background: var(--blue); }
+  .step-1 .step-icon { background: var(--green); }
+  .step-2 .step-icon { background: var(--yellow); }
+  .step-3 .step-icon { background: var(--orange); }
+  .step-4 .step-icon { background: var(--red); }
+
+  .step-mid {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .step-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .step-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .step-tag {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .step-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px 28px;
+    border-left: 1px solid var(--border);
+    text-align: right;
+  }
+
+  .step-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .step-0 .step-price { color: var(--blue); }
+  .step-1 .step-price { color: var(--green); }
+  .step-2 .step-price { color: var(--yellow); }
+  .step-3 .step-price { color: var(--orange); }
+  .step-4 .step-price { color: var(--red); }
+
+  .step-price-note {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .step-margin {
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 6px;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 3px;
+  }
+
+  /* CONNECTOR */
+  .connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 10px 80px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .connector-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+  }
+
+  .connector-line {
+    width: 28px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .connector-arrow {
+    font-size: 0.9rem;
+    color: var(--warm);
+    opacity: 0.5;
+  }
+
+  /* FUNNEL FLOW */
+  .funnel-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 56px;
+  }
+
+  .funnel-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--warm);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .funnel-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .funnel-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .funnel-item {
+    flex: 1;
+    min-width: 130px;
+    padding: 20px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .funnel-item:first-child { border-radius: 8px 0 0 8px; }
+  .funnel-item:last-child { border-radius: 0 8px 8px 0; }
+
+  .funnel-item-icon {
+    font-size: 1.3rem;
+    margin-bottom: 2px;
+  }
+
+  .funnel-item-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .funnel-item-desc {
+    font-size: 0.7rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .funnel-arrow-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2px;
+    color: var(--warm);
+    font-size: 1.1rem;
+    opacity: 0.5;
+  }
+
+  /* KEY INSIGHT */
+  .insight {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .insight-box {
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(200,162,110,0.04), rgba(200,162,110,0.01));
+    border: 1px solid rgba(200,162,110,0.12);
+    border-radius: 8px;
+  }
+
+  .insight-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--warm);
+    margin-bottom: 12px;
+  }
+
+  .insight-box p {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .insight-box p:last-child { margin-bottom: 0; }
+
+  .insight-box strong { color: var(--white); }
+
+  /* NEXT STEPS */
+  .next {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+  }
+
+  .next-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--warm);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .next h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .next-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .next-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    padding: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .next-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(200,162,110,0.1);
+    color: var(--warm);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .next-text h4 {
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .next-text p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .header, .current, .ladder-section, .funnel-section, .insight, .next { padding-left: 20px; padding-right: 20px; }
+    .step { grid-template-columns: 56px 1fr; }
+    .step-right { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; padding: 12px 20px; border-left: none; border-top: 1px solid var(--border); }
+    .current-box { grid-template-columns: 1fr; gap: 16px; }
+    .current-arrow { transform: rotate(90deg); }
+    .connector { padding-left: 56px; }
+    .steps::before { left: 27px; }
+    .funnel-flow { flex-direction: column; }
+    .funnel-item { border-radius: 0 !important; }
+    .funnel-item:first-child { border-radius: 8px 8px 0 0 !important; }
+    .funnel-item:last-child { border-radius: 0 0 8px 8px !important; }
+    .funnel-arrow-cell { transform: rotate(90deg); padding: 6px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">Strategiekonzept</div>
+  <h1>Die <em>Produktleiter</em> für dein Coaching-Business</h1>
+  <p class="header-sub">Von kaltem Lead zu Premium-Kunde – systematisch, messbar, skalierbar.</p>
+</div>
+
+<!-- CURRENT PROBLEM -->
+<div class="current">
+  <div class="current-label">Aktuelles Problem</div>
+  <h2>Kalte Leads direkt in High-Ticket verkaufen funktioniert nicht mehr.</h2>
+  <div class="current-box">
+    <div class="current-side problem-side">
+      <h3>❌ Heute</h3>
+      <p>3 konkurrierende Funnels, kein Tracking, keine Produktleiter. Kalte Leads sollen direkt 500–6.000 € Produkte kaufen. Seit Oktober keine neuen Erstgespräche bei vollem Preis.</p>
+    </div>
+    <div class="current-arrow">→</div>
+    <div class="current-side solution-side">
+      <h3>✓ Ziel</h3>
+      <p>Ein Funnel, eine Produktleiter. Leads werden aufgewärmt über kostenlosen Content und günstige Produkte. Wer kauft und Ergebnisse sieht, bucht das Erstgespräch von alleine.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUKTLEITER -->
+<div class="ladder-section">
+  <div class="ladder-label">Die Produktleiter</div>
+  <h2>5 Stufen vom ersten Kontakt bis zum Premium-Coaching</h2>
+
+  <div class="steps">
+
+    <!-- STUFE 0 -->
+    <div class="step step-0">
+      <div class="step-left">
+        <div class="step-icon">0</div>
+        <div class="step-stage-label">Freebie</div>
+      </div>
+      <div class="step-mid">
+        <div class="step-name">Lead-Magnet</div>
+        <div class="step-desc">„Die 5 Fehler, die deine Ex endgültig vertreiben" – PDF-Checkliste oder Datingplan. Löst ein konkretes Mikro-Problem und sammelt die E-Mail-Adresse.</div>
+        <div class="step-tags">
+          <span class="step-tag">PDF</span>
+          <span class="step-tag">Sofort-Download</span>
+          <span class="step-tag">Lead-Capture</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-price">0 €</div>
+        <div class="step-price-note">Kostenlos</div>
+        <div class="step-margin">→ Leads sammeln</div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> E-Mail Nurturing <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
+
+    <!-- STUFE 1 -->
+    <div class="step step-1">
+      <div class="step-left">
+        <div class="step-icon">1</div>
+        <div class="step-stage-label">Einstieg</div>
+      </div>
+      <div class="step-mid">
+        <div class="step-name">Mini-Videokurs</div>
+        <div class="step-desc">„Ex zurück – Die ersten 30 Tage" – 3-5 Videos, Selbststudium. Einmal aufnehmen, passiv über die Nurturing-Sequenz verkaufen. Kein Support-Aufwand.</div>
+        <div class="step-tags">
+          <span class="step-tag">Video</span>
+          <span class="step-tag">Selbststudium</span>
+          <span class="step-tag">Automatisiert</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-price">29–49 €</div>
+        <div class="step-price-note">Einmalig</div>
+        <div class="step-margin">→ Erstes Commitment</div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> Upsell-Sequenz <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
+
+    <!-- STUFE 2 -->
+    <div class="step step-2">
+      <div class="step-left">
+        <div class="step-icon">2</div>
+        <div class="step-stage-label">Mittel</div>
+      </div>
+      <div class="step-mid">
+        <div class="step-name">Tiefenkurs oder Gruppenprogramm</div>
+        <div class="step-desc">„Beziehungsnavigator – 8 Wochen" – Videokurs mit Community oder betreutes Gruppenprogramm. Team übernimmt die Betreuung. Skaliert ohne Emanuel.</div>
+        <div class="step-tags">
+          <span class="step-tag">Video + Gruppe</span>
+          <span class="step-tag">8 Wochen</span>
+          <span class="step-tag">Team-betreut</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-price">249–499 €</div>
+        <div class="step-price-note">Einmalig</div>
+        <div class="step-margin">→ Team verdient</div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> Erstgespräch-Einladung <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
+
+    <!-- STUFE 3 -->
+    <div class="step step-3">
+      <div class="step-left">
+        <div class="step-icon">3</div>
+        <div class="step-stage-label">Premium</div>
+      </div>
+      <div class="step-mid">
+        <div class="step-name">Coaching-Paket</div>
+        <div class="step-desc">10–12 Wochen Intensiv-Coaching. Bestehendes Angebot, bewährtes Format. Aber: Kunden kommen jetzt vorqualifiziert und kaufbereit über die Leiter.</div>
+        <div class="step-tags">
+          <span class="step-tag">1:1 + Team</span>
+          <span class="step-tag">10–12 Wochen</span>
+          <span class="step-tag">Set-up / Closer</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-price">3.000–6.000 €</div>
+        <div class="step-price-note">Paketpreis</div>
+        <div class="step-margin">→ Kernumsatz</div>
+      </div>
+    </div>
+
+    <div class="connector"><div class="connector-content"><span class="connector-line"></span><span class="connector-arrow">↓</span> Persönliche Einladung <span class="connector-arrow">↓</span><span class="connector-line"></span></div></div>
+
+    <!-- STUFE 4 -->
+    <div class="step step-4">
+      <div class="step-left">
+        <div class="step-icon">4</div>
+        <div class="step-stage-label">Exklusiv</div>
+      </div>
+      <div class="step-mid">
+        <div class="step-name">1:1 mit Emanuel</div>
+        <div class="step-desc">Limitierte Plätze. Persönliche Betreuung nur durch Emanuel. Nur für Kunden, die die Leiter durchlaufen haben oder direkt über das Webinar kommen.</div>
+        <div class="step-tags">
+          <span class="step-tag">1:1 Exklusiv</span>
+          <span class="step-tag">Limitiert</span>
+          <span class="step-tag">Höchstes Level</span>
+        </div>
+      </div>
+      <div class="step-right">
+        <div class="step-price">auf Anfrage</div>
+        <div class="step-price-note">Premium-Pricing</div>
+        <div class="step-margin">→ Höchste Marge</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WEBINAR FUNNEL -->
+<div class="funnel-section">
+  <div class="funnel-label">Der Webinar-Funnel als Motor</div>
+  <h2>Ein Weg. Keine Ablenkung. Messbar.</h2>
+
+  <div class="funnel-flow">
+    <div class="funnel-item">
+      <div class="funnel-item-icon">📣</div>
+      <div class="funnel-item-name">Ad / Content</div>
+      <div class="funnel-item-desc">Instagram, YouTube, Felix' Ads</div>
+    </div>
+    <div class="funnel-arrow-cell">→</div>
+    <div class="funnel-item">
+      <div class="funnel-item-icon">📥</div>
+      <div class="funnel-item-name">Freebie</div>
+      <div class="funnel-item-desc">Lead-Magnet Download</div>
+    </div>
+    <div class="funnel-arrow-cell">→</div>
+    <div class="funnel-item">
+      <div class="funnel-item-icon">✉️</div>
+      <div class="funnel-item-name">Nurturing</div>
+      <div class="funnel-item-desc">E-Mail-Sequenz</div>
+    </div>
+    <div class="funnel-arrow-cell">→</div>
+    <div class="funnel-item">
+      <div class="funnel-item-icon">🎥</div>
+      <div class="funnel-item-name">Webinar</div>
+      <div class="funnel-item-desc">Live oder Aufzeichnung</div>
+    </div>
+    <div class="funnel-arrow-cell">→</div>
+    <div class="funnel-item">
+      <div class="funnel-item-icon">📞</div>
+      <div class="funnel-item-name">Erstgespräch</div>
+      <div class="funnel-item-desc">Vorqualifiziert</div>
+    </div>
+    <div class="funnel-arrow-cell">→</div>
+    <div class="funnel-item">
+      <div class="funnel-item-icon">💰</div>
+      <div class="funnel-item-name">Paket-Verkauf</div>
+      <div class="funnel-item-desc">3.000–6.000 €</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY INSIGHT -->
+<div class="insight">
+  <div class="insight-box">
+    <h3>Warum die Leiter das Erstgespräch-Problem löst</h3>
+    <p><strong>Aktuell:</strong> Kalte Leads sollen direkt für 500–6.000 € kaufen. Das hat bis Oktober 2025 funktioniert – jetzt nicht mehr. Preissenkung bringt kurzfristig Buchungen zurück, frisst aber die Marge.</p>
+    <p><strong>Mit Produktleiter:</strong> Leads steigen kostenlos ein, erleben Emanuels Qualität für 0–49 €, bauen Vertrauen auf und buchen das Erstgespräch von alleine. Wer einmal 49 € bezahlt und Ergebnisse gesehen hat, braucht keinen Set-up/Closer mehr – der verkauft sich selbst ins Coaching.</p>
+    <p><strong>Zusatzeffekt:</strong> Stufe 1–2 generieren passiven Umsatz, den das Team liefert. Emanuel wird aus dem Hamsterrad entlastet. Ziel: 3-Tage-Woche wird möglich.</p>
+  </div>
+</div>
+
+<!-- NÄCHSTE SCHRITTE -->
+<div class="next">
+  <div class="next-label">Nächste Schritte</div>
+  <h2>Fokus für die nächsten 4 Wochen</h2>
+  <div class="next-grid">
+    <div class="next-item">
+      <div class="next-num">1</div>
+      <div class="next-text">
+        <h4>Freebie erstellen</h4>
+        <p>PDF-Guide zum Kernthema. Maximal 2 Tage Aufwand. Landingpage mit Claude Code bauen.</p>
+      </div>
+    </div>
+    <div class="next-item">
+      <div class="next-num">2</div>
+      <div class="next-text">
+        <h4>Mini-Videokurs aufnehmen</h4>
+        <p>3-5 Videos, je 10-15 Minuten. Emanuels Stärke ist die Kamera. In einer Woche machbar.</p>
+      </div>
+    </div>
+    <div class="next-item">
+      <div class="next-num">3</div>
+      <div class="next-text">
+        <h4>Webinar-Landingpage bauen</h4>
+        <p>Eigene Landingpage mit Claude Code. Anmeldung → Webinar → Erstgespräch. Ein Funnel.</p>
+      </div>
+    </div>
+    <div class="next-item">
+      <div class="next-num">4</div>
+      <div class="next-text">
+        <h4>Alte Funnels konsolidieren</h4>
+        <p>emanuel-albert.de → Redirect. Felix' Ads nur noch auf Webinar-Anmeldungen schalten.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
