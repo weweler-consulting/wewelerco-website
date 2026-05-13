@@ -503,3 +503,150 @@ section {
 @media (max-width: 700px) {
   .facts-table .row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
 }
+
+/* =============================================================
+   Gallery (horizontal scroll)
+   ============================================================= */
+.gallery {
+  position: relative;
+  margin-top: clamp(20px, 3vw, 32px);
+}
+.gallery-head {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+.scroll-hint {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.gallery-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 0 var(--gutter) 24px;
+  scroll-snap-type: x mandatory;
+}
+.gallery-scroll::-webkit-scrollbar { height: 6px; }
+.gallery-scroll::-webkit-scrollbar-track { background: transparent; }
+.gallery-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+.gallery-rail {
+  display: flex;
+  gap: clamp(12px, 1.5vw, 20px);
+  width: max-content;
+}
+
+.gallery-item {
+  margin: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.gallery-item .frame {
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--bg-deep);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.gallery-item:hover img { transform: scale(1.02); }
+
+.gi-wide .frame   { width: clamp(360px, 50vw, 640px); aspect-ratio: 4/3; }
+.gi-tall .frame   { width: clamp(280px, 32vw, 400px); aspect-ratio: 3/4; }
+.gi-square .frame { width: clamp(320px, 38vw, 480px); aspect-ratio: 1/1; }
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.caption .num { color: var(--accent); }
+
+.gallery-foot {
+  margin-top: 16px;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+@media (max-width: 480px) {
+  .gi-wide .frame   { width: 280px; }
+  .gi-tall .frame   { width: 220px; }
+  .gi-square .frame { width: 260px; }
+}
+
+/* =============================================================
+   Season & inquiry
+   ============================================================= */
+.season-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: start;
+}
+.season-col {
+  padding: clamp(24px, 3vw, 32px);
+  background: var(--bg-deep);
+  border-radius: 6px;
+  border: 1px solid var(--rule-soft);
+}
+.season-cta {
+  padding: clamp(24px, 3vw, 32px);
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.season-cta .season-h,
+.season-cta .season-desc { color: var(--bg); }
+.season-h {
+  font-family: var(--serif);
+  font-size: clamp(20px, 1.8vw, 24px);
+  margin-bottom: 12px;
+}
+.season-period {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: .04em;
+  color: var(--accent-deep);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.season-desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.season-cta .btn-wa {
+  align-self: flex-start;
+  margin-top: 8px;
+  background: white;
+  color: var(--accent-deep);
+}
+.season-cta .btn-wa:hover { background: var(--bg); color: var(--ink); }
+
+@media (max-width: 900px) {
+  .season-grid { grid-template-columns: 1fr; }
+}
