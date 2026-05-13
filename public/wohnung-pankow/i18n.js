@@ -11,9 +11,9 @@ window.I18N = {
     "og.description": "4 Zimmer · 115 m² · 2. Stock Süd · ab 01.09.2026. Bewerbung bis 11.05.2026.",
 
     "topbar.mark.suffix": "· Pankow",
-    "topbar.deadline": "Bewerbung bis 11.05.2026",
+    "topbar.deadline": "Bewerbung nicht mehr möglich",
     "topbar.available": "Frei ab 01.09.2026",
-    "topbar.cta": "Bewerben →",
+    "topbar.cta": "Bewerbung nicht mehr möglich",
     "topbar.lang.de": "DE",
     "topbar.lang.en": "EN",
 
@@ -29,7 +29,7 @@ window.I18N = {
     "hero.fact.floor.v": "2. OG · Süd",
     "hero.fact.avail.k": "Frei ab",
     "hero.fact.avail.v": "01.09.2026",
-    "hero.cta": "Bewerbung bis 11.05.2026 <span class=\"arrow\">→</span>",
+    "hero.cta": "Bewerbung nicht mehr möglich <span class=\"arrow\">→</span>",
 
     "hook.p1": "Wer in Berlin eine Familien­wohnung sucht, kennt das Spiel: Wohnung gefunden, dann sechs Wochen Möbel-Tetris. Hochbett planen, Schrank ausmessen, Verdunklungs­rollos bestellen, Kühlschrank liefern lassen. Hier nicht.",
     "hook.p2": "Diese Wohnung kommt mit dem, was eine Familie wirklich Zeit kostet, wenn sie es selbst beschaffen muss: maßgefertigtes Hochbett, Einbauschrank im Flur, Verdunklungs­rollos in allen Schlafräumen, Waschtrockner und Kühlschrank. Sofa, Esstisch und Lampen müsst ihr mitbringen oder von uns übernehmen — schlüsselfertig ist es nicht, aber alles mit Wochen Vorlauf ist erledigt.",
@@ -194,14 +194,12 @@ window.I18N = {
     "wir.sig": "— Justus &amp; Familie",
 
     "form.eyebrow": "Bewerbung",
-    "form.h2": "Wenn ihr die Wohnung übernehmen wollt, <em style=\"color: var(--accent); font-style: italic; font-weight: 400;\">füllt das Formular aus.</em>",
-    "form.lead": "Wir melden uns innerhalb von 48 Stunden bei den Bewerbungen, die für uns in Frage kommen. Bewerbungs­schluss ist der 11. Mai 2026.",
-    "form.placeholder.title": "Tally Embed Placeholder",
-    "form.placeholder.body": "Hier wird das Tally-Formular eingebettet. Im Quellcode den Marker <code>&lt;!-- TALLY_EMBED --&gt;</code> durch das Embed ersetzen.",
+    "form.h2": "Die Bewerbungs­phase ist <em style=\"color: var(--accent); font-style: italic; font-weight: 400;\">abgeschlossen.</em>",
+    "form.lead": "Wir haben die Bewerbungen erhalten und melden uns bei den Familien, die für uns in Frage kommen. Vielen Dank für euer Interesse.",
+    "form.closed.mark": "Bewerbungsphase abgeschlossen",
+    "form.closed.body": "Frist war der 11. Mai 2026. Neue Bewerbungen können wir nicht mehr berücksichtigen.",
     "form.deadline.k": "Frist",
     "form.deadline.v": "11. Mai 2026",
-    "form.reply.k": "Antwort",
-    "form.reply.v": "innerhalb 48 h",
     "form.movein.k": "Einzug",
     "form.movein.v": "01. September 2026",
 
@@ -221,9 +219,9 @@ window.I18N = {
     "og.description": "4 rooms · 115 m² · 2nd floor south · from 1 Sept 2026. Apply by 11 May 2026.",
 
     "topbar.mark.suffix": "· Pankow",
-    "topbar.deadline": "Apply by 11 May 2026",
+    "topbar.deadline": "Applications closed",
     "topbar.available": "Available 1 Sept 2026",
-    "topbar.cta": "Apply →",
+    "topbar.cta": "Applications closed",
     "topbar.lang.de": "DE",
     "topbar.lang.en": "EN",
 
@@ -239,7 +237,7 @@ window.I18N = {
     "hero.fact.floor.v": "2nd · South",
     "hero.fact.avail.k": "Available",
     "hero.fact.avail.v": "1 Sept 2026",
-    "hero.cta": "Apply by 11 May 2026 <span class=\"arrow\">→</span>",
+    "hero.cta": "Applications closed <span class=\"arrow\">→</span>",
 
     "hook.p1": "Anyone who's hunted for a family apartment in Berlin knows the drill: find the place, then six weeks of furniture-Tetris. Plan the loft bed, measure the wardrobe, order blackout blinds, schedule a fridge delivery. Not here.",
     "hook.p2": "This apartment comes with the things that actually eat a family's time when you have to source them yourself: a custom loft bed, a built-in hallway wardrobe, blackout blinds in every bedroom, a washer-dryer and a fridge. The sofa, dining table and lamps you bring yourself or take over from us — it's not turn-key, but everything that needs weeks of lead time is already done.",
@@ -404,14 +402,12 @@ window.I18N = {
     "wir.sig": "— Justus &amp; family",
 
     "form.eyebrow": "Application",
-    "form.h2": "If you want to take over the apartment, <em style=\"color: var(--accent); font-style: italic; font-weight: 400;\">fill out the form.</em>",
-    "form.lead": "We reply within 48 hours to the applications we want to take further. Application deadline is 11 May 2026.",
-    "form.placeholder.title": "Tally embed placeholder",
-    "form.placeholder.body": "The Tally form is embedded here. In the source, replace the marker <code>&lt;!-- TALLY_EMBED --&gt;</code> with the embed snippet.",
+    "form.h2": "Applications are <em style=\"color: var(--accent); font-style: italic; font-weight: 400;\">now closed.</em>",
+    "form.lead": "We have received the applications and will reach out to the families that fit. Thank you for your interest.",
+    "form.closed.mark": "Applications closed",
+    "form.closed.body": "The deadline was 11 May 2026. We can no longer consider new applications.",
     "form.deadline.k": "Deadline",
     "form.deadline.v": "11 May 2026",
-    "form.reply.k": "Reply",
-    "form.reply.v": "within 48 h",
     "form.movein.k": "Move-in",
     "form.movein.v": "1 September 2026",
 
