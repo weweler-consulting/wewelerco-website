@@ -150,7 +150,9 @@ window.I18N = {
     "ftr.legal": "Vermietung als <em>arrendamiento de temporada</em> nach LAU Art. 3. Mindestaufenthalt 30 Tage. Keine touristische Vermietung.",
     "ftr.imprint": "Impressum",
     "ftr.privacy": "Datenschutz",
-    "ftr.copy": "© 2026 · Steffen & Ulrike Benndorf · Privat angeboten"
+    "ftr.copy": "© 2026 · Steffen & Ulrike Benndorf · Privat angeboten",
+
+    "wa.float.label": "Anfrage per WhatsApp"
   },
   en: {
     "html.title": "Vivienda Radazul — Seasonal rental 1–3 months · Tenerife",
@@ -299,7 +301,9 @@ window.I18N = {
     "ftr.legal": "Rental as <em>arrendamiento de temporada</em> under LAU Art. 3. Minimum stay 30 days. Not a tourist rental.",
     "ftr.imprint": "Imprint",
     "ftr.privacy": "Privacy",
-    "ftr.copy": "© 2026 · Steffen & Ulrike Benndorf · Offered privately"
+    "ftr.copy": "© 2026 · Steffen & Ulrike Benndorf · Offered privately",
+
+    "wa.float.label": "Inquire via WhatsApp"
   }
 };
 
