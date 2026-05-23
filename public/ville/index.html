@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ville Lüchow — Werbesprecher · 14 Jahre · Hamburg</title>
+<meta name="description" content="Voice-Over / Werbesprecher. 14 Jahre. Eigenes Homestudio. Source-Connect-ready. Buchungsanfragen an das elterliche Management." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="app"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+/* ===========================================================
+   Single-active audio manager
+   =========================================================== */
+const AudioBus = (() => {
+  const listeners = new Set();
+  let active = null;
+  return {
+    setActive(id) {
+      if (active && active !== id) {
+        listeners.forEach((fn) => fn(active === id ? id : null, id));
+      }
+      active = id;
+      listeners.forEach((fn) => fn(active, id));
+    },
+    clear(id) { if (active === id) active = null; },
+    subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); }
+  };
+})();
+
+function genWaveform(seed, bars) {
+  const arr = new Array(bars);
+  let s = seed;
+  for (let i = 0; i < bars; i++) {
+    s = (s * 1103515245 + 12345) & 0x7fffffff;
+    const r = (s % 1000) / 1000;
+    const t = i / (bars - 1);
+    const env =
+      0.25 +
+      0.7 * Math.sin(Math.PI * t) +
+      0.2 * Math.sin(Math.PI * t * 6) +
+      0.1 * Math.sin(Math.PI * t * 13);
+    const v = Math.max(0.08, Math.min(1, (0.35 + r * 0.7) * (0.4 + Math.abs(env) * 0.6)));
+    arr[i] = v;
+  }
+  return arr;
+}
+
+function fmt(t) {
+  if (!isFinite(t) || t < 0) t = 0;
+  const m = Math.floor(t / 60);
+  const s = Math.floor(t % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
+/* ===========================================================
+   AudioPlayer
+   =========================================================== */
+function AudioPlayer({ id, src, seed = 1, bars = 96, fallbackDuration = 75 }) {
+  const audioRef = React.useRef(null);
+  const waveRef = React.useRef(null);
+  const [playing, setPlaying] = React.useState(false);
+  const [current, setCurrent] = React.useState(0);
+  const [duration, setDuration] = React.useState(fallbackDuration);
+  const [dragging, setDragging] = React.useState(false);
+
+  const waveform = React.useMemo(() => genWaveform(seed, bars), [seed, bars]);
+
+  React.useEffect(() => {
+    const unsub = AudioBus.subscribe((activeId) => {
+      if (activeId !== id && audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+      }
+    });
+    return unsub;
+  }, [id]);
+
+  React.useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    const onTime = () => !dragging && setCurrent(a.currentTime);
+    const onDur = () => {
+      if (isFinite(a.duration) && a.duration > 0) setDuration(a.duration);
+    };
+    const onEnd = () => {
+      setPlaying(false);
+      setCurrent(0);
+      AudioBus.clear(id);
+    };
+    const onPlay = () => { setPlaying(true); AudioBus.setActive(id); };
+    const onPause = () => setPlaying(false);
+    a.addEventListener("timeupdate", onTime);
+    a.addEventListener("loadedmetadata", onDur);
+    a.addEventListener("durationchange", onDur);
+    a.addEventListener("ended", onEnd);
+    a.addEventListener("play", onPlay);
+    a.addEventListener("pause", onPause);
+    return () => {
+      a.removeEventListener("timeupdate", onTime);
+      a.removeEventListener("loadedmetadata", onDur);
+      a.removeEventListener("durationchange", onDur);
+      a.removeEventListener("ended", onEnd);
+      a.removeEventListener("play", onPlay);
+      a.removeEventListener("pause", onPause);
+    };
+  }, [id, dragging]);
+
+  const toggle = () => {
+    const a = audioRef.current;
+    if (!a) return;
+    if (a.paused) {
+      a.play().catch(() => {});
+    } else {
+      a.pause();
+    }
+  };
+
+  const seekFromEvent = (e) => {
+    const el = waveRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    const pct = Math.max(0, Math.min(1, x / rect.width));
+    setCurrent(pct * duration);
+    if (audioRef.current) audioRef.current.currentTime = pct * duration;
+  };
+
+  const onWaveMouseDown = (e) => {
+    setDragging(true);
+    seekFromEvent(e);
+  };
+  React.useEffect(() => {
+    if (!dragging) return;
+    const move = (e) => seekFromEvent(e);
+    const up = () => setDragging(false);
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+    window.addEventListener("touchmove", move, { passive: false });
+    window.addEventListener("touchend", up);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", up);
+      window.removeEventListener("touchmove", move);
+      window.removeEventListener("touchend", up);
+    };
+  }, [dragging]);
+
+  const progress = duration > 0 ? current / duration : 0;
+
+  return (
+    <div className="player">
+      <audio ref={audioRef} src={src} preload="metadata"></audio>
+      <button
+        className={`player-play ${playing ? "playing" : ""}`}
+        onClick={toggle}
+        aria-label={playing ? "Pause" : "Abspielen"}
+      >
+        <span className={playing ? "icon-pause" : "icon-play"}></span>
+      </button>
+      <div className="player-body">
+        <div
+          className="player-waveform"
+          ref={waveRef}
+          onMouseDown={onWaveMouseDown}
+          onTouchStart={onWaveMouseDown}
+        >
+          <svg viewBox={`0 0 ${bars * 2} 100`} preserveAspectRatio="none">
+            {waveform.map((v, i) => {
+              const h = v * 96;
+              const y = (100 - h) / 2;
+              const isPlayed = i / bars < progress;
+              return (
+                <rect
+                  key={i}
+                  className={`wave-bar ${isPlayed ? "is-played" : ""}`}
+                  x={i * 2 + 0.4}
+                  y={y}
+                  width={1.2}
+                  height={h}
+                  rx={0.6}
+                />
+              );
+            })}
+          </svg>
+          <div
+            className="wave-progress"
+            style={{ left: `${progress * 100}%` }}
+          ></div>
+        </div>
+        <div className="player-time">
+          <span className="current">{fmt(current)}</span>
+          <span>{fmt(duration)}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ===========================================================
+   Placeholder audio URLs
+   =========================================================== */
+const PLACEHOLDER_AUDIO = [
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+];
+
+/* ===========================================================
+   NAV
+   =========================================================== */
+function Nav() {
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <nav className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+      <div className="nav-mark">
+        <span className="dot"></span>
+        <span>Ville Lüchow / Werbesprecher</span>
+      </div>
+      <div className="nav-links">
+        <a href="#showreel">Showreel</a>
+        <a href="#ueber">Über</a>
+        <a href="#stimmproben">Stimmproben</a>
+        <a href="#specs">Specs</a>
+      </div>
+      <a href="#kontakt" className="nav-cta">Stimme buchen <span aria-hidden="true">→</span></a>
+    </nav>
+  );
+}
+
+/* ===========================================================
+   HERO
+   =========================================================== */
+function Hero() {
+  const photoRef = React.useRef(null);
+  React.useEffect(() => {
+    const onScroll = () => {
+      if (!photoRef.current) return;
+      const y = window.scrollY;
+      photoRef.current.style.transform = `translateY(${y * 0.12}px) scale(${1 + y * 0.0002})`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <section className="hero">
+      <div className="hero-text">
+        <div className="hero-meta">
+          <span>Werbesprecher</span>
+          <span>14 Jahre</span>
+          <span>Deutsch · Akzentfrei</span>
+          <span>Hamburg · Remote</span>
+        </div>
+        <h1 className="hero-name">
+          <span className="l1"><span>VILLE</span></span>
+          <span className="l2"><span className="stroke">LÜCHOW</span></span>
+        </h1>
+        <p className="hero-tag">
+          Die <b>jugendliche Stimme</b>, die nicht klingt wie ein Kind, das einen Werbetext aufsagt. Frech, wenn ihr frech braucht. Glaubwürdig, wenn ihr Glaubwürdigkeit braucht. <b>Immer auf den Punkt.</b>
+        </p>
+        <div className="hero-ctas">
+          <a href="#showreel" className="btn btn-primary">
+            <span className="play-icon"></span>
+            Showreel anhören
+          </a>
+          <a href="#kontakt" className="btn btn-ghost">
+            Stimme buchen <span className="arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div className="hero-photo">
+        <img ref={photoRef} src="images/hero.jpg" alt="Ville Lüchow" />
+        <div className="photo-tag">Frame 01 — Hamburg, 2026</div>
+      </div>
+
+      <div className="scroll-cue">Scrollen</div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   SHOWREEL
+   =========================================================== */
+function Showreel() {
+  return (
+    <section id="showreel" className="section showreel">
+      <div className="section-head reveal">
+        <div>
+          <div className="section-eyebrow">02 / Showreel</div>
+          <h2 className="section-title">Hör <em>einmal</em> hin.</h2>
+        </div>
+        <p className="section-aside">
+          78&nbsp;Sekunden Best-of. Werbung, Erzähler, Charakter. Produziert im eigenen Homestudio.
+        </p>
+      </div>
+
+      <div className="showreel-card reveal">
+        <div className="showreel-meta">
+          <span className="tag">● Live · Showreel 2026</span>
+          <span>BWF · 48 kHz / 24 bit</span>
+        </div>
+        <h3 className="showreel-title">Best of Ville · 01:18</h3>
+        <AudioPlayer id="reel" src={PLACEHOLDER_AUDIO[6]} seed={9234} bars={140} fallbackDuration={78} />
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   ÜBER VILLE
+   =========================================================== */
+function About() {
+  return (
+    <section id="ueber" className="section about">
+      <div className="section-head reveal">
+        <div>
+          <div className="section-eyebrow">03 / Die Person</div>
+          <h2 className="section-title">Wer da <em>spricht.</em></h2>
+        </div>
+      </div>
+
+      <div className="about-grid">
+        <div className="about-photo reveal">
+          <img src="images/about.jpg" alt="Portrait Ville Lüchow vor Graffiti-Wand" />
+          <div className="frame-num">Frame 02 / Hamburg</div>
+        </div>
+        <div className="about-copy reveal">
+          <h2>
+            14 Jahre alt. Eine&nbsp;Stimme, die <em>schon weiß,</em> was sie tut.
+          </h2>
+          <p>
+            <b>Platzhalter-Bio:</b> Ville hat angefangen, als er sechs war — mit dem Mikrofon vom Vater und einer Hörspiel-CD, die er auswendig konnte. Seitdem ist die Stimme erwachsen geworden, der Spaß daran ist es nicht.
+          </p>
+          <p>
+            Heute spricht er <b>Werbung, Hörspiel und Erzähler</b>. Im eigenen Homestudio in Hamburg, mit Profi-Equipment und einem Vater im Hintergrund, der weiß, was ein guter Take ist. Direction nimmt er ernst. Briefings auch.
+          </p>
+          <p>
+            Was ihn besonders macht? Er klingt nicht wie ein Kind, das vorliest. Er klingt wie ein Mensch, der etwas zu sagen hat — nur eben mit der Energie, die nach 14 schmeckt.
+          </p>
+          <blockquote className="about-quote">
+            „Stimme ist Schauspiel. Und Schauspiel ist Zuhören."
+            <span className="who">— Ville Lüchow / Platzhalter-Zitat</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   STIMMPROBEN
+   =========================================================== */
+const SAMPLES = [
+  {
+    cat: "Werbung · Frech",
+    title: "Energy-Drink Sommer-Kampagne",
+    ctx: "30-Sek-Spot. Schnell, jung, ein bisschen frech. Voice für Marke X (Platzhalter).",
+    seed: 421, audio: 4
+  },
+  {
+    cat: "Werbung · Seriös",
+    title: "Sparkasse Jugendkonto",
+    ctx: "Image-Spot, ruhig, glaubwürdig. Beweist: kindliche Stimme ≠ kindliche Botschaft.",
+    seed: 887, audio: 3
+  },
+  {
+    cat: "Erzähler",
+    title: "Doku „Mein erster Skate-Spot“",
+    ctx: "Off-Stimme für 4-Min Kurzfilm. Warm, neugierig, persönlich.",
+    seed: 1503, audio: 4
+  },
+  {
+    cat: "Jugendlich-Authentisch",
+    title: "Streaming-Plattform Trailer",
+    ctx: "Trailer-Voice für Coming-of-Age-Serie. Locker, echt, kein Hochdeutsch-Drill.",
+    seed: 2199, audio: 3
+  },
+  {
+    cat: "Hörspiel · Charakter",
+    title: "Detektivserie Folge 12",
+    ctx: "Hauptrolle, 11-Jähriger Spürhund. Range: neugierig bis trotzig.",
+    seed: 3055, audio: 5
+  },
+  {
+    cat: "Werbung · International",
+    title: "EN-Demo: Skateboard-Brand",
+    ctx: "Englisch-Demo, leichter EU-Akzent — auf Wunsch auch akzentfrei.",
+    seed: 4111, audio: 3
+  }
+];
+
+function Stimmproben() {
+  return (
+    <section id="stimmproben" className="section proben">
+      <div className="section-head reveal">
+        <div>
+          <div className="section-eyebrow">04 / Stimmproben</div>
+          <h2 className="section-title">Sechs <em>Räume,</em> eine Stimme.</h2>
+        </div>
+        <p className="section-aside">
+          Sortiert nach Kategorie. Klick aufs Play — ein Player läuft gleichzeitig, der Rest pausiert automatisch.
+        </p>
+      </div>
+
+      <div className="proben-grid reveal-stagger">
+        {SAMPLES.map((s, i) => (
+          <article className="player-card" key={s.title}>
+            <div className="player-card-head">
+              <span className="category">{s.cat}</span>
+              <span className="num">P / {String(i + 1).padStart(2, "0")}</span>
+            </div>
+            <h3>{s.title}</h3>
+            <p>{s.ctx}</p>
+            <AudioPlayer
+              id={`s-${i}`}
+              src={PLACEHOLDER_AUDIO[s.audio]}
+              seed={s.seed}
+              bars={72}
+              fallbackDuration={32}
+            />
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   REFERENZEN
+   =========================================================== */
+const REFS_MARQUEE = [
+  "Brandhaus Hamburg", "Kollektiv Nord", "Studio Klangwerk",
+  "Mertens & Holm", "Tonhalle Berlin", "Agentur Werkraum",
+  "Lautstark Audio", "Falkenberg Casting", "Nordlicht Film",
+  "Schallraum Studios", "Drehbuch7", "Kontur Werbung",
+];
+const REFS_LIST = [
+  { name: "Brandhaus Hamburg", kind: "Werbeagentur" },
+  { name: "Kollektiv Nord", kind: "Kreativagentur" },
+  { name: "Studio Klangwerk", kind: "Tonstudio" },
+  { name: "Mertens & Holm", kind: "Casting" },
+  { name: "Tonhalle Berlin", kind: "Tonstudio" },
+  { name: "Agentur Werkraum", kind: "Werbeagentur" },
+  { name: "Lautstark Audio", kind: "Produktion" },
+  { name: "Falkenberg Casting", kind: "Casting" },
+  { name: "Nordlicht Film", kind: "Produktion" },
+  { name: "Schallraum Studios", kind: "Tonstudio" },
+  { name: "Drehbuch7", kind: "Produktion" },
+  { name: "Kontur Werbung", kind: "Werbeagentur" },
+];
+
+function Refs() {
+  const track = [...REFS_MARQUEE, ...REFS_MARQUEE];
+  return (
+    <section className="section refs">
+      <div className="section-head reveal">
+        <div>
+          <div className="section-eyebrow">05 / Referenzen</div>
+          <h2 className="section-title">Gehört von <em>Profis.</em></h2>
+        </div>
+        <p className="refs-note">
+          <b>Platzhalter</b> — fiktive Namen, austauschbar gegen echte Kunden/Logos.
+        </p>
+      </div>
+
+      <div className="refs-marquee reveal">
+        <div className="refs-track">
+          {track.map((name, i) => (
+            <span className="refs-logo" key={i}>
+              {name}<span className="sep"></span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="refs-list reveal-stagger">
+        {REFS_LIST.map((r) => (
+          <div className="refs-list-item" key={r.name}>
+            <div className="name">{r.name}</div>
+            <div className="kind">{r.kind}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   SPECS
+   =========================================================== */
+const SPECS = [
+  { label: "Stimmalter", value: "11 – 16 Jahre", note: "Range: kindlich bis jung-erwachsen, je nach Direction." },
+  { label: "Sprachen", value: "Deutsch (Muttersprache), Englisch (B2)", note: "Akzentfrei oder mit leichtem EU-Akzent auf Wunsch." },
+  { label: "Dialekte", value: "Hochdeutsch · Hamburger Färbung auf Anfrage", note: "" },
+  { label: "Homestudio", value: "Akustisch behandelter Sprecher-Raum, ca. 6 m²", note: "Eigenständig — keine Studiomiete nötig." },
+  { label: "Mikrofon", value: "Neumann TLM 103 → SSL 2+ Interface", note: "Pop-Filter, Reflexionsfilter, Bodendämmung." },
+  { label: "DAW", value: "Reaper · Pro Tools (auf Wunsch)", note: "Plugins: iZotope RX, FabFilter Pro-Q." },
+  { label: "Lieferformat", value: "WAV 48 kHz / 24 bit · BWF, MP3 320 kbps", note: "Bearbeitet, geschnitten, broadcast-ready." },
+  { label: "Lieferzeit", value: "24 h Standard · 4 h Express", note: "Express je nach Tagesplan, bitte anfragen." },
+  { label: "Remote Recording", value: "Source-Connect Standard · Zoom · ipDTL", note: "Live-Regie aus dem Studio des Kunden problemlos möglich." },
+  { label: "Verfügbarkeit", value: "Mo – Fr nachmittags, Wochenenden frei verhandelbar", note: "Schule geht vor — wir richten uns kompatibel ein." }
+];
+
+function Specs() {
+  return (
+    <section id="specs" className="section specs">
+      <div className="section-head reveal">
+        <div>
+          <div className="section-eyebrow">06 / Specs für Buyer</div>
+          <h2 className="section-title">Studio. <em>Technik.</em> Liefer&shy;zeit.</h2>
+        </div>
+        <p className="section-aside">
+          Alles, was ihr für die Buchung wissen müsst. Werte als Platzhalter — final beim Erstgespräch.
+        </p>
+      </div>
+
+      <div className="specs-layout">
+        <dl className="specs-table reveal-stagger">
+          {SPECS.map((s) => (
+            <div className="specs-row" key={s.label}>
+              <dt>{s.label}</dt>
+              <dd>
+                <b>{s.value}</b>
+                {s.note && <small>{s.note}</small>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="specs-photo reveal">
+          <img src="images/alley-sit.jpg" alt="Ville in der Stadt" />
+          <span className="badge">● Remote-ready</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   KONTAKT
+   =========================================================== */
+function Contact() {
+  const [status, setStatus] = React.useState(null);
+  const [form, setForm] = React.useState({
+    name: "", company: "", email: "", project: "Werbung", deadline: "", brief: ""
+  });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.brief) {
+      setStatus({ kind: "err", msg: "Bitte Name, E-Mail und kurzes Briefing ausfüllen." });
+      return;
+    }
+    setStatus({ kind: "ok", msg: "Danke — Anfrage ist raus. Wir melden uns innerhalb von 24 h." });
+    setForm({ name: "", company: "", email: "", project: "Werbung", deadline: "", brief: "" });
+  };
+  const upd = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  return (
+    <section id="kontakt" className="section contact">
+      <h2 className="contact-headline reveal">
+        Stimme<br/><em>buchen.</em>
+      </h2>
+
+      <div className="contact-grid">
+        <div className="contact-info reveal">
+          <div>
+            <span className="label">Management / Buchung</span>
+            <h3>Eltern als Management</h3>
+            <p>Alle Buchungen, Verträge und Direction-Termine laufen über die Eltern. Keine Buchung am Kind vorbei.</p>
+            <a className="mail" href="mailto:booking@ville-luechow.de">booking@ville-luechow.de</a>
+          </div>
+          <div>
+            <span className="label">Antwortzeit</span>
+            <h3>Innerhalb 24&nbsp;h</h3>
+            <p>Werktags meist deutlich schneller. Für Express bitte „URGENT" in den Betreff.</p>
+          </div>
+          <div>
+            <span className="label">Telefon (Management)</span>
+            <h3>+49 (0)40 — Platzhalter</h3>
+            <p>Direkter Draht für laufende Produktionen.<br/><small style={{color:"var(--ink-3)",fontSize:"12px"}}>Aus Jugendschutz-Gründen erreicht ihr ausschließlich das elterliche Management — keine direkte Nummer des Kindes.</small></p>
+          </div>
+        </div>
+
+        <form className="contact-form reveal" onSubmit={onSubmit}>
+          <div className="form-group">
+            <label className="form-label" htmlFor="cf-name">Name</label>
+            <input className="form-input" id="cf-name" type="text" value={form.name} onChange={upd("name")} placeholder="Vor- und Nachname" />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="cf-company">Agentur / Studio</label>
+            <input className="form-input" id="cf-company" type="text" value={form.company} onChange={upd("company")} placeholder="Optional" />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="cf-email">E-Mail</label>
+            <input className="form-input" id="cf-email" type="email" value={form.email} onChange={upd("email")} placeholder="ihr@studio.de" />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="cf-project">Projekt-Typ</label>
+            <select className="form-select" id="cf-project" value={form.project} onChange={upd("project")}>
+              <option>Werbung</option>
+              <option>Erzähler / Doku</option>
+              <option>Hörspiel</option>
+              <option>Synchron</option>
+              <option>Trailer</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="cf-deadline">Deadline (optional)</label>
+            <input className="form-input" id="cf-deadline" type="text" value={form.deadline} onChange={upd("deadline")} placeholder="z.B. nächste Woche / 12.06." />
+          </div>
+          <div className="form-group">
+            <label className="form-label" htmlFor="cf-brief">Briefing in zwei Sätzen</label>
+            <textarea className="form-textarea" id="cf-brief" value={form.brief} onChange={upd("brief")} placeholder="Worum geht's? Tonalität, Länge, Lieferdatum…"></textarea>
+          </div>
+          <button type="submit" className="btn btn-primary form-submit">
+            Anfrage senden <span className="arrow">→</span>
+          </button>
+          {status && (
+            <div className="form-status" style={status.kind === "err" ? {color:"#ff8d6a"} : {}}>
+              {status.msg}
+            </div>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+}
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+function Foot() {
+  return (
+    <footer className="foot">
+      <div className="foot-top">
+        <div className="foot-mark">VILLE LÜCHOW</div>
+        <div style={{color:"var(--ink-3)",textTransform:"none",letterSpacing:"0.02em",fontSize:"12px"}}>
+          Werbesprecher · Erzähler · Hörspiel<br/>
+          Hamburg / Remote weltweit
+        </div>
+      </div>
+      <div className="foot-cols">
+        <div className="foot-col">
+          <h4>Rechtlich</h4>
+          <a href="#impressum">Impressum (Platzhalter)</a>
+          <a href="#datenschutz">Datenschutz (Platzhalter)</a>
+        </div>
+        <div className="foot-col">
+          <h4>Vertretung</h4>
+          <p>Verantwortlich nach §&nbsp;55 RStV:<br/>Erziehungsberechtigte / Eltern<br/>(Platzhalter Name &amp; Adresse)</p>
+        </div>
+        <div className="foot-col">
+          <h4>Kontakt</h4>
+          <a href="mailto:booking@ville-luechow.de">booking@ville-luechow.de</a>
+          <p>+49 (0)40 — Platzhalter</p>
+        </div>
+        <div className="foot-col">
+          <h4>Social</h4>
+          <a href="#">Vimeo (Platzhalter)</a>
+          <a href="#">LinkedIn (Eltern)</a>
+        </div>
+      </div>
+      <div className="foot-bottom">
+        <span>© 2026 — Alle Rechte vorbehalten</span>
+        <span className="placeholder-note">Alle Inhalte sind Platzhalter — bereit zum Austausch.</span>
+      </div>
+    </footer>
+  );
+}
+
+/* ===========================================================
+   SCROLL REVEAL + APP
+   =========================================================== */
+function ScrollRevealRoot({ children }) {
+  React.useEffect(() => {
+    const els = document.querySelectorAll(".reveal, .reveal-stagger");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return children;
+}
+
+function App() {
+  return (
+    <ScrollRevealRoot>
+      <Nav />
+      <main>
+        <Hero />
+        <Showreel />
+        <About />
+        <Stimmproben />
+        <Refs />
+        <Specs />
+        <Contact />
+      </main>
+      <Foot />
+    </ScrollRevealRoot>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("app"));
+root.render(<App />);
+</script>
+</body>
+</html>
