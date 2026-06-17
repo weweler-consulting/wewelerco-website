@@ -150,7 +150,7 @@ window.I18N = {
     "ftr.legal": "Vermietung als <em>arrendamiento de temporada</em> nach LAU Art. 3. Mindestaufenthalt 30 Tage. Keine touristische Vermietung.",
     "ftr.imprint": "Impressum",
     "ftr.privacy": "Datenschutz",
-    "ftr.copy": "© 2026 · Vermieter: Weweler.co · Privat angeboten",
+    "ftr.copy": "© 2026 · Vermieter: Weweler Consulting SL",
 
     "wa.float.label": "Anfrage per WhatsApp"
   },
@@ -301,7 +301,7 @@ window.I18N = {
     "ftr.legal": "Rental as <em>arrendamiento de temporada</em> under LAU Art. 3. Minimum stay 30 days. Not a tourist rental.",
     "ftr.imprint": "Imprint",
     "ftr.privacy": "Privacy",
-    "ftr.copy": "© 2026 · Landlord: Weweler.co · Offered privately",
+    "ftr.copy": "© 2026 · Landlord: Weweler Consulting SL",
 
     "wa.float.label": "Inquire via WhatsApp"
   }
