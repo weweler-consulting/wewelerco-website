@@ -5,12 +5,12 @@
 window.I18N = {
   de: {
     "html.title": "Vivienda Radazul — Saisonmiete 1–3 Monate · Teneriffa",
-    "meta.description": "95 m² mit Meerblick in Radazul, Teneriffa. Saisonmiete 1–3 Monate für Überwinterer, Remote Worker und Sabbaticals. Direkt vom Eigentümer, ab 01.07.2026.",
+    "meta.description": "95 m² mit Meerblick in Radazul, Teneriffa. Saisonmiete 1–3 Monate für Überwinterer, Remote Worker und Sabbaticals. Direkt vom Eigentümer, ab 01.08.2026.",
     "og.title": "Vivienda Radazul — Saisonmiete 1–3 Monate",
-    "og.description": "95 m² Meerblick · 3 SZ · 25 m zum Atlantik · ab 01.07.2026",
+    "og.description": "95 m² Meerblick · 3 SZ · 25 m zum Atlantik · ab 01.08.2026",
 
     "topbar.mark.suffix": "· Saisonmiete",
-    "topbar.available": "Frei ab 01.07.2026",
+    "topbar.available": "Frei ab 01.08.2026",
     "topbar.duration": "1–3 Monate · Direkt vom Eigentümer",
     "topbar.cta": "Anfrage per WhatsApp",
     "topbar.lang.de": "DE",
@@ -27,7 +27,7 @@ window.I18N = {
     "hero.fact.floor.k": "Lage",
     "hero.fact.floor.v": "1. OG · Süd",
     "hero.fact.avail.k": "Frei ab",
-    "hero.fact.avail.v": "01.07.2026",
+    "hero.fact.avail.v": "01.08.2026",
     "hero.cta": "Anfrage per WhatsApp <span class=\"arrow\">→</span>",
 
     "hook.p1": "Wir sind die Eigentümer der Wohnung — keine Agentur, keine Plattform. Wir vermieten die Vivienda direkt an Menschen, die für eine bestimmte Zeit auf Teneriffa leben wollen.",
@@ -64,7 +64,7 @@ window.I18N = {
     "eck.contract.k": "Vertragsform",
     "eck.contract.v": "arrendamiento de temporada <span class=\"small\">Zweisprachiger Mietvertrag DE/ES</span>",
     "eck.avail.k": "Verfügbar ab",
-    "eck.avail.v": "01.07.2026",
+    "eck.avail.v": "01.08.2026",
     "eck.price.k": "Miete",
     "eck.price.v": "Auf Anfrage <span class=\"small\">Hochsaison Nov–März, Juli/August · Nebensaison Apr–Juni, Sept/Oktober</span>",
 
@@ -156,12 +156,12 @@ window.I18N = {
   },
   en: {
     "html.title": "Vivienda Radazul — Seasonal rental 1–3 months · Tenerife",
-    "meta.description": "95 m² apartment with sea view in Radazul, Tenerife. Seasonal rental 1–3 months for winter residents, remote workers and sabbaticals. Directly from the owners, available 1 July 2026.",
+    "meta.description": "95 m² apartment with sea view in Radazul, Tenerife. Seasonal rental 1–3 months for winter residents, remote workers and sabbaticals. Directly from the owners, available 1 August 2026.",
     "og.title": "Vivienda Radazul — Seasonal rental 1–3 months",
-    "og.description": "95 m² sea view · 3 bedrooms · 25 m to the Atlantic · available 1 July 2026",
+    "og.description": "95 m² sea view · 3 bedrooms · 25 m to the Atlantic · available 1 August 2026",
 
     "topbar.mark.suffix": "· Seasonal rental",
-    "topbar.available": "Available 1 July 2026",
+    "topbar.available": "Available 1 August 2026",
     "topbar.duration": "1–3 months · Direct from the owners",
     "topbar.cta": "Inquire via WhatsApp",
     "topbar.lang.de": "DE",
@@ -178,7 +178,7 @@ window.I18N = {
     "hero.fact.floor.k": "Floor",
     "hero.fact.floor.v": "1st · South",
     "hero.fact.avail.k": "Available",
-    "hero.fact.avail.v": "1 July 2026",
+    "hero.fact.avail.v": "1 August 2026",
     "hero.cta": "Inquire via WhatsApp <span class=\"arrow\">→</span>",
 
     "hook.p1": "We are the owners of the apartment — not an agency, not a platform. We rent the Vivienda directly to people who want to live in Tenerife for a defined period of time.",
@@ -215,7 +215,7 @@ window.I18N = {
     "eck.contract.k": "Contract type",
     "eck.contract.v": "arrendamiento de temporada <span class=\"small\">Bilingual rental contract DE/ES</span>",
     "eck.avail.k": "Available from",
-    "eck.avail.v": "1 July 2026",
+    "eck.avail.v": "1 August 2026",
     "eck.price.k": "Rent",
     "eck.price.v": "On request <span class=\"small\">High season Nov–March, Jul/Aug · Low season Apr–Jun, Sept/Oct</span>",
 
