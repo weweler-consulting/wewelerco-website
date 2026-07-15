@@ -1,0 +1,57 @@
+/* =====================================================
+   Lennard Schnetzer — Praktikums-Landingpage
+   Base reset, hover states, responsive + language switch.
+   Layout is authored as inline styles in index.html
+   (ported 1:1 from the approved design); this file only
+   carries what inline styles can't express (:hover, media
+   queries, ::selection, .active state on the toggle).
+   ===================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #ece3d4;
+  font-family: 'Work Sans', sans-serif;
+  color: #2a2419;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: #b0532e; text-decoration: none; }
+a:hover { color: #8f3f20; }
+
+::selection { background: #b0532e; color: #faf6ee; }
+
+/* --- Buttons / links with hover state (design used style-hover) --- */
+.btn-nav:hover            { background: #b0532e !important; color: #faf6ee !important; }
+.btn-primary:hover        { background: #8f3f20 !important; }
+.btn-secondary:hover      { border-color: #2a2419 !important; }
+.btn-contact-primary:hover{ background: #1c1710 !important; }
+.btn-contact-secondary:hover { border-color: #faf1e4 !important; }
+.contact-link:hover       { color: #ffffff !important; }
+
+/* --- Language switch (segmented pill) --- */
+.lang-switch {
+  display: flex;
+  border: 1px solid #cbbfa8;
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+}
+.lang-switch button {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: #6b5c44;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+.lang-switch button.active { background: #2a2419; color: #f6efe1; }
+
+/* --- Responsive: collapse multi-column grids on small screens --- */
+@media (max-width: 860px) {
+  .resp-2, .resp-3, .resp-about { grid-template-columns: 1fr !important; }
+  .resp-about .photo-slot { aspect-ratio: 3/2 !important; }
+}
