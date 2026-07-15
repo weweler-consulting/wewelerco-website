@@ -50,8 +50,39 @@ a:hover { color: #8f3f20; }
 }
 .lang-switch button.active { background: #2a2419; color: #f6efe1; }
 
+/* --- Hero: desktop split (text left, floating video card right) --- */
+.hero-video-wrap { position: relative; }
+/* backing card behind the video for depth */
+.hero-video-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -16px 16px;
+  border-radius: 22px;
+  background: #e4d8c2;
+  border: 1px solid #cbbfa8;
+  z-index: 0;
+  transform: rotate(1.4deg);
+}
+.hero-video-card {
+  z-index: 1;
+  transform: rotate(1.4deg);
+  box-shadow: 0 30px 60px -22px rgba(42, 36, 25, 0.5);
+}
+.hero-video-chip { z-index: 2; }
+
 /* --- Responsive: collapse multi-column grids on small screens --- */
 @media (max-width: 860px) {
   .resp-2, .resp-3, .resp-about { grid-template-columns: 1fr !important; }
   .resp-about .photo-slot { aspect-ratio: 3/2 !important; }
+
+  /* hero: back to stacked (video under the text), no tilt */
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-video-wrap { margin-top: 28px; }
+  .hero-video-wrap::before { display: none; }
+  .hero-video-card {
+    transform: none;
+    aspect-ratio: 16 / 9 !important;
+    box-shadow: 0 18px 40px -24px rgba(42, 36, 25, 0.45);
+  }
+  .hero-video-chip { left: 12px !important; bottom: -18px !important; }
 }
