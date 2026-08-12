@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>Namen und Designrichtungen — interne Vorlage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,300;6..72,400&amp;family=Sora:wght@500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<script>
+(function () {
+  var r = document.documentElement;
+  try { var s = localStorage.getItem('kanzlei-theme'); if (s) r.setAttribute('data-theme', s); } catch (e) {}
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('[data-theme-toggle]') : null;
+    if (!b) return;
+    var n = r.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', n);
+    b.setAttribute('aria-pressed', n === 'dark' ? 'true' : 'false');
+    try { localStorage.setItem('kanzlei-theme', n); } catch (e) {}
+  });
+})();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#inhalt">Zum Inhalt</a>
+
+<header class="top">
+  <div class="top-in">
+    <p class="lab">Intern · Entwurfsstand 12.08.2026</p>
+    <nav>
+      <a href="index.html" aria-current="page">Übersicht</a>
+      <a href="werkbank.html">Werkbank</a>
+      <a href="nacht-karbon.html">Nacht &amp; Karbon</a>
+      <button class="toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="off">Dunkel</span><span class="on">Hell</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <div class="wrap">
+    <div class="head">
+      <h1>Zwei Namen und zwei Designrichtungen, zur Entscheidung gestellt.</h1>
+      <p class="intro">
+        Für die Neugründung stehen zwei Namen zur Wahl — YTP und XOLVED — und zwei
+        Wege, sie zu gestalten. Richtung 1 zeigt beide Namen in derselben nüchternen
+        Farbwelt, damit sich der Unterschied allein am Namen ablesen lässt. Richtung 2
+        gibt jedem Namen eine eigene Farbwelt und zieht die beiden Auftritte so weit
+        auseinander, wie es geht.
+      </p>
+      <p class="intro">
+        Zu entscheiden sind zwei Dinge, in dieser Reihenfolge: erstens der Name,
+        zweitens die Farbwelt. Beide Seiten zeigen dieselben Anwendungen — Wortmarke,
+        Farbe, Typografie, Website-Hero, Briefkopf — damit die Entwürfe vergleichbar
+        bleiben. Was hier steht, ist Beispielmaterial: Anschriften, Zahlen und Daten
+        sind erfunden.
+      </p>
+      <p class="meta">Leistung: Jahresabschlüsse für Holdinggesellschaften, laufend über das Geschäftsjahr erstellt. Digital, ohne Termine vor Ort. Rechtsform im Beispiel: GmbH.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="sec">
+      <p class="lab">Die beiden Richtungen</p>
+      <div class="cols">
+
+        <!-- Karte 1 -->
+        <a class="card" href="werkbank.html">
+          <p class="lab">Richtung 1</p>
+          <h2>Werkbank</h2>
+          <div class="card-marks">
+            <div class="card-mark">
+              <div class="tile mini pal w-light">
+                <svg viewBox="0 0 300 96" role="img" aria-label="Wortmarke Y Punkt T Punkt P">
+                  <text class="wm-d wm-fg" x="4" y="70" font-size="62" font-weight="600" letter-spacing="6">Y<tspan class="wm-acc">·</tspan>T<tspan class="wm-acc">·</tspan>P</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card-mark">
+              <div class="tile mini pal w-light">
+                <svg viewBox="0 0 300 96" role="img" aria-label="Wortmarke XOLVED, darunter tax, solved">
+                  <text class="wm-d" x="4" y="56" font-size="44" font-weight="600" letter-spacing="6.2"><tspan class="wm-acc">X</tspan><tspan class="wm-fg">OLVED</tspan></text>
+                  <text class="wm-m wm-mut" x="6" y="82" font-size="12" letter-spacing="1.7">TAX, SOLVED.</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul class="dots" aria-label="Farben der Richtung 1">
+            <li style="background:#F6F5F1"></li>
+            <li style="background:#16191C"></li>
+            <li style="background:#5A6068"></li>
+            <li style="background:#9C4A2F"></li>
+          </ul>
+          <p class="card-text">
+            Beide Namen in derselben Farbwelt: Papier, Tinte, Grau, Terrakotta als
+            einziges Signal. Wenn Farbe, Schrift und Raster gleich sind, entscheidet
+            allein, was der Name als Zeichen leistet.
+          </p>
+          <span class="go">Richtung 1 ansehen</span>
+        </a>
+
+        <!-- Karte 2 -->
+        <a class="card" href="nacht-karbon.html">
+          <p class="lab">Richtung 2</p>
+          <h2>Nacht &amp; Champagner · Karbon &amp; Signal</h2>
+          <div class="card-marks">
+            <div class="card-mark">
+              <div class="tile mini pal n-dark">
+                <svg viewBox="0 0 300 96" role="img" aria-label="Wortmarke Y Punkt T Punkt P">
+                  <text class="wm-d wm-fg" x="4" y="70" font-size="62" font-weight="600" letter-spacing="6">Y<tspan class="wm-acc">·</tspan>T<tspan class="wm-acc">·</tspan>P</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card-mark">
+              <div class="tile mini pal k-dark">
+                <svg viewBox="0 0 300 96" role="img" aria-label="Wortmarke XOLVED, darunter tax, solved">
+                  <text class="wm-d" x="4" y="56" font-size="44" font-weight="700" letter-spacing="5"><tspan class="wm-acc">X</tspan><tspan class="wm-fg">OLVED</tspan></text>
+                  <text class="wm-m wm-mut" x="6" y="82" font-size="12" letter-spacing="1.9">TAX, SOLVED.</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul class="dots" aria-label="Farben der Richtung 2">
+            <li style="background:#0B0F1A"></li>
+            <li style="background:#D9C79A"></li>
+            <li style="background:#0E0E0E"></li>
+            <li style="background:#B6F03C"></li>
+          </ul>
+          <p class="card-text">
+            Zwei getrennte Farbwelten: YTP in Nacht und Champagner, XOLVED in Karbon
+            und Signal. Dunkel ist hier der Normalzustand, die helle Fassung greift
+            auf Papier.
+          </p>
+          <span class="go">Richtung 2 ansehen</span>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="sec">
+      <p class="lab">Worum es bei der Entscheidung geht</p>
+      <h2>Vier Punkte, an denen sich die Richtungen unterscheiden.</h2>
+      <ul class="points" style="margin-top:28px">
+        <li>
+          <b>Der Name: Reibungsfreiheit gegen Unterscheidbarkeit</b>
+          <span>YTP ist buchstabierbar, diktierbar und am Telefon eindeutig, sagt aber
+          von sich aus nichts. XOLVED bleibt im Gedächtnis und ist markenrechtlich
+          besser zu schützen, kostet dafür in jedem Erstkontakt eine Zeile Erklärung
+          zu Schreibweise und Aussprache.</span>
+        </li>
+        <li>
+          <b>Eine gemeinsame Farbwelt oder zwei getrennte</b>
+          <span>Richtung 1 hält beide Namen im selben System und macht sie direkt
+          vergleichbar. Richtung 2 baut jeden Namen eigenständig aus — das
+          Ergebnis wirkt entschiedener, legt sich aber früher fest.</span>
+        </li>
+        <li>
+          <b>Dunkel oder hell als Normalzustand</b>
+          <span>Richtung 2 ist vom dunklen Grund her gedacht; auf Papier greift immer
+          die helle Fassung, und der Akzent wechselt dort auf Bronze
+          beziehungsweise Oliv. Richtung 1 ist hell gedacht und trägt in beiden
+          Medien gleich weit.</span>
+        </li>
+        <li>
+          <b>Wie verbindlich die Regeln zur Marke sein sollen</b>
+          <span>Bei YTP: im Erstkontakt nie ohne die Auflösung, keine Einzelbuchstaben
+          als Signet. Bei XOLVED: das X bleibt Buchstabe im Wort, nie Icon, nie
+          Avatar, und die Buchstabierzeile läuft überall mit. Beides muss gelten,
+          sonst trägt der jeweilige Entwurf nicht.</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="sec">
+      <p class="lab">Nächster Schritt</p>
+      <div class="prose">
+        <p>
+          Vor einer Festlegung zu prüfen: markenrechtliche Recherche für beide Namen,
+          Verfügbarkeit der Domains ytp.tax und xolved.tax sowie ein Sprechtest am
+          Telefon mit einigen Personen aus der Zielgruppe.
+        </p>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>
+      Interne Vorlage, nicht zur Veröffentlichung. Beispielmaterial ohne Bindung.
+      · <a href="werkbank.html">Richtung 1: Werkbank</a>
+      · <a href="nacht-karbon.html">Richtung 2: Nacht &amp; Karbon</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

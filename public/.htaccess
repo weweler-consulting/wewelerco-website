@@ -1,0 +1,12 @@
+# Interne Vorlage unter /kanzlei — nicht indexieren.
+# Wirkt nur auf Apache-Servern mit aktivem mod_headers/mod_setenvif und
+# erlaubtem AllowOverride. Auf anderen Hostings greifen die <meta
+# name="robots">-Angaben in den Seiten sowie /robots.txt.
+
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "^/kanzlei(/|$)" KANZLEI_NOINDEX=1
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet" env=KANZLEI_NOINDEX
+</IfModule>
