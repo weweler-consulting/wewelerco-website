@@ -1,0 +1,12 @@
+# Internes Präsentations-Tool unter /ytp — nicht indexieren.
+# Wirkt nur auf Apache-Servern mit aktivem mod_headers/mod_setenvif und
+# erlaubtem AllowOverride. Auf anderen Hostings greifen die <meta
+# name="robots">-Angaben in der Seite sowie /robots.txt.
+
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "^/ytp(/|$)" YTP_NOINDEX=1
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet" env=YTP_NOINDEX
+</IfModule>
