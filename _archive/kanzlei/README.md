@@ -1,5 +1,13 @@
 # /kanzlei — interne Entwurfsvorlage
 
+> **Archiviert am 18.08.2026 — nicht mehr online.** Der Ordner liegt in
+> `_archive/` und wird nicht deployt; `https://weweler.co/kanzlei/` gibt es
+> nicht mehr. Zum Wiederherstellen den Ordner nach `public/kanzlei/`
+> zurückschieben und, falls Apache im Spiel ist, `.htaccess` wieder nach
+> `public/.htaccess` legen sowie `Disallow: /kanzlei/` in `public/robots.txt`
+> eintragen. Die `.htaccess` liegt hier im Ordner, gehört aber ins
+> Wurzelverzeichnis der Domain.
+
 Statische Präsentationsseite für zwei Namens- und Designrichtungen einer
 Neugründung. Rein HTML und CSS, kein Framework, kein Build, keine Analytics,
 keine Anmeldung. Das einzige Skript ist ein Theme-Umschalter (hell/dunkel) von
@@ -14,8 +22,7 @@ rund zwanzig Zeilen, inline in jeder Seite.
 | `nacht-karbon.html` | Richtung 2: YTP in Nacht & Champagner, XOLVED in Karbon & Signal |
 | `radikal.html` | Richtung 3: YTP als Aktenzeichen, XOLVED als Strike |
 | `style.css` | Die einzige Stylesheet-Datei für alle vier Seiten |
-| `../robots.txt` | Muss im Wurzelverzeichnis der Domain liegen |
-| `../.htaccess` | Optional, nur für Apache — setzt `X-Robots-Tag` für `/kanzlei` |
+| `.htaccess` | Optional, nur für Apache — setzt `X-Robots-Tag` für `/kanzlei`; gehört im Betrieb ins Wurzelverzeichnis, nicht hierher |
 
 Die Übersicht zeigt alle drei Richtungen gleichrangig als Karten, jede mit
 beiden Wortmarken in ihrer eigenen Farbwelt. Jede Karte führt auf ihre Seite.
