@@ -2,85 +2,692 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weweler & Co. – Wir bauen Unternehmen auf.</title>
-  <meta name="description" content="Weweler & Co. ist eine Beteiligungsgesellschaft, die Unternehmen aufbaut.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Justus Weweler · KI-Transformation</title>
+  <meta name="description" content="Justus Weweler übernimmt die KI-Transformation in eurer Firma, von der Struktur bis zur Umsetzung.">
+  <link rel="canonical" href="https://weweler.co/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://weweler.co/">
+  <meta property="og:title" content="Justus Weweler · KI-Transformation">
+  <meta property="og:description" content="Justus Weweler übernimmt die KI-Transformation in eurer Firma, von der Struktur bis zur Umsetzung.">
+  <meta property="og:image" content="https://weweler.co/assets/img/justus-weweler.jpg">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Geist";font-style:normal;font-weight:300 600;font-display:swap;src:url("assets/fonts/geist-latin.woff2") format("woff2")}
+/* Layout: weiße Fläche, große leichte Grotesk, Schlüsselwörter nur farbig in Rosenholz ausgezeichnet.
+   Zwei Scroll-Szenen (Problem, Lösung) mit fester Bühne; alles andere ruhig und linksbündig. Bewusst nur helles Erscheinungsbild. */
+:root{
+  --paper:#FFFFFF; --ink:#15171C; --ink2:#454A54; --muted:#8B9099; --hair:#E9E7E4; --hair2:#F3F1EE;
+  --rose:#A9604F; --rose-tint:#F7EEEA; --rose-line:#D9A99B;
+  --sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:1.0625rem;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+em.s{font-style:normal;color:var(--rose)}
+.label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+h1,h2,h3{margin:0;font-weight:300;text-wrap:balance}
+h2{font-size:clamp(2.2rem,5.2vw,4.4rem);line-height:1.02;letter-spacing:-.035em;max-width:18ch}
+h3{font-weight:500;font-size:1.15rem;letter-spacing:-.01em;line-height:1.3}
+p{margin:0;max-width:60ch}
+.sec{padding-block:clamp(80px,12vw,160px)}
+.rule{border-top:1px solid var(--hair)}
 
-    body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: #faf9f7;
-      color: #0f2137;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      -webkit-font-smoothing: antialiased;
-    }
+/* Kopf */
+.topbar{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);transition:background-color .35s,box-shadow .35s}
+.topbar.scrolled{background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--hair)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px}
+.herozone{position:relative;overflow:hidden;margin-top:-72px;padding-top:72px}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.herozone .wrap{position:relative;z-index:1}
+.mark{font-weight:500;letter-spacing:-.01em;text-decoration:none;font-size:1rem}
+.mark span{color:var(--muted);font-weight:400}
+.top nav{display:flex;gap:28px;align-items:center;font-size:.95rem}
+.top nav a{text-decoration:none;color:var(--ink2)}
+.top nav a:hover{color:var(--ink)}
+.top nav a.cta{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:1px}
 
-    .name {
-      font-family: 'Instrument Serif', Georgia, serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
-    }
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);column-gap:56px;row-gap:0;align-items:start;padding-block:clamp(48px,9vw,120px) clamp(64px,9vw,120px)}
+.hero>*{min-width:0}
+.hero>div:first-child{display:contents}
+.hero .label,.hero h1,.hero .lead,.hero .actions{grid-column:1}
+.hero .portrait{grid-column:2;grid-row:2 / span 3;margin-top:calc(clamp(3.1rem,9.2vw,8.4rem) * .08)}
+.hero .label{margin-bottom:28px}
+.hero h1{font-size:clamp(3.1rem,9.2vw,8.4rem);line-height:.94;letter-spacing:-.05em}
+.hero h1 .l{display:block}
+.hero h1 em.s{position:relative;display:inline-block}
+.hero h1 svg.ul{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.28em;overflow:visible}
+.hero h1 svg.ul path{fill:none;stroke:var(--rose);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.lead{font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.5;color:var(--ink2);margin-top:40px;max-width:36em;font-weight:300}
+.lead b{color:var(--ink);font-weight:400}
+.actions{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;text-decoration:none;padding:16px 26px;border-radius:999px;font-weight:500;font-size:1rem}
+.btn:hover{background:#000}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(3px)}
+.link{text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;color:var(--ink2)}
+.link:hover{border-color:var(--ink);color:var(--ink)}
+.portrait figure{margin:0}
+.portrait .ph{aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--hair2)}
+.portrait picture,.ph2 picture{display:block;width:100%;height:100%}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait figcaption{display:flex;justify-content:space-between;gap:12px;font-size:.85rem;color:var(--muted);margin-top:12px}
+.portrait figcaption b{color:var(--ink);font-weight:500}
 
-    .claim {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      font-weight: 300;
-      color: #4d5f73;
-      margin-bottom: 3rem;
-    }
+/* Szenen */
+.scene{position:relative}
+.scene .track{height:calc(var(--steps) * 85vh + 100vh)}
+.stage{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center}
+.stage>*{min-width:0}
+.scene-head{position:absolute;top:clamp(80px,10vw,130px);left:0;right:0}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:22px;counter-reset:st}
+.steps li{display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:4px 12px;color:var(--muted);transition:color .45s}
+.steps li .n{font-size:.8rem;letter-spacing:.08em;padding-top:.5em;font-variant-numeric:tabular-nums}
+.steps li h3{font-size:clamp(1.25rem,2vw,1.65rem);font-weight:400;letter-spacing:-.02em;color:inherit;transition:color .45s}
+.steps li p{grid-column:2;font-size:.98rem;line-height:1.55;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .45s}
+.steps li.on{color:var(--ink)}
+.steps li.on .n{color:var(--rose)}
+.steps li.on p{max-height:9em;opacity:1;color:var(--ink2)}
+.steps li.done{color:var(--ink2)}
+.viz{width:100%;height:auto;max-height:78vh;display:block}
+.viz text{font-family:var(--sans)}
+.viz .g{transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.viz .g.off{opacity:0;transform:translateY(8px)}
+.viz .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.4,.1,.2,1)}
+.viz .on-draw .draw,.viz .g:not(.off) .draw{stroke-dashoffset:0}
+.viz .dim{transition:opacity .7s}
+.viz.focus .dim{opacity:.28}
+.viz .lead .ring{transition-delay:.75s;transition-duration:1.4s}
 
-    .email a {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: #0f2137;
-      text-decoration: none;
-      border-bottom: 1px solid #e5e2dc;
-      padding-bottom: 2px;
-      transition: border-color 0.3s;
-    }
+/* Problemtext und Zahlen */
+.why{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end}
+.why>*{min-width:0}
+.why .body{font-size:1.2rem;font-weight:300;color:var(--ink2);line-height:1.55}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--ink)}
+.fig{padding:28px 28px 0 0;min-width:0}
+.fig+.fig{padding-left:28px;border-left:1px solid var(--hair)}
+.fig b{display:block;font-weight:300;font-size:clamp(3rem,6vw,5.2rem);line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.fig b small{font-size:.38em;letter-spacing:-.01em;color:var(--muted);font-weight:400;margin:0 .2em}
+.fig p{margin-top:14px;color:var(--ink2);font-size:.98rem}
+.fig cite{display:block;margin-top:10px;font-style:normal;font-size:.8rem;color:var(--muted)}
+.fig cite a{color:var(--muted)}
+.closing{margin-top:clamp(56px,7vw,96px);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-.025em;line-height:1.2;max-width:24ch}
 
-    .email a:hover {
-      border-color: #0f2137;
-    }
+/* Aufgaben */
+.tasks{list-style:none;margin:clamp(48px,6vw,80px) 0 0;padding:0;border-top:1px solid var(--ink)}
+.task{display:grid;grid-template-columns:3.4rem minmax(0,6fr) minmax(0,5fr);gap:14px 48px;padding:44px 0 46px;border-bottom:1px solid var(--hair);align-items:start}
+.task>*{min-width:0}
+.tn{font-size:.82rem;letter-spacing:.08em;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1.05em;transition:color .6s}
+.task h3{font-size:clamp(2rem,4.4vw,3.7rem);font-weight:300;letter-spacing:-.048em;line-height:1;color:#C2C5CB;transition:color .7s ease}
+.task.lit h3,.task:hover h3{color:var(--ink)}
+.task.lit .tn{color:var(--rose)}
+.td{padding-top:.5em}
+.td p{color:var(--ink2);font-size:1.06rem;line-height:1.6}
+.td .out{margin-top:18px;padding-top:14px;border-top:1px solid var(--hair2);color:var(--ink);font-size:.98rem;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.td .out span{flex:none;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);font-weight:500}
 
-    .legal {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      display: flex;
-      gap: 1.5rem;
-    }
+/* Lehren */
+.lessons{list-style:none;margin:clamp(48px,6vw,80px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--ink)}
+.lessons li{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:12px 56px;padding:34px 0;border-bottom:1px solid var(--hair)}
+.lessons li>*{min-width:0}
+.lessons .q{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:300;letter-spacing:-.025em;line-height:1.2}
+.lessons .a{color:var(--ink2);font-size:1.05rem;padding-top:.4em}
+.lessons .a b{display:block;color:var(--rose);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
 
-    .legal a {
-      font-size: 0.75rem;
-      color: #7a8a9a;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+/* Formate */
+.formats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--ink)}
+.format{padding:30px 32px 8px 0;min-width:0;display:flex;flex-direction:column;gap:12px}
+.format+.format{padding-left:32px;border-left:1px solid var(--hair)}
+.format .who{font-size:.85rem;color:var(--muted)}
+.format h3{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:300;letter-spacing:-.025em}
+.format p{color:var(--ink2);font-size:1rem}
+.format .size{font-size:.92rem;color:var(--ink);margin-top:auto;padding-top:10px}
+.note{margin-top:28px;color:var(--muted);font-size:.95rem}
 
-    .legal a:hover {
-      color: #0f2137;
-    }
-  </style>
+/* Über mich */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.about>*{min-width:0}
+.facts{list-style:none;padding:0;margin:36px 0 0;border-top:1px solid var(--hair)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--hair);font-size:1rem}
+.facts li span{color:var(--muted)}
+
+.ph2{margin-top:40px;aspect-ratio:4/5;max-width:380px;overflow:hidden;border-radius:2px;background:var(--hair2)}
+.ph2 img{width:100%;height:100%;object-fit:cover}
+.gains{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.gains li{padding:30px 0;border-bottom:1px solid var(--hair)}
+.gains .g1{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:300;letter-spacing:-.025em;line-height:1.2}
+.gains .g2{margin-top:10px;color:var(--ink2);font-size:1.05rem}
+
+/* Fragen */
+.faq{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--ink);max-width:880px}
+details{border-bottom:1px solid var(--hair);padding:22px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-size:1.2rem;font-weight:400;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--rose);font-weight:300;font-size:1.4rem;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:12px;color:var(--ink2)}
+
+/* Schluss */
+.final{padding-block:clamp(96px,14vw,180px);border-top:1px solid var(--hair)}
+.final h2{font-size:clamp(2.6rem,7vw,6rem);max-width:14ch}
+.final p{margin-top:28px;font-size:1.2rem;color:var(--ink2);font-weight:300}
+.mail{margin-top:18px;color:var(--muted);font-size:.95rem}
+.refer{margin-top:clamp(64px,8vw,104px);padding-top:28px;border-top:1px solid var(--hair);display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 24px}
+.refer p{color:var(--ink2);font-size:1.05rem;max-width:40ch}
+.link-btn{font:inherit;font-size:.95rem;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 2px;cursor:pointer}
+.link-btn:hover{color:var(--rose);border-color:var(--rose)}
+.refer-url{color:var(--muted);font-size:.9rem;user-select:all}
+footer{border-top:1px solid var(--hair);padding-block:28px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--muted)}
+
+/* schmal */
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero .portrait{grid-column:1;grid-row:auto;margin-top:48px;max-width:360px}
+  .top nav a:not(.cta){display:none}
+  .stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:start;align-items:start;gap:20px;padding-top:calc(72px + env(safe-area-inset-top,0px))}
+  .stage .vizbox{order:-1}
+  .viz{max-height:46svh;margin:0 auto}
+  .steps{gap:10px}
+  .steps li:not(.on){display:none}
+  .steps li.on p{max-height:none}
+  .why,.about{grid-template-columns:minmax(0,1fr);gap:32px}
+  .figs,.formats{grid-template-columns:minmax(0,1fr)}
+  .fig,.format{padding:24px 0 8px}
+  .fig+.fig,.format+.format{padding-left:0;border-left:0;border-top:1px solid var(--hair)}
+  .lessons li{grid-template-columns:minmax(0,1fr)}
+  .task{grid-template-columns:2.4rem minmax(0,1fr);padding:32px 0 34px}
+  .td{grid-column:2}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 .l{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+  .hero h1 .l:nth-child(2){animation-delay:.12s}
+  .hero h1 .l:nth-child(3){animation-delay:.24s}
+  .hero .lead,.hero .actions{animation:rise 1s .36s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:.15;transform:translateY(.35em)}to{opacity:1;transform:none}}
+}
+.book{border:0;padding:0;margin:auto;width:min(980px,calc(100vw - 48px));height:min(780px,calc(100dvh - 48px));max-width:none;max-height:none;border-radius:6px;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px -20px rgba(21,23,28,.35);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(28px) scale(.985);transition:opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.book:not([open]){display:none}
+.book.show{opacity:1;transform:none}
+.book::backdrop{background:rgba(21,23,28,0);transition:background .35s ease}
+.book.show::backdrop{background:rgba(21,23,28,.38);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.book header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--hair)}
+.book header p{margin:0;font-size:.95rem;color:var(--ink2)}
+.book header b{font-weight:500;color:var(--ink)}
+.book .x{appearance:none;border:0;background:none;font:inherit;font-size:.9rem;color:var(--ink2);cursor:pointer;display:inline-flex;gap:10px;align-items:center;padding:8px 0}
+.book .x span{font-size:1.4rem;line-height:1;color:var(--ink)}
+.book .x:hover{color:var(--ink)}
+.book .frame{position:relative;flex:1;background:var(--hair2)}
+.book .frame p{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--muted);font-size:.95rem}
+.book iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;opacity:0;transition:opacity .4s}
+.book iframe.ready{opacity:1;background:var(--paper)}
+.book footer{display:block;border:0;padding:12px 24px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--hair)}
+.book footer a{color:var(--ink2)}
+html.lock{overflow:hidden}
+@media (max-width:720px){
+  .book{width:100vw;height:94dvh;margin:auto 0 0;border-radius:14px 14px 0 0;transform:translateY(100%)}
+  .book.show{transform:none}
+  .book header{padding:14px 18px}
+  .book header p span{display:none}
+  .book footer{padding:10px 18px}
+}
+@media (prefers-reduced-motion:reduce){.book,.book::backdrop{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  .viz .g,.viz .draw,.steps li p,.steps li{transition:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 svg.ul path{animation:ul 1.4s .5s cubic-bezier(.6,.1,.2,1) both}
+  @keyframes ul{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+}
+</style>
 </head>
 <body>
-  <h1 class="name">Weweler & Co.</h1>
-  <p class="claim">Wir bauen Unternehmen auf.</p>
-  <p class="email"><a href="mailto:justus@weweler.co">justus@weweler.co</a></p>
-  <div class="legal">
-    <a href="/impressum.html">Impressum</a>
-    <a href="/datenschutz.html">Datenschutz</a>
+<header class="topbar" id="topbar">
+  <div class="wrap top">
+    <a class="mark" href="#">Justus Weweler <span>· KI-Transformation</span></a>
+    <nav aria-label="Seitenbereiche">
+      <a href="#problem">Lage</a>
+      <a href="#rolle">Rolle</a>
+      <a href="#team">KI-Team</a>
+      <a href="#formate">Zusammenarbeit</a>
+      <a class="cta" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Termin</a>
+    </nav>
   </div>
+</header>
+<div class="herozone">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+  <section class="hero" aria-labelledby="h1">
+    <div>
+      <p class="label">KI-Transformation · Head of AI</p>
+      <h1 id="h1"><span class="l">KI ist da.</span><span class="l">Was fehlt, ist</span><span class="l"><em class="s">Führung.</em></span></h1>
+      <p class="lead">Ich führe eure KI-Transformation, von der Struktur bis zur Umsetzung: <b>welche Arbeit KI übernimmt, wer sie steuert, wie geprüft und gemessen wird.</b></p>
+      <div class="actions">
+        <a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Nächsten Schritt klären <span class="arr" aria-hidden="true">→</span></a>
+        <a class="link" href="#team">Wie mein KI-Team arbeitet</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <figure>
+        <div class="ph"><picture><source type="image/webp" srcset="assets/img/justus-weweler-600.webp 600w, assets/img/justus-weweler.webp 1000w" sizes="(max-width:900px) 360px, 34vw"><img src="assets/img/justus-weweler-600.jpg" srcset="assets/img/justus-weweler-600.jpg 600w, assets/img/justus-weweler.jpg 1000w" sizes="(max-width:900px) 360px, 34vw" width="600" height="750" alt="Porträt von Justus Weweler"></picture></div>
+        <figcaption><b>Justus Weweler</b><span>Gründer · Geschäftsführer</span></figcaption>
+      </figure>
+    </div>
+  </section>
+  </div>
+</div>
+
+<!-- Szene 1: Problem -->
+<section class="scene rule" id="problem" data-scene="p" style="--steps:4" aria-label="Die Lage in vielen Firmen">
+  <div class="track">
+    <div class="stage wrap">
+      <div>
+        <p class="label" style="margin-bottom:28px">Kennt ihr das?</p>
+        <ol class="steps">
+          <li data-i="0"><span class="n">01</span><h3>Überall ein bisschen KI. Kein Dach darüber.</h3><p>Jeder nutzt eigene Tools und Skills. Es ist Stückwerk, und die KI bringt nur einen Bruchteil von dem, was sie könnte.</p></li>
+          <li data-i="1"><span class="n">02</span><h3>Niemand misst.</h3><p>Ob es etwas bringt, weiß keiner. Eure Leute haben eher mehr Arbeit als weniger, weil alles nachgeprüft werden muss.</p></li>
+          <li data-i="2"><span class="n">03</span><h3>Und als Nächstes kommen Agenten.</h3><p>KI, die selbstständig Aufgaben erledigt. Wer prüft sie dann? Wer entscheidet, was sie dürfen und welche Daten sie sehen?</p></li>
+          <li data-i="3"><span class="n">04</span><h3>Und keiner führt.</h3><p>Das ist kein Werkzeugproblem. Es fehlt jemand, der den Takt vorgibt.</p></li>
+        </ol>
+      </div>
+      <div class="vizbox">
+        <svg class="viz" id="vizP" viewBox="0 0 600 520" role="img" aria-label="Schema: Menschen mit eigenen KI-Werkzeugen, unverbundene Agenten, in der Mitte eine leere Stelle für Führung">
+          <!-- Menschen und ihre Werkzeuge -->
+          <g class="g dim" data-s="0">
+            <g stroke="var(--hair)" stroke-width="1"><line x1="96" y1="96" x2="138" y2="70"/><line x1="250" y1="70" x2="292" y2="44"/><line x1="430" y1="98" x2="472" y2="130"/><line x1="78" y1="250" x2="40" y2="286"/><line x1="520" y1="246" x2="560" y2="210"/><line x1="120" y1="400" x2="160" y2="436"/><line x1="300" y1="430" x2="258" y2="468"/><line x1="470" y1="400" x2="512" y2="440"/></g>
+            <g fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4">
+              <circle cx="96" cy="96" r="13"/><circle cx="250" cy="70" r="13"/><circle cx="430" cy="98" r="13"/><circle cx="78" cy="250" r="13"/><circle cx="520" cy="246" r="13"/><circle cx="120" cy="400" r="13"/><circle cx="300" cy="430" r="13"/><circle cx="470" cy="400" r="13"/>
+            </g>
+            <g fill="var(--rose-tint)" stroke="var(--rose-line)" stroke-width="1.2">
+              <rect x="132" y="62" width="14" height="14" rx="2"/><path d="M292 34 l9 16 h-18z"/><circle cx="476" cy="134" r="7"/><rect x="32" y="282" width="14" height="14" rx="7"/><path d="M560 202 l8 8 -8 8 -8 -8z"/><rect x="154" y="430" width="14" height="14" rx="2"/><path d="M258 458 l9 16 h-18z"/><circle cx="516" cy="444" r="7"/>
+            </g>
+          </g>
+          <!-- Niemand misst -->
+          <g class="g off dim" data-s="1">
+            <g font-size="14" fill="var(--rose-line)">
+              <text x="110" y="128">?</text><text x="262" y="102">?</text><text x="444" y="78">?</text><text x="90" y="226">?</text><text x="532" y="280">?</text><text x="134" y="380">?</text><text x="316" y="410">?</text><text x="482" y="380">?</text>
+            </g>
+            <line x1="40" y1="500" x2="560" y2="500" stroke="var(--hair)" stroke-width="1"/>
+            <line x1="40" y1="500" x2="560" y2="500" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 6"/>
+            <text x="40" y="490" font-size="11" fill="var(--muted)" letter-spacing="1.4">WIRKUNG PRO MONAT</text>
+            <text x="560" y="490" font-size="11" fill="var(--muted)" text-anchor="end">nicht gemessen</text>
+          </g>
+          <!-- Agenten kommen dazu -->
+          <g class="g off dim" data-s="2">
+            <g fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 5">
+              <path class="draw" pathLength="1" d="M190 170 C 260 120, 340 300, 410 190"/>
+              <path class="draw" pathLength="1" d="M190 170 C 120 260, 220 330, 300 430"/>
+              <path class="draw" pathLength="1" d="M410 190 C 470 260, 360 300, 470 400"/>
+              <path class="draw" pathLength="1" d="M190 330 C 260 380, 420 360, 410 190"/>
+              <path class="draw" pathLength="1" d="M190 330 C 140 300, 110 200, 96 96"/>
+              <path class="draw" pathLength="1" d="M410 330 C 520 300, 540 280, 520 246"/>
+            </g>
+            <g fill="var(--ink)">
+              <rect x="180" y="160" width="20" height="20" rx="4"/><rect x="400" y="180" width="20" height="20" rx="4"/><rect x="180" y="320" width="20" height="20" rx="4"/><rect x="400" y="320" width="20" height="20" rx="4"/>
+            </g>
+            <g fill="var(--paper)"><circle cx="190" cy="170" r="3"/><circle cx="410" cy="190" r="3"/><circle cx="190" cy="330" r="3"/><circle cx="410" cy="330" r="3"/></g>
+          </g>
+          <!-- Keiner führt -->
+          <g class="g off lead" data-s="3">
+            <defs><radialGradient id="void"><stop offset="0" stop-color="var(--paper)"/><stop offset=".8" stop-color="var(--paper)"/><stop offset="1" stop-color="var(--paper)" stop-opacity="0"/></radialGradient></defs>
+            <circle cx="300" cy="258" r="102" fill="url(#void)"/>
+            <g fill="none" stroke="var(--rose-line)" stroke-width=".9">
+              <path class="draw" pathLength="1" style="transition-delay:0.15s" d="M111.7 108.4 L218.6 193.3"/><path class="draw" pathLength="1" style="transition-delay:0.21s" d="M255.1 89.3 L273.3 157.5"/><path class="draw" pathLength="1" style="transition-delay:0.27s" d="M417.4 113.5 L365.6 177.3"/><path class="draw" pathLength="1" style="transition-delay:0.33s" d="M98.0 250.7 L196.1 254.3"/><path class="draw" pathLength="1" style="transition-delay:0.39s" d="M500.0 247.1 L403.8 252.3"/><path class="draw" pathLength="1" style="transition-delay:0.45s" d="M135.7 387.6 L218.3 322.4"/><path class="draw" pathLength="1" style="transition-delay:0.51s" d="M300.0 410.0 L300.0 362.0"/><path class="draw" pathLength="1" style="transition-delay:0.57s" d="M454.7 387.2 L379.8 324.7"/>
+            </g>
+            <circle class="draw ring" pathLength="1" cx="300" cy="258" r="30" fill="var(--paper)" stroke="var(--rose)" stroke-width="1.3" transform="rotate(-90 300 258)"/>
+            <g stroke="var(--rose)" stroke-width="1"><line x1="300" y1="216" x2="300" y2="222"/><line x1="300" y1="294" x2="300" y2="300"/><line x1="258" y1="258" x2="264" y2="258"/><line x1="336" y1="258" x2="342" y2="258"/></g>
+            <text x="300" y="318" text-anchor="middle" font-size="11" fill="var(--rose)" letter-spacing="1.6">FÜHRUNG</text>
+            <text x="300" y="336" text-anchor="middle" font-size="13" fill="var(--muted)">nicht besetzt</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec rule">
+    <div class="why">
+      <div>
+        <p class="label" style="margin-bottom:28px">Warum es hakt</p>
+        <h2>Eure Leute arbeiten jetzt mit KI. <em class="s">Wer führt sie dabei?</em></h2>
+      </div>
+      <p class="body">Arbeit verschiebt sich gerade von „selbst machen“ zu „beauftragen, prüfen, entscheiden“. Das ist Führungsarbeit. Gelernt hat sie kaum jemand, und in den meisten Firmen ist niemand dafür zuständig.</p>
+    </div>
+    <div class="figs">
+      <div class="fig"><b><span class="cnt" data-to="59">59</span><small>%</small></b><p>der deutschen Firmen, die KI nutzen, schöpfen sie überhaupt nicht aus.</p><cite><a href="https://www.bitkom.org/Presse/Presseinformation/Erstmals-nutzt-Mehrheit-Unternehmen-KI" target="_blank" rel="noopener">Bitkom 2026</a></cite></div>
+      <div class="fig"><b><span class="cnt" data-to="66">66</span><small>%</small></b><p>stufen die KI-Kompetenz ihrer Mitarbeitenden als niedrig ein.</p><cite><a href="https://www.bitkom.org/Presse/Presseinformation/Erstmals-nutzt-Mehrheit-Unternehmen-KI" target="_blank" rel="noopener">Bitkom 2026</a></cite></div>
+      <div class="fig"><b><span class="cnt" data-to="47">47</span><small>statt</small><span class="cnt" data-to="10">10</span><small>%</small></b><p>So viele Beschäftigte nutzen KI, wenn der Arbeitgeber sie ermutigt, statt wenn er es nicht tut. Auch ohne Schulung und ohne bereitgestellte Tools.</p><cite><a href="https://www.iwkoeln.de/fileadmin/user_upload/Studien/Kurzberichte/PDF/2026/IW-Kurzbericht_2026-Schatten-KI.pdf" target="_blank" rel="noopener">IW 2026, nach Bick et al.</a></cite></div>
+    </div>
+    <p class="closing">Das Problem ist kein Werkzeug. Es fehlt jemand, der den <em class="s">Takt</em> vorgibt.</p>
+  </section>
+
+  <section class="sec rule" id="rolle">
+    <p class="label" style="margin-bottom:28px">Die Rolle</p>
+    <h2>Was KI-Transformation bei euch <em class="s">heißt</em></h2>
+    <p style="margin-top:28px;font-size:1.2rem;font-weight:300;color:var(--ink2);line-height:1.55;max-width:44em">Mein Handwerk dabei ist <span style="color:var(--ink)">Orchestrierung</span>: Menschen und KI-Agenten so aufstellen, dass jeder das macht, was er am besten kann, und jemand den Takt vorgibt.</p>
+    <ol class="tasks">
+      <li class="task"><span class="tn">01</span><h3>Mandat und Prioritäten</h3><div class="td"><p>Mit der Geschäftsführung die fünf Abläufe festlegen, die am meisten bringen. Über Abteilungsgrenzen hinweg.</p><p class="out"><span>Ergebnis</span>Fünf Abläufe, freigegeben von der Geschäftsführung</p></div></li>
+      <li class="task"><span class="tn">02</span><h3>Arbeit neu verteilen</h3><div class="td"><p>Pro Ablauf entscheiden: Was übernimmt KI, wo prüft ein Mensch, was bleibt beim Menschen. Dann umbauen, mit den Leuten, die die Arbeit machen.</p><p class="out"><span>Ergebnis</span>Für jeden Ablauf klar: KI, Prüfung, Mensch</p></div></li>
+      <li class="task"><span class="tn">03</span><h3>Leute befähigen</h3><div class="td"><p>Eure Leute lernen, KI zu beauftragen und ihre Ergebnisse zu prüfen. In jedem Bereich eine verantwortliche Person. Einen vorhandenen KI-Manager führe ich, statt ihn zu ersetzen.</p><p class="out"><span>Ergebnis</span>Eine verantwortliche Person in jedem Bereich</p></div></li>
+      <li class="task"><span class="tn">04</span><h3>Regeln und Aufsicht</h3><div class="td"><p>Welche Daten wohin dürfen, wer was freigibt, wer die Ergebnisse prüft. Abgestimmt mit IT und Datenschutz.</p><p class="out"><span>Ergebnis</span>Schriftliche Regeln, die alle kennen</p></div></li>
+      <li class="task"><span class="tn">05</span><h3>Messen</h3><div class="td"><p>Jeder Ablauf bekommt eine Zahl vorher und nachher. Jeden Monat ein kurzer Bericht an die Geschäftsführung.</p><p class="out"><span>Ergebnis</span>Eine Zahl vorher, eine nachher, jeden Monat</p></div></li>
+    </ol>
+  </section>
+</div>
+
+<!-- Szene 2: Lösung -->
+<section class="scene rule" id="team" data-scene="s" style="--steps:5" aria-label="So arbeitet ein geführtes KI-Team">
+  <div class="track">
+    <div class="stage wrap">
+      <div>
+        <p class="label" style="margin-bottom:28px">So arbeitet mein KI-Team</p>
+        <ol class="steps">
+          <li data-i="0"><span class="n">01</span><h3>Ein Mensch entscheidet.</h3><p>Agenten bereiten vor, Menschen entscheiden. Kein Agent spricht mit Kunden.</p></li>
+          <li data-i="1"><span class="n">02</span><h3>Jede Aufgabe hat genau eine Rolle.</h3><p>Die Orchestrierung gibt jede Aufgabe an genau einen Agenten, mit Rollenbeschreibung, Regeln und Gedächtnis.</p></li>
+          <li data-i="2"><span class="n">03</span><h3>Wer erstellt, prüft nicht.</h3><p>Wichtige Entwürfe gehen durch eine eigene Prüfrolle, bevor ein Mensch sie sieht.</p></li>
+          <li data-i="3"><span class="n">04</span><h3>Jeden Morgen höchstens fünf Entscheidungen.</h3><p>Eine Aufsicht bündelt, was offen ist, und legt es mit fertigem Entwurf vor.</p></li>
+          <li data-i="4"><span class="n">05</span><h3>Jeder Fakt hat eine Quelle.</h3><p>Sensible Daten gehen durch eine Schleuse. Was fehlt, wird nachgefragt, nicht erfunden.</p></li>
+        </ol>
+        <p class="note" style="margin-top:36px">Vereinfachtes Modell meines eigenen KI-Teams. Im Erstgespräch zeige ich ein Demo-Setup live.</p>
+      </div>
+      <div class="vizbox">
+        <svg class="viz" id="vizS" viewBox="0 0 640 600" role="img" aria-label="Organigramm eines geführten KI-Teams: Kunden sprechen nur mit dem Menschen. Der Mensch steuert die Orchestrierung, die Aufgaben an sechs Agenten verteilt. Eine Prüfrolle prüft Entwürfe, eine Aufsicht legt morgens Entscheidungen vor. Eingang mit Datenschleuse und Wahrheitsquellen.">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs>
+          <!-- 0: Kunden + Mensch -->
+          <g class="g" data-s="0">
+            <rect x="230" y="14" width="180" height="40" rx="2" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4"/>
+            <text x="320" y="39" text-anchor="middle" font-size="13" fill="var(--ink2)">Kunden</text>
+            <line class="draw" pathLength="1" x1="320" y1="56" x2="320" y2="92" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)" marker-start="url(#ar)"/>
+            <text x="332" y="79" font-size="10.5" fill="var(--muted)">nur Mensch zu Mensch</text>
+            <rect x="220" y="96" width="200" height="54" rx="2" fill="var(--rose-tint)" stroke="var(--rose)" stroke-width="1.3"/>
+            <text x="320" y="120" text-anchor="middle" font-size="15" font-weight="500" fill="var(--ink)">Mensch</text>
+            <text x="320" y="138" text-anchor="middle" font-size="11" fill="var(--ink2)">entscheidet und gibt frei</text>
+          </g>
+          <!-- 1: Orchestrierung + Agenten -->
+          <g class="g off" data-s="1">
+            <line class="draw" pathLength="1" x1="320" y1="152" x2="320" y2="196" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)" marker-start="url(#ar)"/>
+            <rect x="230" y="200" width="180" height="58" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.3"/>
+            <text x="320" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Orchestrierung</text>
+            <text x="320" y="242" text-anchor="middle" font-size="10.5" fill="var(--ink2)">eine Aufgabe, ein Agent</text>
+            <path class="draw" pathLength="1" d="M320 258 V 296 M 62 296 H 578" stroke="var(--ink)" stroke-width="1.2" fill="none"/>
+            <g stroke="var(--ink)" stroke-width="1.2"><line x1="62" y1="296" x2="62" y2="316" marker-end="url(#ar)"/><line x1="165" y1="296" x2="165" y2="316" marker-end="url(#ar)"/><line x1="268" y1="296" x2="268" y2="316" marker-end="url(#ar)"/><line x1="372" y1="296" x2="372" y2="316" marker-end="url(#ar)"/><line x1="475" y1="296" x2="475" y2="316" marker-end="url(#ar)"/><line x1="578" y1="296" x2="578" y2="316" marker-end="url(#ar)"/></g>
+            <rect x="14" y="330" width="306" height="96" rx="2" fill="none" stroke="var(--rose-line)" stroke-width="1" stroke-dasharray="2 4"/>
+            <text x="22" y="418" font-size="9.5" letter-spacing="1.3" fill="var(--rose)">UMSATZKETTE · HAT VORRANG</text>
+            <g fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2">
+              <rect x="22" y="320" width="80" height="62" rx="2"/><rect x="125" y="320" width="80" height="62" rx="2"/><rect x="228" y="320" width="80" height="62" rx="2"/><rect x="332" y="320" width="80" height="62" rx="2"/><rect x="435" y="320" width="80" height="62" rx="2"/><rect x="538" y="320" width="80" height="62" rx="2"/>
+            </g>
+            <g fill="var(--ink)"><rect x="56" y="332" width="12" height="12" rx="3"/><rect x="159" y="332" width="12" height="12" rx="3"/><rect x="262" y="332" width="12" height="12" rx="3"/><rect x="366" y="332" width="12" height="12" rx="3"/><rect x="469" y="332" width="12" height="12" rx="3"/><rect x="572" y="332" width="12" height="12" rx="3"/></g>
+            <g font-size="11" text-anchor="middle" fill="var(--ink)"><text x="62" y="364">Vertrieb</text><text x="165" y="364">Betreuung</text><text x="268" y="364">Umsetzung</text><text x="372" y="364">Inhalte</text><text x="475" y="364">Recherche</text><text x="578" y="364">Verwaltung</text></g>
+            <g font-size="9.5" text-anchor="middle" fill="var(--muted)"><text x="62" y="376">bis Abschluss</text><text x="165" y="376">ab Abschluss</text><text x="268" y="376">Projekte</text><text x="372" y="376">Texte</text><text x="475" y="376">Markt</text><text x="578" y="376">Fristen</text></g>
+          </g>
+          <!-- 2: Prüfung -->
+          <g class="g off" data-s="2">
+            <rect x="470" y="200" width="150" height="58" rx="2" fill="var(--paper)" stroke="var(--rose)" stroke-width="1.3" stroke-dasharray="5 3"/>
+            <text x="545" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Prüfung</text>
+            <text x="545" y="242" text-anchor="middle" font-size="10.5" fill="var(--ink2)">erstellt nichts selbst</text>
+            <path class="draw" pathLength="1" d="M495 318 C 495 290, 520 280, 530 262" fill="none" stroke="var(--rose)" stroke-width="1.2" stroke-dasharray="1" marker-end="url(#ar)"/>
+            <path class="draw" pathLength="1" d="M545 198 C 545 150, 500 124, 424 124" fill="none" stroke="var(--rose)" stroke-width="1.2" marker-end="url(#ar)"/>
+            <text x="618" y="112" text-anchor="end" font-size="10.5" fill="var(--rose)">geprüft, mit Urteil</text>
+          </g>
+          <!-- 3: Aufsicht -->
+          <g class="g off" data-s="3">
+            <rect x="20" y="200" width="150" height="58" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.3"/>
+            <text x="95" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Aufsicht</text>
+            <text x="95" y="242" text-anchor="middle" font-size="10.5" fill="var(--ink2)">Zusagen, Fristen, Lücken</text>
+            <path class="draw" pathLength="1" d="M95 198 C 95 150, 140 124, 216 124" fill="none" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)"/>
+            <text x="22" y="112" font-size="10.5" fill="var(--ink2)">morgens max. 5 Entscheidungen</text>
+          </g>
+          <!-- 4: Eingang, Schleuse, Quellen -->
+          <g class="g off" data-s="4">
+            <rect x="22" y="452" width="150" height="46" rx="2" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4"/>
+            <text x="97" y="480" text-anchor="middle" font-size="12" fill="var(--ink2)">Eingang</text>
+            <line class="draw" pathLength="1" x1="174" y1="475" x2="232" y2="475" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)"/>
+            <rect x="236" y="452" width="168" height="46" rx="2" fill="var(--rose-tint)" stroke="var(--rose)" stroke-width="1.2"/>
+            <text x="320" y="472" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">Schleuse</text>
+            <text x="320" y="488" text-anchor="middle" font-size="10" fill="var(--ink2)">sensible Daten bleiben draußen</text>
+            <path class="draw" pathLength="1" d="M320 450 V 388" stroke="var(--ink)" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+            <line x1="22" y1="530" x2="618" y2="530" stroke="var(--hair)" stroke-width="1"/>
+            <g fill="var(--hair2)" stroke="var(--hair)"><rect x="22" y="544" width="184" height="40" rx="2"/><rect x="228" y="544" width="184" height="40" rx="2"/><rect x="434" y="544" width="184" height="40" rx="2"/></g>
+            <g font-size="11" text-anchor="middle" fill="var(--ink2)"><text x="114" y="568">Vertrieb &amp; Kunden</text><text x="320" y="568">Projekte &amp; Technik</text><text x="526" y="568">Regeln &amp; Gedächtnis</text></g>
+            <text x="618" y="522" text-anchor="end" font-size="10" letter-spacing="1.2" fill="var(--muted)">WAHRHEITSQUELLEN · EINE JE FAKT</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec rule" id="lehren">
+    <p class="label" style="margin-bottom:28px">Was ich gelernt habe</p>
+    <h2>Ich führe selbst ein Team aus KI-Agenten. Die Fehler, die eure Teams gerade machen, habe ich <em class="s">schon gemacht.</em></h2>
+    <ol class="lessons">
+      <li><p class="q">Agenten erfinden, wenn das Briefing es verlangt.</p><p class="a"><b>Regel</b>Wer „ein echtes Beispiel“ bestellt und keins mitliefert, bekommt eins ausgedacht. Jedes Briefing braucht eine Wahrheitsbedingung.</p></li>
+      <li><p class="q">Eine Lücke wird schnell zur Behauptung.</p><p class="a"><b>Regel</b>„Dazu steht nichts in den Daten“ wird zu „das gibt es nicht“. Fehlendes ist eine Rückfrage, kein Ergebnis.</p></li>
+      <li><p class="q">Unter Zeitdruck gewinnt das Abnicken.</p><p class="a"><b>Regel</b>Wer erstellt, prüft nicht. Prüfen ist eine eigene Rolle.</p></li>
+      <li><p class="q">Glätten macht Texte nicht besser.</p><p class="a"><b>Regel</b>Jede weitere Runde klang mehr nach Maschine. Ab der dritten Runde ohne neuen Inhalt entscheidet ein Mensch.</p></li>
+      <li><p class="q">Am Ende ist der Engpass der Mensch, der entscheiden muss.</p><p class="a"><b>Regel</b>Entscheidungen brauchen einen festen Ort und einen festen Takt.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec rule" id="formate">
+    <p class="label" style="margin-bottom:28px">Zusammenarbeit</p>
+    <h2>So fangen wir <em class="s">an</em></h2>
+    <div class="formats">
+      <div class="format"><span class="who">Wenn ihr es umsetzen wollt</span><h3>KI-Transformation</h3><p>Ich übernehme die Rolle in eurem Team: Prioritäten, Umbau, Regeln, Messung. Eure Leute lernen dabei mit.</p><p>Wir starten mit drei Monaten. Das ist die Zeit, in der die ersten Abläufe umgebaut sind, eure Leute sicher mit den Agenten arbeiten und ihr die Wirkung in Zahlen seht.</p><span class="size">1–2 feste Tage pro Woche · Start mit drei Monaten</span></div>
+      <div class="format"><span class="who">Wenn ihr schon einen KI-Manager habt</span><h3>Führung für euren KI-Manager</h3><p>Mandat mit der Geschäftsführung klären, Prioritäten setzen, Messung aufbauen, euren KI-Manager coachen.</p><span class="size">Ein halber Tag pro Woche</span></div>
+    </div>
+  </section>
+
+  <section class="sec rule" id="ich">
+    <div class="about">
+      <div>
+        <p class="label" style="margin-bottom:28px">Über mich</p>
+        <h2 style="font-size:clamp(2rem,4vw,3.4rem)"><em class="s">Unternehmer</em>, nicht nur Berater.</h2>
+        <div class="ph2"><picture><source type="image/webp" srcset="assets/img/justus-weweler-laechelnd-600.webp 600w, assets/img/justus-weweler-laechelnd.webp 1000w" sizes="380px"><img src="assets/img/justus-weweler-laechelnd-600.jpg" srcset="assets/img/justus-weweler-laechelnd-600.jpg 600w, assets/img/justus-weweler-laechelnd.jpg 1000w" sizes="380px" width="600" height="750" alt="Justus Weweler, lächelnd" loading="lazy"></picture></div>
+      </div>
+      <div>
+        <ul class="gains">
+          <li><p class="g1">Abläufe, die eure Leute gern benutzen.</p><p class="g2">Ich habe Design studiert und denke vom Menschen aus, nicht vom Werkzeug.</p></li>
+          <li><p class="g1">Ich kenne den Druck der Geschäftsführung.</p><p class="g2">Fünf Firmen gegründet, die letzte auf 120 Mitarbeiter aufgebaut und 2024 verkauft. Ich kenne Umbau bei laufendem Geschäft aus Sicht der Geschäftsführung.</p></li>
+          <li><p class="g1">Veränderung, der euer Team vertraut.</p><p class="g2">In meiner letzten Firma war ich die Person, der im Team am meisten vertraut wurde. Ohne Vertrauen nutzt niemand die neuen Abläufe.</p></li>
+          <li><p class="g1">Ich empfehle nur, was ich selbst nutze.</p><p class="g2">In meiner eigenen Firma führe ich jeden Tag Menschen und ein Team aus KI-Agenten.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rule" id="fragen">
+    <p class="label" style="margin-bottom:28px">Fragen</p>
+    <h2>Was Geschäftsführer mich <em class="s">fragen</em></h2>
+    <div class="faq">
+      <details><summary>Ist das nicht Chefsache?</summary><p>Ja, die Verantwortung bleibt bei euch. Was ihr nicht braucht, ist die Zeit, euch selbst durch jede Abteilung zu arbeiten. Die übernehme ich.</p></details>
+      <details><summary>Warum keine Agentur?</summary><p>Eine Agentur baut Systeme. Ich führe die Arbeit in eurem Team, an festen Tagen, und eure Leute lernen mit. Wenn größere Systeme gebraucht werden, holen wir den passenden Partner dazu.</p></details>
+      <details><summary>Unsere Leute haben Angst, sich selbst wegzuautomatisieren.</summary><p>Für jeden Ablauf legen wir offen fest, was beim Menschen bleibt. Wer die Arbeit heute macht, baut den neuen Ablauf mit.</p></details>
+      <details><summary>Wir haben doch schon einen KI-Manager.</summary><p>Gut. Dann führe ich ihn, statt ihn zu ersetzen. Meist fehlt nicht Wissen, sondern Mandat.</p></details>
+      <details><summary>Brauchen wir dafür eine feste Stelle?</summary><p>Nicht sofort. Ich übernehme die Rolle an festen Tagen. Wenn ihr intern jemanden aufbauen wollt, führe ich ihn mit.</p></details>
+      <details><summary>Werden wir von dir abhängig?</summary><p>Nein. Eure Leute lernen mit, und was ich aufbaue, läuft auch an den Tagen, an denen ich nicht da bin.</p></details>
+      <details><summary>Ist das ein Kurs?</summary><p>Nein. Ich arbeite an festen Tagen in eurem Team, an euren Abläufen, mit einer Zahl vorher und nachher.</p></details>
+      <details><summary>Welche Tools?</summary><p>Die, die ihr schon bezahlt. Ein Wechsel nur, wenn er sich rechnet.</p></details>
+      <details><summary>Und der Datenschutz?</summary><p>Regeln kommen vor dem ersten Umbau, nicht danach. Abgestimmt mit eurer IT und eurem Datenschutz.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="final" id="termin">
+  <div class="wrap">
+    <p class="label" style="margin-bottom:28px">Termin</p>
+    <h2>30 Minuten über eure Firma und eure KI. Ihr geht mit einem klaren <em class="s">nächsten Schritt</em> raus.</h2>
+    
+    <div class="actions"><a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Termin wählen <span class="arr" aria-hidden="true">→</span></a></div>
+    <p class="mail">Oder direkt: justus@weweler.co</p>
+    <div class="refer">
+      <p>Ihr kennt eine Firma, bei der KI noch Stückwerk ist? Schickt einfach diese Seite weiter.</p>
+      <button type="button" id="copyLink" class="link-btn" data-url="https://weweler.co">Link kopieren</button>
+      <span class="refer-url" id="referUrl">weweler.co</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer><span>Weweler Consulting</span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></footer>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var scenes = [].slice.call(document.querySelectorAll('.scene'));
+  function setScene(sc, idx){
+    if (sc._idx === idx) return; sc._idx = idx;
+    var lis = sc.querySelectorAll('.steps li');
+    for (var i=0;i<lis.length;i++){
+      lis[i].classList.toggle('on', i===idx);
+      lis[i].classList.toggle('done', i<idx);
+    }
+    var gs = sc.querySelectorAll('.viz .g');
+    for (var j=0;j<gs.length;j++){
+      var s = +gs[j].getAttribute('data-s');
+      gs[j].classList.toggle('off', s>idx);
+    }
+    var viz = sc.querySelector('.viz');
+    if (sc.getAttribute('data-scene')==='p') viz.classList.toggle('focus', idx>=3);
+  }
+  function update(){
+    var vh = window.innerHeight;
+    scenes.forEach(function(sc){
+      var n = +getComputedStyle(sc).getPropertyValue('--steps') || sc.querySelectorAll('.steps li').length;
+      if (reduce){ setScene(sc, n-1); return; }
+      var r = sc.querySelector('.track').getBoundingClientRect();
+      var total = r.height - vh;
+      var p = total>0 ? Math.min(1, Math.max(0, -r.top/total)) : 1;
+      setScene(sc, Math.min(n-1, Math.floor(p*n)));
+    });
+  }
+  var ticking=false;
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ ticking=false; update(); }); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Kopfzeile
+  var bar=document.getElementById('topbar');
+  function onS(){ bar.classList.toggle('scrolled', window.scrollY>12); }
+  window.addEventListener('scroll',onS,{passive:true}); onS();
+  // Aufgaben: Titel werden beim Lesen dunkel
+  var tasks=[].slice.call(document.querySelectorAll('.task'));
+  if(reduce || !('IntersectionObserver' in window)){ tasks.forEach(function(t){t.classList.add('lit')}); }
+  else { var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting || e.boundingClientRect.bottom < window.innerHeight*0.62){ e.target.classList.add('lit'); io.unobserve(e.target);} });},{rootMargin:'-38% 0px -38% 0px'}); tasks.forEach(function(t){io.observe(t)}); }
+  // Zahlen zählen hoch
+  var cnts=[].slice.call(document.querySelectorAll('.cnt'));
+  if(!reduce && 'IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){ if(!e.isIntersecting) return; io2.unobserve(e.target);
+      var el=e.target, to=+el.getAttribute('data-to'), t0=null;
+      function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/1300); var v=Math.round(to*(1-Math.pow(1-p,3))); el.textContent=v; if(p<1) requestAnimationFrame(step); }
+      el.textContent='0'; requestAnimationFrame(step);
+    });},{threshold:.6});
+    cnts.forEach(function(c){io2.observe(c)});
+  }
+  // Feld im Hero: Striche richten sich zum Mauszeiger aus
+  var cv=document.getElementById('field'); if(!cv) return;
+  var zone=cv.parentNode, ctx=cv.getContext('2d'), dpr=Math.min(2,window.devicePixelRatio||1);
+  var W=0,H=0,cells=[],GAP=30,LEN=9,R=170;
+  var mouse={x:-9999,y:-9999,active:false}, virt=false, tStart=performance.now(), running=false, visible=true;
+  function rnd(i){ var x=Math.sin(i*12.9898)*43758.5453; return x-Math.floor(x); }
+  function build(){
+    var r=zone.getBoundingClientRect(); W=r.width; H=r.height;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+    cells=[]; var k=0;
+    for(var y=GAP/2;y<H;y+=GAP){ for(var x=GAP/2;x<W;x+=GAP){ var a=rnd(++k)*Math.PI; cells.push({x:x,y:y,b:a,a:a,w:0}); } }
+    draw(true);
+  }
+  function draw(force){
+    ctx.clearRect(0,0,W,H);
+    var moving=false, mx=mouse.x, my=mouse.y;
+    for(var i=0;i<cells.length;i++){
+      var c=cells[i], dx=mx-c.x, dy=my-c.y, d=Math.sqrt(dx*dx+dy*dy);
+      var inf = (mouse.active||virt) ? Math.max(0,1-d/R) : 0; inf=inf*inf*(3-2*inf);
+      var target = inf>0 ? Math.atan2(dy,dx) : c.b;
+      var diff=target-c.a; while(diff>Math.PI) diff-=2*Math.PI; while(diff<-Math.PI) diff+=2*Math.PI;
+      if(inf<=0){ diff=c.b-c.a; while(diff>Math.PI/2) diff-=Math.PI; while(diff<-Math.PI/2) diff+=Math.PI; }
+      var step = reduce ? diff : diff*(0.025+0.04*inf);
+      c.a+=step; c.w+= (inf*0.6-c.w)*0.05;
+      if(Math.abs(step)>0.002 || Math.abs(inf-c.w)>0.01) moving=true;
+      var len=LEN+c.w*2, ca=Math.cos(c.a)*len/2, sa=Math.sin(c.a)*len/2;
+      ctx.strokeStyle = c.w>0.04 ? 'rgba(169,96,79,'+(0.08+c.w*0.22).toFixed(3)+')' : 'rgba(21,23,28,0.07)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(c.x-ca,c.y-sa); ctx.lineTo(c.x+ca,c.y+sa); ctx.stroke();
+    }
+    return moving;
+  }
+  function loop(ts){
+    if(!visible){ running=false; return; }
+    if(virt){ var t=(ts-tStart)/1000; mouse.x=W*(0.55+0.28*Math.sin(t*0.35)); mouse.y=H*(0.5+0.32*Math.sin(t*0.53)); }
+    var m=draw(false);
+    if(m || virt || mouse.active){ requestAnimationFrame(loop); } else running=false;
+  }
+  function kick(){ if(!running && !reduce){ running=true; requestAnimationFrame(loop); } }
+  zone.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse') return; var r=zone.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true; virt=false; kick(); });
+  zone.addEventListener('pointerleave',function(){ mouse.active=false; kick(); });
+  var coarse = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if(coarse && !reduce){ virt=true; }
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible) kick(); }).observe(zone); }
+  window.addEventListener('resize',function(){ build(); kick(); });
+  build(); kick();
+})();
+</script>
+
+<script>
+(function(){
+  var b=document.getElementById('copyLink'); if(!b) return;
+  b.addEventListener('click',function(){
+    var url=b.getAttribute('data-url');
+    function done(t){ b.textContent=t; setTimeout(function(){ b.textContent='Link kopieren'; },2200); }
+    function fallback(){ var r=document.createRange(); r.selectNodeContents(document.getElementById('referUrl')); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); done('Markiert, jetzt kopieren'); }
+    try{ navigator.clipboard.writeText(url).then(function(){ done('Kopiert'); },fallback); }catch(e){ fallback(); }
+  });
+})();
+</script>
+<dialog class="book" id="book" aria-label="Termin wählen">
+  <header><p><b>Nächsten Schritt klären</b><span> · 30 Minuten per Video</span></p><button class="x" type="button" data-close>Schließen <span aria-hidden="true">×</span></button></header>
+  <div class="frame"><p>Kalender lädt …</p></div>
+  <footer>Die Terminbuchung läuft über Google Kalender. Lieber per Mail: <a href="mailto:justus@weweler.co">justus@weweler.co</a></footer>
+</dialog>
+<script>
+(()=>{
+  const d=document.getElementById('book');if(!d||!d.showModal)return;
+  const SRC='https://calendar.google.com/calendar/appointments/schedules/AcZssZ15i3uDz-lYIv4BfL1gzwH23WUJxa2zpYApJYp9HRCJ1WYsIhIb3t-ENgOsb08lnleToMV5co23?gv=true';
+  let last=null;
+  const open=e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;
+    e.preventDefault();last=e.currentTarget;
+    const box=d.querySelector('.frame');
+    if(!box.querySelector('iframe')){const f=document.createElement('iframe');f.title='Termin buchen';f.src=SRC;f.onload=()=>f.classList.add('ready');box.appendChild(f)}
+    d.showModal();document.documentElement.classList.add('lock');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>d.classList.add('show')));
+  };
+  const close=()=>{
+    if(!d.open)return;d.classList.remove('show');
+    const done=()=>{d.close();document.documentElement.classList.remove('lock');last&&last.focus()};
+    matchMedia('(prefers-reduced-motion:reduce)').matches?done():setTimeout(done,380);
+  };
+  document.querySelectorAll('[data-book]').forEach(a=>a.addEventListener('click',open));
+  d.querySelector('[data-close]').addEventListener('click',close);
+  d.addEventListener('cancel',e=>{e.preventDefault();close()});
+  d.addEventListener('click',e=>{if(e.target===d)close()});
+})();
+</script>
 </body>
 </html>
