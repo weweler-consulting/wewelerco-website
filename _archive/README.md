@@ -14,6 +14,9 @@ Ordners (z. B. Impressum, Datenschutz) funktionieren im Archiv nicht mehr.
 | `beratung/` | `/beratung/emanuel-albert/` | Produktleiter, Emanuel Albert Coaching | 18.10.2026 |
 | `radtour-venedig-rom/` | `/radtour-venedig-rom/` | La Strada del Sud, privat | 18.10.2026 |
 | `ytp/` | `/ytp/` | YTP – Your Tax Pal, sechs Designrichtungen (intern) | 18.10.2026 |
+| `praxen-pipeline/` | Repo-Wurzel (`AGENT.md`, `agents/`, `leads/`, `scripts/`, `package.json`) | Lead-Pipeline für das Praxen-Angebot: Agenten-Anweisungen, Lead-Liste, Screenshot-Skript (Puppeteer) | 18.10.2026 |
 | `kanzlei/`, `ville/`, `wohnung-pankow/` | – | ältere Archivstände | vor 10/2026 |
+
+`wohnung-pankow/STAND.md` lag vorher unter `tasks/`.
 
 Wieder online stellen: Ordner zurück nach `public/` verschieben und auf `main` mergen.
