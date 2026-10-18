@@ -18,10 +18,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Surfer CLI
-        run: npm install -g cloudron-surfer
+        run: npm install -g @cloudron/surfer@7.2.0
 
       - name: Delete removed files from server
         run: |
@@ -38,7 +38,8 @@ jobs:
             echo "Deleting removed file: $SERVER_PATH"
             surfer del \
               --server ${{ secrets.SURFER_URL }} \
-              --token ${{ secrets.SURFER_TOKEN }} \
+              --username ${{ secrets.SURFER_USERNAME }} \
+              --password ${{ secrets.SURFER_PASSWORD }} \
               "$SERVER_PATH" 2>/dev/null || true
           done
 
@@ -46,5 +47,6 @@ jobs:
         run: |
           surfer put \
             --server ${{ secrets.SURFER_URL }} \
-            --token ${{ secrets.SURFER_TOKEN }} \
+            --username ${{ secrets.SURFER_USERNAME }} \
+            --password ${{ secrets.SURFER_PASSWORD }} \
             public/* /

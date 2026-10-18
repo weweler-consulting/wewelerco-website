@@ -20,10 +20,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Surfer CLI
-        run: npm install -g cloudron-surfer
+        run: npm install -g @cloudron/surfer@7.2.0
 
       - name: Deploy to preview subfolder
         id: deploy
@@ -34,7 +34,8 @@ jobs:
 
           surfer put \
             --server ${{ secrets.SURFER_URL }} \
-            --token ${{ secrets.SURFER_TOKEN }} \
+            --username ${{ secrets.SURFER_USERNAME }} \
+            --password ${{ secrets.SURFER_PASSWORD }} \
             --delete \
             public/* /preview/$SAFE_BRANCH/
 
@@ -94,17 +95,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Surfer CLI
-        run: npm install -g cloudron-surfer
+        run: npm install -g @cloudron/surfer@7.2.0
 
       - name: Delete preview subfolder
         run: |
           BRANCH="${{ github.event.pull_request.head.ref }}"
           SAFE_BRANCH=$(echo "$BRANCH" | sed 's/[^a-zA-Z0-9._-]/-/g' | tr '[:upper:]' '[:lower:]')
 
-          surfer del \
+          surfer del -r -y \
             --server ${{ secrets.SURFER_URL }} \
-            --token ${{ secrets.SURFER_TOKEN }} \
+            --username ${{ secrets.SURFER_USERNAME }} \
+            --password ${{ secrets.SURFER_PASSWORD }} \
             "/preview/$SAFE_BRANCH" 2>/dev/null || true
