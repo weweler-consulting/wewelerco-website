@@ -1,0 +1,88 @@
+/* =====================================================
+   Lennard Schnetzer — Praktikums-Landingpage
+   Base reset, hover states, responsive + language switch.
+   Layout is authored as inline styles in index.html
+   (ported 1:1 from the approved design); this file only
+   carries what inline styles can't express (:hover, media
+   queries, ::selection, .active state on the toggle).
+   ===================================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #ece3d4;
+  font-family: 'Work Sans', sans-serif;
+  color: #2a2419;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: #b0532e; text-decoration: none; }
+a:hover { color: #8f3f20; }
+
+::selection { background: #b0532e; color: #faf6ee; }
+
+/* --- Buttons / links with hover state (design used style-hover) --- */
+.btn-nav:hover            { background: #b0532e !important; color: #faf6ee !important; }
+.btn-primary:hover        { background: #8f3f20 !important; }
+.btn-secondary:hover      { border-color: #2a2419 !important; }
+.btn-contact-primary:hover{ background: #1c1710 !important; }
+.btn-contact-secondary:hover { border-color: #faf1e4 !important; }
+.contact-link:hover       { color: #ffffff !important; }
+
+/* --- Language switch (segmented pill) --- */
+.lang-switch {
+  display: flex;
+  border: 1px solid #cbbfa8;
+  border-radius: 999px;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+}
+.lang-switch button {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  color: #6b5c44;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+.lang-switch button.active { background: #2a2419; color: #f6efe1; }
+
+/* --- Hero: desktop split (text left, floating video card right) --- */
+.hero-video-wrap { position: relative; }
+/* backing card behind the video for depth */
+.hero-video-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -16px 16px;
+  border-radius: 22px;
+  background: #e4d8c2;
+  border: 1px solid #cbbfa8;
+  z-index: 0;
+  transform: rotate(1.4deg);
+}
+.hero-video-card {
+  z-index: 1;
+  transform: rotate(1.4deg);
+  box-shadow: 0 30px 60px -22px rgba(42, 36, 25, 0.5);
+}
+.hero-video-chip { z-index: 2; }
+
+/* --- Responsive: collapse multi-column grids on small screens --- */
+@media (max-width: 860px) {
+  .resp-2, .resp-3, .resp-about { grid-template-columns: 1fr !important; }
+  .resp-about .photo-slot { aspect-ratio: 3/2 !important; }
+
+  /* hero: back to stacked (video under the text), no tilt */
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-video-wrap { margin-top: 28px; }
+  .hero-video-wrap::before { display: none; }
+  .hero-video-card {
+    transform: none;
+    aspect-ratio: 16 / 9 !important;
+    box-shadow: 0 18px 40px -24px rgba(42, 36, 25, 0.45);
+  }
+  .hero-video-chip { left: 12px !important; bottom: -18px !important; }
+}

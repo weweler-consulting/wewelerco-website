@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>YTP — Your Tax Pal · 6 Designrichtungen (intern)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;900&amp;family=Archivo+Black&amp;family=Chivo+Mono:wght@400;700&amp;family=DM+Serif+Display&amp;family=Familjen+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&amp;family=Space+Grotesk:wght@500;700&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <p class="top-title"><b>YTP – Your Tax Pal</b> <span>· 6 Designrichtungen · intern, nicht indexiert</span></p>
+    <div class="top-right">
+      <p class="hint">Pfeiltasten ← → oder Zahlen 1–6</p>
+      <button class="ctl" type="button" id="cmp-toggle" aria-pressed="false">Alle 6 nebeneinander</button>
+      <button class="ctl" type="button" id="fb-toggle" aria-expanded="false" aria-controls="fb">Feedback</button>
+    </div>
+  </div>
+</header>
+
+<nav class="dirnav" aria-label="Designrichtungen">
+  <div class="dirnav-in" id="nav"></div>
+</nav>
+
+<div class="app">
+  <main class="main">
+    <div class="stage" id="stage" data-mode="single"></div>
+    <footer class="dirfoot" id="dirfoot"></footer>
+  </main>
+
+  <aside class="fb" id="fb" aria-label="Feedback" hidden>
+    <div class="fb-head">
+      <p class="fb-title">Feedback</p>
+      <p class="fb-note">Bewertung und Notiz je Richtung. Speicherung nur in diesem Browser, kein Backend, keine Anmeldung.</p>
+    </div>
+    <div id="fb-list"></div>
+    <div class="fb-actions">
+      <button class="ctl" type="button" id="fb-export">Notizen als Markdown exportieren</button>
+      <button class="ctl" type="button" id="fb-close">Spalte einklappen</button>
+      <p class="fb-status" id="fb-status" role="status"></p>
+    </div>
+  </aside>
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
