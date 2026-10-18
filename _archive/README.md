@@ -15,6 +15,7 @@ Ordners (z. B. Impressum, Datenschutz) funktionieren im Archiv nicht mehr.
 | `radtour-venedig-rom/` | `/radtour-venedig-rom/` | La Strada del Sud, privat | 18.10.2026 |
 | `ytp/` | `/ytp/` | YTP – Your Tax Pal, sechs Designrichtungen (intern) | 18.10.2026 |
 | `praxen-pipeline/` | Repo-Wurzel (`AGENT.md`, `agents/`, `leads/`, `scripts/`, `package.json`) | Lead-Pipeline für das Praxen-Angebot: Agenten-Anweisungen, Lead-Liste, Screenshot-Skript (Puppeteer) | 18.10.2026 |
+| `stephan-potting-website/` | `/stephan-potting-website/` (nur auf dem Server, nie im Repo) | Website-Entwurf Stephan Potting, Köln; am 18.10.2026 vom Server gesichert | 18.10.2026 |
 | `kanzlei/`, `ville/`, `wohnung-pankow/` | – | ältere Archivstände | vor 10/2026 |
 
 `wohnung-pankow/STAND.md` lag vorher unter `tasks/`.

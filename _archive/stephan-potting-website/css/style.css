@@ -1,0 +1,1117 @@
+/* ========================================
+   Stephan Potting – Psychotherapie & mehr
+   Premium Single-Page Website
+   ======================================== */
+
+/* --- Custom Properties --- */
+:root {
+  /* Colors */
+  --color-bg: #F5F0EB;
+  --color-bg-warm: #EDE6DD;
+  --color-bg-card: #FDFBF9;
+  --color-text: #2C2C2C;
+  --color-text-light: #6B6560;
+  --color-text-muted: #9A938C;
+  --color-accent: #8B9D83;
+  --color-accent-light: rgba(139, 157, 131, 0.12);
+  --color-cta: #B8836A;
+  --color-cta-hover: #A6745D;
+  --color-border: rgba(44, 44, 44, 0.08);
+  --color-border-medium: rgba(44, 44, 44, 0.15);
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+  --space-4xl: 12rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 72px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.7s;
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --- Focus Styles (Accessibility) --- */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+}
+
+p {
+  max-width: 62ch;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+}
+
+/* --- Utility --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- Scroll Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.35s; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  transition: background-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.nav.scrolled {
+  background-color: rgba(245, 240, 235, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+}
+
+.nav__name {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+}
+
+.nav__subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+.nav__link {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-light);
+  transition: color var(--duration-fast) var(--ease-out);
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--color-text);
+}
+
+.nav__link:hover::after,
+.nav__link.active::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--color-text);
+  transition: transform var(--duration-normal) var(--ease-out),
+              opacity var(--duration-fast);
+  transform-origin: center;
+}
+
+.nav__hamburger.open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.nav__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__hamburger.open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.nav__mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-bg);
+  z-index: 105;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.nav__mobile-menu.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav__mobile-menu a {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color var(--duration-fast);
+}
+
+.nav__mobile-menu a:hover {
+  color: var(--color-accent);
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(ellipse, var(--color-accent-light) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 40%;
+  height: 50%;
+  background: radial-gradient(ellipse, rgba(184, 131, 106, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-2xl) 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__label {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.8s var(--ease-out) 0.3s forwards;
+}
+
+.hero__headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 4.5vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: none;
+  margin-bottom: var(--space-md);
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 0.9s var(--ease-out) 0.5s forwards;
+}
+
+.hero__headline em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.hero__subtext {
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  color: var(--color-text-light);
+  max-width: 48ch;
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s var(--ease-out) 0.7s forwards;
+}
+
+.hero__cta {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.8s var(--ease-out) 0.9s forwards;
+}
+
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- CTA Button --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.9rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  border-radius: 2px;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.btn--primary {
+  background-color: var(--color-cta);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-cta-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(184, 131, 106, 0.25);
+}
+
+.btn--outline {
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-text);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn__arrow {
+  transition: transform var(--duration-fast) var(--ease-out);
+  font-size: 1.1em;
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(3px);
+}
+
+/* ========================================
+   SECTIONS – General
+   ======================================== */
+section {
+  padding: var(--space-3xl) 0;
+}
+
+.section__label {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.section__heading {
+  margin-bottom: var(--space-md);
+}
+
+.section__intro {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-xl);
+}
+
+.section__divider {
+  width: 48px;
+  height: 1px;
+  background-color: var(--color-accent);
+  margin-bottom: var(--space-lg);
+  border: none;
+}
+
+/* ========================================
+   PRAXIS
+   ======================================== */
+.praxis {
+  position: relative;
+}
+
+.praxis__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.praxis__text p {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+}
+
+.praxis__text p:first-of-type {
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+}
+
+.praxis__methods {
+  margin-top: var(--space-lg);
+}
+
+.praxis__methods-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.praxis__methods-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  list-style: none;
+}
+
+.praxis__methods-list li {
+  font-size: 0.82rem;
+  padding: 0.4rem 0.9rem;
+  background-color: var(--color-accent-light);
+  color: var(--color-text-light);
+  border-radius: 2px;
+}
+
+/* Praxis aside – decorative quote */
+.praxis__aside {
+  position: relative;
+  padding-left: var(--space-xl);
+  border-left: 1px solid var(--color-accent);
+}
+
+.praxis__quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.praxis__quote-source {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.praxis__aside-deco {
+  position: absolute;
+  top: -30px;
+  left: -12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-accent-light);
+  border: 1px solid rgba(139, 157, 131, 0.2);
+}
+
+/* ========================================
+   PSYCHOTHERAPIE
+   ======================================== */
+.therapie {
+  background-color: var(--color-bg-warm);
+  position: relative;
+}
+
+.therapie::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border-medium), transparent);
+}
+
+.therapie__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.therapie__card {
+  background-color: var(--color-bg-card);
+  padding: var(--space-xl);
+  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  transition: border-color var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.therapie__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background-color: var(--color-accent);
+  transition: height var(--duration-slow) var(--ease-out);
+}
+
+.therapie__card:hover {
+  border-color: rgba(139, 157, 131, 0.2);
+  box-shadow: 0 8px 40px rgba(44, 44, 44, 0.04);
+}
+
+.therapie__card:hover::before {
+  height: 100%;
+}
+
+.therapie__card-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.therapie__card h3 {
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.therapie__card p {
+  color: var(--color-text-light);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+}
+
+.therapie__card-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-sm);
+}
+
+.therapie__card-note::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ========================================
+   MEDIATION
+   ======================================== */
+.mediation {
+  position: relative;
+}
+
+.mediation__content {
+  max-width: 680px;
+}
+
+.mediation__quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  margin: var(--space-xl) 0;
+}
+
+.mediation__principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.mediation__principle {
+  position: relative;
+}
+
+.mediation__principle-number {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+  opacity: 0.5;
+}
+
+.mediation__principle h3 {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  font-family: var(--font-body);
+}
+
+.mediation__principle p {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.mediation__note {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  padding: var(--space-md);
+  background-color: var(--color-accent-light);
+  border-radius: 3px;
+  border-left: 2px solid var(--color-accent);
+}
+
+/* ========================================
+   ORGANISATIONSBERATUNG
+   ======================================== */
+.beratung {
+  background-color: var(--color-bg-warm);
+  position: relative;
+}
+
+.beratung::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-border-medium), transparent);
+}
+
+.beratung__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+}
+
+.beratung__text p {
+  color: var(--color-text-light);
+  margin-bottom: var(--space-md);
+}
+
+.beratung__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.beratung__deco {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.beratung__deco::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.beratung__deco::after {
+  content: '';
+  position: absolute;
+  inset: 30px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.beratung__deco-inner {
+  position: absolute;
+  inset: 60px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+
+/* ========================================
+   KONTAKT
+   ======================================== */
+.kontakt {
+  position: relative;
+}
+
+.kontakt__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  margin-top: var(--space-xl);
+}
+
+.kontakt__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.kontakt__group h3 {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.kontakt__group p,
+.kontakt__group a {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+.kontakt__group a {
+  transition: color var(--duration-fast);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-medium);
+  text-underline-offset: 3px;
+}
+
+.kontakt__group a:hover {
+  color: var(--color-cta);
+  text-decoration-color: var(--color-cta);
+}
+
+.kontakt__hint {
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  padding: var(--space-md);
+  background-color: var(--color-accent-light);
+  border-radius: 3px;
+  border-left: 2px solid var(--color-accent);
+  line-height: 1.6;
+}
+
+/* Map placeholder */
+.kontakt__map {
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  min-height: 360px;
+}
+
+.kontakt__map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
+  filter: saturate(0.6) contrast(1.05);
+  transition: filter var(--duration-normal);
+}
+
+.kontakt__map:hover iframe {
+  filter: saturate(0.85) contrast(1.05);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copy {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.footer__links a {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast);
+}
+
+.footer__links a:hover {
+  color: var(--color-text);
+}
+
+/* ========================================
+   RESPONSIVE – Tablet (max 900px)
+   ======================================== */
+@media (max-width: 900px) {
+  :root {
+    --space-3xl: 5rem;
+  }
+
+  /* Nav: Hamburger ab Tablet */
+  .nav__links {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+
+  .nav__mobile-menu {
+    display: flex;
+  }
+
+  /* Grids single column */
+  .praxis__grid,
+  .beratung__content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .praxis__aside {
+    padding-left: var(--space-lg);
+  }
+
+  .therapie__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mediation__principles {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .kontakt__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kontakt__map {
+    min-height: 280px;
+  }
+
+  .kontakt__map iframe {
+    min-height: 280px;
+  }
+
+  .beratung__visual {
+    display: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVE – Mobile (max 640px)
+   ======================================== */
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 60px;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    --space-3xl: 3.5rem;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  /* Hero: volle Höhe nutzen, Content vertikal zentrieren */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__content {
+    padding: var(--space-lg) 0 var(--space-xl);
+  }
+
+  .hero__label {
+    font-size: 0.68rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__headline {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    max-width: none;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtext {
+    font-size: 1rem;
+    max-width: none;
+    margin-bottom: var(--space-lg);
+  }
+
+  /* CTA volle Breite auf Mobile */
+  .hero__cta {
+    width: 100%;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Sektionen: weniger vertikales Padding */
+  section {
+    padding: var(--space-3xl) 0;
+  }
+
+  /* Section Headings größer auf Mobile */
+  h2 {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  /* Praxis */
+  .praxis__aside {
+    padding-left: var(--space-md);
+  }
+
+  .praxis__quote {
+    font-size: 1.25rem;
+  }
+
+  .praxis__methods-list {
+    gap: 0.4rem;
+  }
+
+  .praxis__methods-list li {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  /* Therapie Cards */
+  .therapie__card {
+    padding: var(--space-md);
+  }
+
+  .therapie__card h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Mediation Prinzipien: nebeneinander als kompakte Blöcke */
+  .mediation__principles {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .mediation__principle-number {
+    font-size: 1.8rem;
+  }
+
+  .mediation__quote {
+    font-size: 1.15rem;
+    padding: var(--space-md) 0;
+    margin: var(--space-lg) 0;
+  }
+
+  /* Kontakt */
+  .kontakt__map {
+    min-height: 240px;
+  }
+
+  .kontakt__map iframe {
+    min-height: 240px;
+  }
+
+  /* Footer */
+  .footer__inner {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
