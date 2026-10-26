@@ -6,6 +6,9 @@
   <title>Datenschutz · Weweler Consulting</title>
   <meta name="description" content="Datenschutzerklärung der Weweler Consulting S.L.">
   <link rel="canonical" href="https://weweler.co/datenschutz.html">
+  <link rel="alternate" hreflang="de" href="https://weweler.co/datenschutz.html">
+  <link rel="alternate" hreflang="en" href="https://weweler.co/en/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://weweler.co/datenschutz.html">
   <meta name="theme-color" content="#ffffff">
   <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -31,6 +34,12 @@ p{margin:0;max-width:60ch}
 .mark span{color:var(--muted);font-weight:400}
 .top a.back{text-decoration:none;color:var(--ink2);font-size:.95rem}
 .top a.back:hover{color:var(--ink)}
+.top .tr{display:flex;align-items:center;gap:24px}
+.lang{display:flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.08em;color:var(--hair)}
+.lang a,.lang span{text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--ink)}
+.lang [aria-current]{color:var(--ink)}
+@media (max-width:480px){.top{flex-wrap:wrap;row-gap:4px}.top .tr{display:contents}.top a.back{order:3;flex-basis:100%}}
 .intro{padding-block:clamp(56px,10vw,128px) clamp(48px,7vw,88px)}
 h1{margin:22px 0 0;font-weight:300;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.045em;max-width:14ch;text-wrap:balance}
 .lead{margin-top:28px;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink2);line-height:1.5}
@@ -59,7 +68,7 @@ footer a{color:var(--muted)}
 <div class="wrap">
   <header class="top">
     <a class="mark" href="unternehmen.html">Weweler Consulting</a>
-    <a class="back" href="index.html">KI-Transformation →</a>
+    <div class="tr"><a class="back" href="index.html">KI-Transformation →</a><span class="lang"><span aria-current="true">DE</span>/<a href="en/privacy.html" hreflang="en" lang="en" aria-label="English">EN</a></span></div>
   </header>
 
   <main>

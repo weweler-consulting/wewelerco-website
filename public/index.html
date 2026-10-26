@@ -6,6 +6,9 @@
   <title>Justus Weweler · KI-Transformation</title>
   <meta name="description" content="Justus Weweler übernimmt die KI-Transformation in eurer Firma, von der Struktur bis zur Umsetzung.">
   <link rel="canonical" href="https://weweler.co/">
+  <link rel="alternate" hreflang="de" href="https://weweler.co/">
+  <link rel="alternate" hreflang="en" href="https://weweler.co/en/">
+  <link rel="alternate" hreflang="x-default" href="https://weweler.co/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://weweler.co/">
   <meta property="og:title" content="Justus Weweler · KI-Transformation">
@@ -52,6 +55,11 @@ p{margin:0;max-width:60ch}
 .top nav a{text-decoration:none;color:var(--ink2)}
 .top nav a:hover{color:var(--ink)}
 .top nav a.cta{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:1px}
+.lang{display:flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.08em;color:var(--hair)}
+.lang a,.lang span{text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--ink)}
+.lang [aria-current]{color:var(--ink)}
+@media (max-width:480px){.mark span{display:none}}
 
 /* Hero */
 .hero{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);column-gap:56px;row-gap:0;align-items:start;padding-block:clamp(48px,9vw,120px) clamp(64px,9vw,120px)}
@@ -193,7 +201,7 @@ footer a{color:var(--muted)}
 @media (max-width:900px){
   .hero{grid-template-columns:minmax(0,1fr)}
   .hero .portrait{grid-column:1;grid-row:auto;margin-top:48px;max-width:360px}
-  .top nav a:not(.cta){display:none}
+  .top nav>a:not(.cta){display:none}
   .stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:start;align-items:start;gap:20px;padding-top:calc(72px + env(safe-area-inset-top,0px))}
   .stage .vizbox{order:-1}
   .viz{max-height:46svh;margin:0 auto}
@@ -260,6 +268,7 @@ html.lock{overflow:hidden}
       <a href="#team">KI-Team</a>
       <a href="#formate">Zusammenarbeit</a>
       <a class="cta" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Termin</a>
+      <span class="lang"><span aria-current="true">DE</span>/<a href="en/" hreflang="en" lang="en" aria-label="English">EN</a></span>
     </nav>
   </div>
 </header>
@@ -272,7 +281,7 @@ html.lock{overflow:hidden}
       <h1 id="h1"><span class="l">KI ist da.</span><span class="l">Was fehlt, ist</span><span class="l"><em class="s">Führung.</em></span></h1>
       <p class="lead">Ich führe eure KI-Transformation, von der Struktur bis zur Umsetzung: <b>welche Arbeit KI übernimmt, wer sie steuert, wie geprüft und gemessen wird.</b></p>
       <div class="actions">
-        <a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Nächsten Schritt klären <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Kostenloses Erstgespräch <span class="arr" aria-hidden="true">→</span></a>
         <a class="link" href="#team">Wie mein KI-Team arbeitet</a>
       </div>
     </div>
@@ -663,7 +672,7 @@ html.lock{overflow:hidden}
 })();
 </script>
 <dialog class="book" id="book" aria-label="Termin wählen">
-  <header><p><b>Nächsten Schritt klären</b><span> · 30 Minuten per Video</span></p><button class="x" type="button" data-close>Schließen <span aria-hidden="true">×</span></button></header>
+  <header><p><b>Kostenloses Erstgespräch</b><span> · 30 Minuten per Video</span></p><button class="x" type="button" data-close>Schließen <span aria-hidden="true">×</span></button></header>
   <div class="frame"><p>Kalender lädt …</p></div>
   <footer>Die Terminbuchung läuft über Google Kalender. Lieber per Mail: <a href="mailto:justus@weweler.co">justus@weweler.co</a></footer>
 </dialog>
