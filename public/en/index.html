@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Justus Weweler · AI Transformation</title>
+  <meta name="description" content="Justus Weweler leads the AI transformation in your company, from structure to execution.">
+  <link rel="canonical" href="https://weweler.co/en/">
+  <link rel="alternate" hreflang="de" href="https://weweler.co/">
+  <link rel="alternate" hreflang="en" href="https://weweler.co/en/">
+  <link rel="alternate" hreflang="x-default" href="https://weweler.co/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://weweler.co/en/">
+  <meta property="og:title" content="Justus Weweler · AI Transformation">
+  <meta property="og:description" content="Justus Weweler leads the AI transformation in your company, from structure to execution.">
+  <meta property="og:image" content="https://weweler.co/assets/img/justus-weweler.jpg">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preload" href="../assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Geist";font-style:normal;font-weight:300 600;font-display:swap;src:url("../assets/fonts/geist-latin.woff2") format("woff2")}
+/* Layout: weiße Fläche, große leichte Grotesk, Schlüsselwörter nur farbig in Rosenholz ausgezeichnet.
+   Zwei Scroll-Szenen (Problem, Lösung) mit fester Bühne; alles andere ruhig und linksbündig. Bewusst nur helles Erscheinungsbild. */
+:root{
+  --paper:#FFFFFF; --ink:#15171C; --ink2:#454A54; --muted:#8B9099; --hair:#E9E7E4; --hair2:#F3F1EE;
+  --rose:#A9604F; --rose-tint:#F7EEEA; --rose-line:#D9A99B;
+  --sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:1.0625rem;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+em.s{font-style:normal;color:var(--rose)}
+.label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+h1,h2,h3{margin:0;font-weight:300;text-wrap:balance}
+h2{font-size:clamp(2.2rem,5.2vw,4.4rem);line-height:1.02;letter-spacing:-.035em;max-width:18ch}
+h3{font-weight:500;font-size:1.15rem;letter-spacing:-.01em;line-height:1.3}
+p{margin:0;max-width:60ch}
+.sec{padding-block:clamp(80px,12vw,160px)}
+.rule{border-top:1px solid var(--hair)}
+
+/* Kopf */
+.topbar{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);transition:background-color .35s,box-shadow .35s}
+.topbar.scrolled{background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--hair)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px}
+.herozone{position:relative;overflow:hidden;margin-top:-72px;padding-top:72px}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.herozone .wrap{position:relative;z-index:1}
+.mark{font-weight:500;letter-spacing:-.01em;text-decoration:none;font-size:1rem}
+.mark span{color:var(--muted);font-weight:400}
+.top nav{display:flex;gap:28px;align-items:center;font-size:.95rem}
+.top nav a{text-decoration:none;color:var(--ink2)}
+.top nav a:hover{color:var(--ink)}
+.top nav a.cta{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:1px}
+.lang{display:flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.08em;color:var(--hair)}
+.lang a,.lang span{text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--ink)}
+.lang [aria-current]{color:var(--ink)}
+@media (max-width:480px){.mark span{display:none}}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);column-gap:56px;row-gap:0;align-items:start;padding-block:clamp(48px,9vw,120px) clamp(64px,9vw,120px)}
+.hero>*{min-width:0}
+.hero>div:first-child{display:contents}
+.hero .label,.hero h1,.hero .lead,.hero .actions{grid-column:1}
+.hero .portrait{grid-column:2;grid-row:2 / span 3;margin-top:calc(clamp(3.1rem,9.2vw,8.4rem) * .08)}
+.hero .label{margin-bottom:28px}
+.hero h1{font-size:clamp(3.1rem,9.2vw,8.4rem);line-height:.94;letter-spacing:-.05em}
+.hero h1 .l{display:block}
+.hero h1 em.s{position:relative;display:inline-block}
+.hero h1 svg.ul{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.28em;overflow:visible}
+.hero h1 svg.ul path{fill:none;stroke:var(--rose);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+.lead{font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.5;color:var(--ink2);margin-top:40px;max-width:36em;font-weight:300}
+.lead b{color:var(--ink);font-weight:400}
+.actions{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;text-decoration:none;padding:16px 26px;border-radius:999px;font-weight:500;font-size:1rem}
+.btn:hover{background:#000}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(3px)}
+.link{text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;color:var(--ink2)}
+.link:hover{border-color:var(--ink);color:var(--ink)}
+.portrait figure{margin:0}
+.portrait .ph{aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--hair2)}
+.portrait picture,.ph2 picture{display:block;width:100%;height:100%}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait figcaption{display:flex;justify-content:space-between;gap:12px;font-size:.85rem;color:var(--muted);margin-top:12px}
+.portrait figcaption b{color:var(--ink);font-weight:500}
+
+/* Szenen */
+.scene{position:relative}
+.scene .track{height:calc(var(--steps) * 85vh + 100vh)}
+.stage{position:sticky;top:0;height:100vh;height:100svh;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center}
+.stage>*{min-width:0}
+.scene-head{position:absolute;top:clamp(80px,10vw,130px);left:0;right:0}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:22px;counter-reset:st}
+.steps li{display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:4px 12px;color:var(--muted);transition:color .45s}
+.steps li .n{font-size:.8rem;letter-spacing:.08em;padding-top:.5em;font-variant-numeric:tabular-nums}
+.steps li h3{font-size:clamp(1.25rem,2vw,1.65rem);font-weight:400;letter-spacing:-.02em;color:inherit;transition:color .45s}
+.steps li p{grid-column:2;font-size:.98rem;line-height:1.55;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .45s}
+.steps li.on{color:var(--ink)}
+.steps li.on .n{color:var(--rose)}
+.steps li.on p{max-height:9em;opacity:1;color:var(--ink2)}
+.steps li.done{color:var(--ink2)}
+.viz{width:100%;height:auto;max-height:78vh;display:block}
+.viz text{font-family:var(--sans)}
+.viz .g{transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.viz .g.off{opacity:0;transform:translateY(8px)}
+.viz .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.1s cubic-bezier(.4,.1,.2,1)}
+.viz .on-draw .draw,.viz .g:not(.off) .draw{stroke-dashoffset:0}
+.viz .dim{transition:opacity .7s}
+.viz.focus .dim{opacity:.28}
+.viz .lead .ring{transition-delay:.75s;transition-duration:1.4s}
+
+/* Problemtext und Zahlen */
+.why{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end}
+.why>*{min-width:0}
+.why .body{font-size:1.2rem;font-weight:300;color:var(--ink2);line-height:1.55}
+.figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--ink)}
+.fig{padding:28px 28px 0 0;min-width:0}
+.fig+.fig{padding-left:28px;border-left:1px solid var(--hair)}
+.fig b{display:block;font-weight:300;font-size:clamp(3rem,6vw,5.2rem);line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.fig b small{font-size:.38em;letter-spacing:-.01em;color:var(--muted);font-weight:400;margin:0 .2em}
+.fig p{margin-top:14px;color:var(--ink2);font-size:.98rem}
+.fig cite{display:block;margin-top:10px;font-style:normal;font-size:.8rem;color:var(--muted)}
+.fig cite a{color:var(--muted)}
+.closing{margin-top:clamp(56px,7vw,96px);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-.025em;line-height:1.2;max-width:24ch}
+
+/* Aufgaben */
+.tasks{list-style:none;margin:clamp(48px,6vw,80px) 0 0;padding:0;border-top:1px solid var(--ink)}
+.task{display:grid;grid-template-columns:3.4rem minmax(0,6fr) minmax(0,5fr);gap:14px 48px;padding:44px 0 46px;border-bottom:1px solid var(--hair);align-items:start}
+.task>*{min-width:0}
+.tn{font-size:.82rem;letter-spacing:.08em;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1.05em;transition:color .6s}
+.task h3{font-size:clamp(2rem,4.4vw,3.7rem);font-weight:300;letter-spacing:-.048em;line-height:1;color:#C2C5CB;transition:color .7s ease}
+.task.lit h3,.task:hover h3{color:var(--ink)}
+.task.lit .tn{color:var(--rose)}
+.td{padding-top:.5em}
+.td p{color:var(--ink2);font-size:1.06rem;line-height:1.6}
+.td .out{margin-top:18px;padding-top:14px;border-top:1px solid var(--hair2);color:var(--ink);font-size:.98rem;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.td .out span{flex:none;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);font-weight:500}
+
+/* Lehren */
+.lessons{list-style:none;margin:clamp(48px,6vw,80px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--ink)}
+.lessons li{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:12px 56px;padding:34px 0;border-bottom:1px solid var(--hair)}
+.lessons li>*{min-width:0}
+.lessons .q{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:300;letter-spacing:-.025em;line-height:1.2}
+.lessons .a{color:var(--ink2);font-size:1.05rem;padding-top:.4em}
+.lessons .a b{display:block;color:var(--rose);font-weight:500;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+
+/* Formate */
+.formats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--ink)}
+.format{padding:30px 32px 8px 0;min-width:0;display:flex;flex-direction:column;gap:12px}
+.format+.format{padding-left:32px;border-left:1px solid var(--hair)}
+.format .who{font-size:.85rem;color:var(--muted)}
+.format h3{font-size:clamp(1.4rem,2.2vw,1.8rem);font-weight:300;letter-spacing:-.025em}
+.format p{color:var(--ink2);font-size:1rem}
+.format .size{font-size:.92rem;color:var(--ink);margin-top:auto;padding-top:10px}
+.note{margin-top:28px;color:var(--muted);font-size:.95rem}
+
+/* Über mich */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.about>*{min-width:0}
+.facts{list-style:none;padding:0;margin:36px 0 0;border-top:1px solid var(--hair)}
+.facts li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--hair);font-size:1rem}
+.facts li span{color:var(--muted)}
+
+.ph2{margin-top:40px;aspect-ratio:4/5;max-width:380px;overflow:hidden;border-radius:2px;background:var(--hair2)}
+.ph2 img{width:100%;height:100%;object-fit:cover}
+.gains{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.gains li{padding:30px 0;border-bottom:1px solid var(--hair)}
+.gains .g1{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:300;letter-spacing:-.025em;line-height:1.2}
+.gains .g2{margin-top:10px;color:var(--ink2);font-size:1.05rem}
+.gains .g2 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rose-line)}
+.gains .g2 a:hover{border-color:var(--rose)}
+
+/* Fragen */
+.faq{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--ink);max-width:880px}
+details{border-bottom:1px solid var(--hair);padding:22px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-size:1.2rem;font-weight:400;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--rose);font-weight:300;font-size:1.4rem;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:12px;color:var(--ink2)}
+
+/* Schluss */
+.final{padding-block:clamp(96px,14vw,180px);border-top:1px solid var(--hair)}
+.final h2{font-size:clamp(2.6rem,7vw,6rem);max-width:14ch}
+.final p{margin-top:28px;font-size:1.2rem;color:var(--ink2);font-weight:300}
+.mail{margin-top:18px;color:var(--muted);font-size:.95rem}
+.refer{margin-top:clamp(64px,8vw,104px);padding-top:28px;border-top:1px solid var(--hair);display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 24px}
+.refer p{color:var(--ink2);font-size:1.05rem;max-width:40ch}
+.link-btn{font:inherit;font-size:.95rem;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--ink);padding:0 0 2px;cursor:pointer}
+.link-btn:hover{color:var(--rose);border-color:var(--rose)}
+.refer-url{color:var(--muted);font-size:.9rem;user-select:all}
+footer{border-top:1px solid var(--hair);padding-block:28px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--muted)}
+
+/* schmal */
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero .portrait{grid-column:1;grid-row:auto;margin-top:48px;max-width:360px}
+  .top nav>a:not(.cta){display:none}
+  .stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:start;align-items:start;gap:20px;padding-top:calc(72px + env(safe-area-inset-top,0px))}
+  .stage .vizbox{order:-1}
+  .viz{max-height:46svh;margin:0 auto}
+  .steps{gap:10px}
+  .steps li:not(.on){display:none}
+  .steps li.on p{max-height:none}
+  .why,.about{grid-template-columns:minmax(0,1fr);gap:32px}
+  .figs,.formats{grid-template-columns:minmax(0,1fr)}
+  .fig,.format{padding:24px 0 8px}
+  .fig+.fig,.format+.format{padding-left:0;border-left:0;border-top:1px solid var(--hair)}
+  .lessons li{grid-template-columns:minmax(0,1fr)}
+  .task{grid-template-columns:2.4rem minmax(0,1fr);padding:32px 0 34px}
+  .td{grid-column:2}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 .l{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+  .hero h1 .l:nth-child(2){animation-delay:.12s}
+  .hero h1 .l:nth-child(3){animation-delay:.24s}
+  .hero .lead,.hero .actions{animation:rise 1s .36s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:.15;transform:translateY(.35em)}to{opacity:1;transform:none}}
+}
+.book{border:0;padding:0;margin:auto;width:min(980px,calc(100vw - 48px));height:min(780px,calc(100dvh - 48px));max-width:none;max-height:none;border-radius:6px;background:var(--paper);color:var(--ink);box-shadow:0 30px 80px -20px rgba(21,23,28,.35);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(28px) scale(.985);transition:opacity .35s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.book:not([open]){display:none}
+.book.show{opacity:1;transform:none}
+.book::backdrop{background:rgba(21,23,28,0);transition:background .35s ease}
+.book.show::backdrop{background:rgba(21,23,28,.38);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.book header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--hair)}
+.book header p{margin:0;font-size:.95rem;color:var(--ink2)}
+.book header b{font-weight:500;color:var(--ink)}
+.book .x{appearance:none;border:0;background:none;font:inherit;font-size:.9rem;color:var(--ink2);cursor:pointer;display:inline-flex;gap:10px;align-items:center;padding:8px 0}
+.book .x span{font-size:1.4rem;line-height:1;color:var(--ink)}
+.book .x:hover{color:var(--ink)}
+.book .frame{position:relative;flex:1;background:var(--hair2)}
+.book .frame p{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--muted);font-size:.95rem}
+.book iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;opacity:0;transition:opacity .4s}
+.book iframe.ready{opacity:1;background:var(--paper)}
+.book footer{display:block;border:0;padding:12px 24px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--hair)}
+.book footer a{color:var(--ink2)}
+html.lock{overflow:hidden}
+@media (max-width:720px){
+  .book{width:100vw;height:94dvh;margin:auto 0 0;border-radius:14px 14px 0 0;transform:translateY(100%)}
+  .book.show{transform:none}
+  .book header{padding:14px 18px}
+  .book header p span{display:none}
+  .book footer{padding:10px 18px}
+}
+@media (prefers-reduced-motion:reduce){.book,.book::backdrop{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  .viz .g,.viz .draw,.steps li p,.steps li{transition:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1 svg.ul path{animation:ul 1.4s .5s cubic-bezier(.6,.1,.2,1) both}
+  @keyframes ul{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+}
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="wrap top">
+    <a class="mark" href="#">Justus Weweler <span>· AI Transformation</span></a>
+    <nav aria-label="Page sections">
+      <a href="#problem">Situation</a>
+      <a href="#rolle">Role</a>
+      <a href="#team">AI team</a>
+      <a href="#formate">Working together</a>
+      <a class="cta" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Book a call</a>
+      <span class="lang"><a href="../" hreflang="de" lang="de" aria-label="Deutsch">DE</a>/<span aria-current="true">EN</span></span>
+    </nav>
+  </div>
+</header>
+<div class="herozone">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap">
+  <section class="hero" aria-labelledby="h1">
+    <div>
+      <p class="label">AI Transformation · Head of AI</p>
+      <h1 id="h1"><span class="l">AI is here.</span><span class="l">What’s missing is</span><span class="l"><em class="s">leadership.</em></span></h1>
+      <p class="lead">I lead your AI transformation, from structure to execution: <b>which work AI takes over, who steers it, how it gets checked and measured.</b></p>
+      <div class="actions">
+        <a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Find your next step <span class="arr" aria-hidden="true">→</span></a>
+        <a class="link" href="#team">How my AI team works</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <figure>
+        <div class="ph"><picture><source type="image/webp" srcset="../assets/img/justus-weweler-600.webp 600w, ../assets/img/justus-weweler.webp 1000w" sizes="(max-width:900px) 360px, 34vw"><img src="../assets/img/justus-weweler-600.jpg" srcset="../assets/img/justus-weweler-600.jpg 600w, ../assets/img/justus-weweler.jpg 1000w" sizes="(max-width:900px) 360px, 34vw" width="600" height="750" alt="Portrait of Justus Weweler"></picture></div>
+        <figcaption><b>Justus Weweler</b><span>Founder · Managing Director</span></figcaption>
+      </figure>
+    </div>
+  </section>
+  </div>
+</div>
+
+<!-- Szene 1: Problem -->
+<section class="scene rule" id="problem" data-scene="p" style="--steps:4" aria-label="The situation in many companies">
+  <div class="track">
+    <div class="stage wrap">
+      <div>
+        <p class="label" style="margin-bottom:28px">Sound familiar?</p>
+        <ol class="steps">
+          <li data-i="0"><span class="n">01</span><h3>A bit of AI everywhere. Nothing holding it together.</h3><p>Everyone uses their own tools and skills. It’s patchwork, and AI delivers only a fraction of what it could.</p></li>
+          <li data-i="1"><span class="n">02</span><h3>Nobody measures.</h3><p>Nobody knows whether it pays off. Your people end up with more work rather than less, because everything has to be double-checked.</p></li>
+          <li data-i="2"><span class="n">03</span><h3>And next come agents.</h3><p>AI that completes tasks on its own. Who checks it then? Who decides what it may do and which data it sees?</p></li>
+          <li data-i="3"><span class="n">04</span><h3>And nobody leads.</h3><p>This isn’t a tool problem. What’s missing is someone who sets the pace.</p></li>
+        </ol>
+      </div>
+      <div class="vizbox">
+        <svg class="viz" id="vizP" viewBox="0 0 600 520" role="img" aria-label="Diagram: people with their own AI tools, unconnected agents, and an empty spot for leadership in the middle">
+          <!-- Menschen und ihre Werkzeuge -->
+          <g class="g dim" data-s="0">
+            <g stroke="var(--hair)" stroke-width="1"><line x1="96" y1="96" x2="138" y2="70"/><line x1="250" y1="70" x2="292" y2="44"/><line x1="430" y1="98" x2="472" y2="130"/><line x1="78" y1="250" x2="40" y2="286"/><line x1="520" y1="246" x2="560" y2="210"/><line x1="120" y1="400" x2="160" y2="436"/><line x1="300" y1="430" x2="258" y2="468"/><line x1="470" y1="400" x2="512" y2="440"/></g>
+            <g fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4">
+              <circle cx="96" cy="96" r="13"/><circle cx="250" cy="70" r="13"/><circle cx="430" cy="98" r="13"/><circle cx="78" cy="250" r="13"/><circle cx="520" cy="246" r="13"/><circle cx="120" cy="400" r="13"/><circle cx="300" cy="430" r="13"/><circle cx="470" cy="400" r="13"/>
+            </g>
+            <g fill="var(--rose-tint)" stroke="var(--rose-line)" stroke-width="1.2">
+              <rect x="132" y="62" width="14" height="14" rx="2"/><path d="M292 34 l9 16 h-18z"/><circle cx="476" cy="134" r="7"/><rect x="32" y="282" width="14" height="14" rx="7"/><path d="M560 202 l8 8 -8 8 -8 -8z"/><rect x="154" y="430" width="14" height="14" rx="2"/><path d="M258 458 l9 16 h-18z"/><circle cx="516" cy="444" r="7"/>
+            </g>
+          </g>
+          <!-- Niemand misst -->
+          <g class="g off dim" data-s="1">
+            <g font-size="14" fill="var(--rose-line)">
+              <text x="110" y="128">?</text><text x="262" y="102">?</text><text x="444" y="78">?</text><text x="90" y="226">?</text><text x="532" y="280">?</text><text x="134" y="380">?</text><text x="316" y="410">?</text><text x="482" y="380">?</text>
+            </g>
+            <line x1="40" y1="500" x2="560" y2="500" stroke="var(--hair)" stroke-width="1"/>
+            <line x1="40" y1="500" x2="560" y2="500" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 6"/>
+            <text x="40" y="490" font-size="11" fill="var(--muted)" letter-spacing="1.4">IMPACT PER MONTH</text>
+            <text x="560" y="490" font-size="11" fill="var(--muted)" text-anchor="end">not measured</text>
+          </g>
+          <!-- Agenten kommen dazu -->
+          <g class="g off dim" data-s="2">
+            <g fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="2 5">
+              <path class="draw" pathLength="1" d="M190 170 C 260 120, 340 300, 410 190"/>
+              <path class="draw" pathLength="1" d="M190 170 C 120 260, 220 330, 300 430"/>
+              <path class="draw" pathLength="1" d="M410 190 C 470 260, 360 300, 470 400"/>
+              <path class="draw" pathLength="1" d="M190 330 C 260 380, 420 360, 410 190"/>
+              <path class="draw" pathLength="1" d="M190 330 C 140 300, 110 200, 96 96"/>
+              <path class="draw" pathLength="1" d="M410 330 C 520 300, 540 280, 520 246"/>
+            </g>
+            <g fill="var(--ink)">
+              <rect x="180" y="160" width="20" height="20" rx="4"/><rect x="400" y="180" width="20" height="20" rx="4"/><rect x="180" y="320" width="20" height="20" rx="4"/><rect x="400" y="320" width="20" height="20" rx="4"/>
+            </g>
+            <g fill="var(--paper)"><circle cx="190" cy="170" r="3"/><circle cx="410" cy="190" r="3"/><circle cx="190" cy="330" r="3"/><circle cx="410" cy="330" r="3"/></g>
+          </g>
+          <!-- Keiner führt -->
+          <g class="g off lead" data-s="3">
+            <defs><radialGradient id="void"><stop offset="0" stop-color="var(--paper)"/><stop offset=".8" stop-color="var(--paper)"/><stop offset="1" stop-color="var(--paper)" stop-opacity="0"/></radialGradient></defs>
+            <circle cx="300" cy="258" r="102" fill="url(#void)"/>
+            <g fill="none" stroke="var(--rose-line)" stroke-width=".9">
+              <path class="draw" pathLength="1" style="transition-delay:0.15s" d="M111.7 108.4 L218.6 193.3"/><path class="draw" pathLength="1" style="transition-delay:0.21s" d="M255.1 89.3 L273.3 157.5"/><path class="draw" pathLength="1" style="transition-delay:0.27s" d="M417.4 113.5 L365.6 177.3"/><path class="draw" pathLength="1" style="transition-delay:0.33s" d="M98.0 250.7 L196.1 254.3"/><path class="draw" pathLength="1" style="transition-delay:0.39s" d="M500.0 247.1 L403.8 252.3"/><path class="draw" pathLength="1" style="transition-delay:0.45s" d="M135.7 387.6 L218.3 322.4"/><path class="draw" pathLength="1" style="transition-delay:0.51s" d="M300.0 410.0 L300.0 362.0"/><path class="draw" pathLength="1" style="transition-delay:0.57s" d="M454.7 387.2 L379.8 324.7"/>
+            </g>
+            <circle class="draw ring" pathLength="1" cx="300" cy="258" r="30" fill="var(--paper)" stroke="var(--rose)" stroke-width="1.3" transform="rotate(-90 300 258)"/>
+            <g stroke="var(--rose)" stroke-width="1"><line x1="300" y1="216" x2="300" y2="222"/><line x1="300" y1="294" x2="300" y2="300"/><line x1="258" y1="258" x2="264" y2="258"/><line x1="336" y1="258" x2="342" y2="258"/></g>
+            <text x="300" y="318" text-anchor="middle" font-size="11" fill="var(--rose)" letter-spacing="1.6">LEADERSHIP</text>
+            <text x="300" y="336" text-anchor="middle" font-size="13" fill="var(--muted)">vacant</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec rule">
+    <div class="why">
+      <div>
+        <p class="label" style="margin-bottom:28px">Why it’s stuck</p>
+        <h2>Your people work with AI now. <em class="s">Who leads them?</em></h2>
+      </div>
+      <p class="body">Work is shifting from “doing it yourself” to “delegating, checking, deciding”. That is leadership work. Hardly anyone has learned it, and in most companies nobody is responsible for it.</p>
+    </div>
+    <div class="figs">
+      <div class="fig"><b><span class="cnt" data-to="59">59</span><small>%</small></b><p>of German companies that use AI don’t tap into its potential at all.</p><cite><a href="https://www.bitkom.org/Presse/Presseinformation/Erstmals-nutzt-Mehrheit-Unternehmen-KI" target="_blank" rel="noopener">Bitkom 2026</a></cite></div>
+      <div class="fig"><b><span class="cnt" data-to="66">66</span><small>%</small></b><p>rate their employees’ AI skills as low.</p><cite><a href="https://www.bitkom.org/Presse/Presseinformation/Erstmals-nutzt-Mehrheit-Unternehmen-KI" target="_blank" rel="noopener">Bitkom 2026</a></cite></div>
+      <div class="fig"><b><span class="cnt" data-to="47">47</span><small>vs</small><span class="cnt" data-to="10">10</span><small>%</small></b><p>That’s how many employees use AI when their employer encourages it, compared to when it doesn’t. Even without training or provided tools.</p><cite><a href="https://www.iwkoeln.de/fileadmin/user_upload/Studien/Kurzberichte/PDF/2026/IW-Kurzbericht_2026-Schatten-KI.pdf" target="_blank" rel="noopener">IW 2026, based on Bick et al.</a></cite></div>
+    </div>
+    <p class="closing">The problem isn’t a tool. What’s missing is someone who sets the <em class="s">pace</em>.</p>
+  </section>
+
+  <section class="sec rule" id="rolle">
+    <p class="label" style="margin-bottom:28px">The role</p>
+    <h2>What AI transformation <em class="s">means</em> for you</h2>
+    <p style="margin-top:28px;font-size:1.2rem;font-weight:300;color:var(--ink2);line-height:1.55;max-width:44em">My craft is <span style="color:var(--ink)">orchestration</span>: setting up people and AI agents so that everyone does what they do best, and someone sets the pace.</p>
+    <ol class="tasks">
+      <li class="task"><span class="tn">01</span><h3>Mandate and priorities</h3><div class="td"><p>Agree with management on the five workflows that deliver the most. Across departments.</p><p class="out"><span>Outcome</span>Five workflows, signed off by management</p></div></li>
+      <li class="task"><span class="tn">02</span><h3>Redistribute the work</h3><div class="td"><p>For each workflow, decide: what AI takes over, where a human checks, what stays with people. Then rebuild it, together with the people who do the work.</p><p class="out"><span>Outcome</span>Clear for every workflow: AI, review, human</p></div></li>
+      <li class="task"><span class="tn">03</span><h3>Enable people</h3><div class="td"><p>Your people learn to brief AI and check its results. One accountable person in every area. If you already have an AI manager, I lead them instead of replacing them.</p><p class="out"><span>Outcome</span>One accountable person in every area</p></div></li>
+      <li class="task"><span class="tn">04</span><h3>Rules and oversight</h3><div class="td"><p>Which data may go where, who approves what, who checks the results. Aligned with IT and data protection.</p><p class="out"><span>Outcome</span>Written rules everyone knows</p></div></li>
+      <li class="task"><span class="tn">05</span><h3>Measure</h3><div class="td"><p>Every workflow gets a number before and after. Every month, a short report to management.</p><p class="out"><span>Outcome</span>One number before, one after, every month</p></div></li>
+    </ol>
+  </section>
+</div>
+
+<!-- Szene 2: Lösung -->
+<section class="scene rule" id="team" data-scene="s" style="--steps:5" aria-label="How a well-led AI team works">
+  <div class="track">
+    <div class="stage wrap">
+      <div>
+        <p class="label" style="margin-bottom:28px">How my AI team works</p>
+        <ol class="steps">
+          <li data-i="0"><span class="n">01</span><h3>A human decides.</h3><p>Agents prepare, humans decide. No agent talks to customers.</p></li>
+          <li data-i="1"><span class="n">02</span><h3>Every task has exactly one role.</h3><p>Orchestration hands each task to exactly one agent, with a role description, rules and memory.</p></li>
+          <li data-i="2"><span class="n">03</span><h3>Whoever creates doesn’t review.</h3><p>Important drafts go through a separate review role before a human sees them.</p></li>
+          <li data-i="3"><span class="n">04</span><h3>Every morning, five decisions at most.</h3><p>An oversight role bundles what’s open and presents it with a finished draft.</p></li>
+          <li data-i="4"><span class="n">05</span><h3>Every fact has a source.</h3><p>Sensitive data passes through a gateway. Whatever is missing gets asked for, not made up.</p></li>
+        </ol>
+        <p class="note" style="margin-top:36px">A simplified model of my own AI team. In our first call I’ll show you a demo setup live.</p>
+      </div>
+      <div class="vizbox">
+        <svg class="viz" id="vizS" viewBox="0 0 640 600" role="img" aria-label="Org chart of a well-led AI team: customers only talk to the human. The human steers the orchestration, which assigns tasks to six agents. A review role checks drafts, an oversight role presents decisions each morning. Inbox with a data gateway and sources of truth.">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9" fill="none" stroke="context-stroke" stroke-width="1.4"/></marker></defs>
+          <!-- 0: Kunden + Mensch -->
+          <g class="g" data-s="0">
+            <rect x="230" y="14" width="180" height="40" rx="2" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4"/>
+            <text x="320" y="39" text-anchor="middle" font-size="13" fill="var(--ink2)">Customers</text>
+            <line class="draw" pathLength="1" x1="320" y1="56" x2="320" y2="92" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)" marker-start="url(#ar)"/>
+            <text x="332" y="79" font-size="10.5" fill="var(--muted)">human to human only</text>
+            <rect x="220" y="96" width="200" height="54" rx="2" fill="var(--rose-tint)" stroke="var(--rose)" stroke-width="1.3"/>
+            <text x="320" y="120" text-anchor="middle" font-size="15" font-weight="500" fill="var(--ink)">Human</text>
+            <text x="320" y="138" text-anchor="middle" font-size="11" fill="var(--ink2)">decides and approves</text>
+          </g>
+          <!-- 1: Orchestrierung + Agenten -->
+          <g class="g off" data-s="1">
+            <line class="draw" pathLength="1" x1="320" y1="152" x2="320" y2="196" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)" marker-start="url(#ar)"/>
+            <rect x="230" y="200" width="180" height="58" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.3"/>
+            <text x="320" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Orchestration</text>
+            <text x="320" y="242" text-anchor="middle" font-size="10.5" fill="var(--ink2)">one task, one agent</text>
+            <path class="draw" pathLength="1" d="M320 258 V 296 M 62 296 H 578" stroke="var(--ink)" stroke-width="1.2" fill="none"/>
+            <g stroke="var(--ink)" stroke-width="1.2"><line x1="62" y1="296" x2="62" y2="316" marker-end="url(#ar)"/><line x1="165" y1="296" x2="165" y2="316" marker-end="url(#ar)"/><line x1="268" y1="296" x2="268" y2="316" marker-end="url(#ar)"/><line x1="372" y1="296" x2="372" y2="316" marker-end="url(#ar)"/><line x1="475" y1="296" x2="475" y2="316" marker-end="url(#ar)"/><line x1="578" y1="296" x2="578" y2="316" marker-end="url(#ar)"/></g>
+            <rect x="14" y="330" width="306" height="96" rx="2" fill="none" stroke="var(--rose-line)" stroke-width="1" stroke-dasharray="2 4"/>
+            <text x="22" y="418" font-size="9.5" letter-spacing="1.3" fill="var(--rose)">REVENUE CHAIN · COMES FIRST</text>
+            <g fill="var(--paper)" stroke="var(--ink)" stroke-width="1.2">
+              <rect x="22" y="320" width="80" height="62" rx="2"/><rect x="125" y="320" width="80" height="62" rx="2"/><rect x="228" y="320" width="80" height="62" rx="2"/><rect x="332" y="320" width="80" height="62" rx="2"/><rect x="435" y="320" width="80" height="62" rx="2"/><rect x="538" y="320" width="80" height="62" rx="2"/>
+            </g>
+            <g fill="var(--ink)"><rect x="56" y="332" width="12" height="12" rx="3"/><rect x="159" y="332" width="12" height="12" rx="3"/><rect x="262" y="332" width="12" height="12" rx="3"/><rect x="366" y="332" width="12" height="12" rx="3"/><rect x="469" y="332" width="12" height="12" rx="3"/><rect x="572" y="332" width="12" height="12" rx="3"/></g>
+            <g font-size="11" text-anchor="middle" fill="var(--ink)"><text x="62" y="364">Sales</text><text x="165" y="364">Accounts</text><text x="268" y="364">Delivery</text><text x="372" y="364">Content</text><text x="475" y="364">Research</text><text x="578" y="364">Admin</text></g>
+            <g font-size="9.5" text-anchor="middle" fill="var(--muted)"><text x="62" y="376">until signed</text><text x="165" y="376">after signing</text><text x="268" y="376">projects</text><text x="372" y="376">copy</text><text x="475" y="376">market</text><text x="578" y="376">deadlines</text></g>
+          </g>
+          <!-- 2: Prüfung -->
+          <g class="g off" data-s="2">
+            <rect x="470" y="200" width="150" height="58" rx="2" fill="var(--paper)" stroke="var(--rose)" stroke-width="1.3" stroke-dasharray="5 3"/>
+            <text x="545" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Review</text>
+            <text x="545" y="242" text-anchor="middle" font-size="10.5" fill="var(--ink2)">creates nothing itself</text>
+            <path class="draw" pathLength="1" d="M495 318 C 495 290, 520 280, 530 262" fill="none" stroke="var(--rose)" stroke-width="1.2" stroke-dasharray="1" marker-end="url(#ar)"/>
+            <path class="draw" pathLength="1" d="M545 198 C 545 150, 500 124, 424 124" fill="none" stroke="var(--rose)" stroke-width="1.2" marker-end="url(#ar)"/>
+            <text x="618" y="112" text-anchor="end" font-size="10.5" fill="var(--rose)">reviewed, with verdict</text>
+          </g>
+          <!-- 3: Aufsicht -->
+          <g class="g off" data-s="3">
+            <rect x="20" y="200" width="150" height="58" rx="2" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.3"/>
+            <text x="95" y="224" text-anchor="middle" font-size="14" font-weight="500" fill="var(--ink)">Oversight</text>
+            <text x="95" y="242" text-anchor="middle" font-size="10.5" fill="var(--ink2)">promises, deadlines, gaps</text>
+            <path class="draw" pathLength="1" d="M95 198 C 95 150, 140 124, 216 124" fill="none" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)"/>
+            <text x="22" y="112" font-size="10.5" fill="var(--ink2)">max. 5 decisions each morning</text>
+          </g>
+          <!-- 4: Eingang, Schleuse, Quellen -->
+          <g class="g off" data-s="4">
+            <rect x="22" y="452" width="150" height="46" rx="2" fill="none" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4"/>
+            <text x="97" y="480" text-anchor="middle" font-size="12" fill="var(--ink2)">Inbox</text>
+            <line class="draw" pathLength="1" x1="174" y1="475" x2="232" y2="475" stroke="var(--ink)" stroke-width="1.2" marker-end="url(#ar)"/>
+            <rect x="236" y="452" width="168" height="46" rx="2" fill="var(--rose-tint)" stroke="var(--rose)" stroke-width="1.2"/>
+            <text x="320" y="472" text-anchor="middle" font-size="12" font-weight="500" fill="var(--ink)">Gateway</text>
+            <text x="320" y="488" text-anchor="middle" font-size="10" fill="var(--ink2)">sensitive data stays out</text>
+            <path class="draw" pathLength="1" d="M320 450 V 388" stroke="var(--ink)" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+            <line x1="22" y1="530" x2="618" y2="530" stroke="var(--hair)" stroke-width="1"/>
+            <g fill="var(--hair2)" stroke="var(--hair)"><rect x="22" y="544" width="184" height="40" rx="2"/><rect x="228" y="544" width="184" height="40" rx="2"/><rect x="434" y="544" width="184" height="40" rx="2"/></g>
+            <g font-size="11" text-anchor="middle" fill="var(--ink2)"><text x="114" y="568">Sales &amp; customers</text><text x="320" y="568">Projects &amp; tech</text><text x="526" y="568">Rules &amp; memory</text></g>
+            <text x="618" y="522" text-anchor="end" font-size="10" letter-spacing="1.2" fill="var(--muted)">SOURCES OF TRUTH · ONE PER FACT</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec rule" id="lehren">
+    <p class="label" style="margin-bottom:28px">What I’ve learned</p>
+    <h2>I lead a team of AI agents myself. The mistakes your teams are making right now, <em class="s">I’ve already made.</em></h2>
+    <ol class="lessons">
+      <li><p class="q">Agents make things up when the briefing demands it.</p><p class="a"><b>Rule</b>Ask for “a real example” without supplying one, and you’ll get one invented. Every briefing needs a truth condition.</p></li>
+      <li><p class="q">A gap quickly turns into a claim.</p><p class="a"><b>Rule</b>“There’s nothing on this in the data” becomes “this doesn’t exist”. Something missing is a follow-up question, not a result.</p></li>
+      <li><p class="q">Under time pressure, rubber-stamping wins.</p><p class="a"><b>Rule</b>Whoever creates doesn’t review. Reviewing is a role of its own.</p></li>
+      <li><p class="q">Polishing doesn’t make texts better.</p><p class="a"><b>Rule</b>Every extra round sounded more like a machine. From the third round without new content, a human decides.</p></li>
+      <li><p class="q">In the end, the bottleneck is the human who has to decide.</p><p class="a"><b>Rule</b>Decisions need a fixed place and a fixed rhythm.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec rule" id="formate">
+    <p class="label" style="margin-bottom:28px">Working together</p>
+    <h2>How we <em class="s">start</em></h2>
+    <div class="formats">
+      <div class="format"><span class="who">If you want to make it happen</span><h3>AI Transformation</h3><p>I take on the role in your team: priorities, rebuild, rules, measurement. Your people learn along the way.</p><p>We start with three months. That’s how long it takes for the first workflows to be rebuilt, for your people to work confidently with the agents, and for you to see the impact in numbers.</p><span class="size">1–2 fixed days per week · starting with three months</span></div>
+      <div class="format"><span class="who">If you already have an AI manager</span><h3>Leadership for your AI manager</h3><p>Clarify the mandate with management, set priorities, build measurement, coach your AI manager.</p><span class="size">Half a day per week</span></div>
+    </div>
+  </section>
+
+  <section class="sec rule" id="ich">
+    <div class="about">
+      <div>
+        <p class="label" style="margin-bottom:28px">About me</p>
+        <h2 style="font-size:clamp(2rem,4vw,3.4rem)"><em class="s">Entrepreneur</em>, not just a consultant.</h2>
+        <div class="ph2"><picture><source type="image/webp" srcset="../assets/img/justus-weweler-laechelnd-600.webp 600w, ../assets/img/justus-weweler-laechelnd.webp 1000w" sizes="380px"><img src="../assets/img/justus-weweler-laechelnd-600.jpg" srcset="../assets/img/justus-weweler-laechelnd-600.jpg 600w, ../assets/img/justus-weweler-laechelnd.jpg 1000w" sizes="380px" width="600" height="750" alt="Justus Weweler, smiling" loading="lazy"></picture></div>
+      </div>
+      <div>
+        <ul class="gains">
+          <li><p class="g1">Workflows your people actually like using.</p><p class="g2">I studied design, and I start from the people, not from the tool.</p></li>
+          <li><p class="g1">I know the pressure management is under.</p><p class="g2">Founded five companies, grew the last one to 120 employees and sold it in 2024. I know what restructuring a running business looks like from the top.</p></li>
+          <li><p class="g1">Change your team trusts.</p><p class="g2">In my last company I was the person the team trusted most. Without trust, nobody uses the new workflows.</p></li>
+          <li><p class="g1">I only recommend what I use myself.</p><p class="g2">As co-managing director of <a href="https://kideon.de" target="_blank" rel="noopener">Kideon</a>, I lead a team of AI agents every day.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec rule" id="fragen">
+    <p class="label" style="margin-bottom:28px">Questions</p>
+    <h2>What managing directors <em class="s">ask</em> me</h2>
+    <div class="faq">
+      <details><summary>Isn’t this a job for the boss?</summary><p>Yes, the responsibility stays with you. What you don’t have is the time to work your way through every department yourself. That part I take on.</p></details>
+      <details><summary>Why not an agency?</summary><p>An agency builds systems. I lead the work inside your team, on fixed days, and your people learn along the way. If bigger systems are needed, we bring in the right partner.</p></details>
+      <details><summary>Our people are afraid of automating themselves out of a job.</summary><p>For every workflow we openly define what stays with people. Whoever does the work today helps build the new workflow.</p></details>
+      <details><summary>We already have an AI manager.</summary><p>Good. Then I lead them instead of replacing them. What’s usually missing isn’t knowledge, it’s a mandate.</p></details>
+      <details><summary>Do we need a full-time hire for this?</summary><p>Not right away. I take on the role on fixed days. If you want to build someone up internally, I’ll lead them along the way.</p></details>
+      <details><summary>Will we become dependent on you?</summary><p>No. Your people learn along the way, and what I build keeps running on the days I’m not there.</p></details>
+      <details><summary>Is this a course?</summary><p>No. I work in your team on fixed days, on your workflows, with a number before and after.</p></details>
+      <details><summary>Which tools?</summary><p>The ones you already pay for. A switch only if it pays off.</p></details>
+      <details><summary>What about data protection?</summary><p>Rules come before the first rebuild, not after. Aligned with your IT and your data protection officer.</p></details>
+    </div>
+  </section>
+</div>
+
+<section class="final" id="termin">
+  <div class="wrap">
+    <p class="label" style="margin-bottom:28px">Book a call</p>
+    <h2>30 minutes on your company and your AI. You leave with a clear <em class="s">next step</em>.</h2>
+    
+    <div class="actions"><a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Pick a time <span class="arr" aria-hidden="true">→</span></a></div>
+    <p class="mail">Or directly: justus@weweler.co</p>
+    <div class="refer">
+      <p>Know a company where AI is still patchwork? Just pass this page on.</p>
+      <button type="button" id="copyLink" class="link-btn" data-url="https://weweler.co/en/">Copy link</button>
+      <span class="refer-url" id="referUrl">weweler.co/en</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer><span>Weweler Consulting</span><a href="company.html">Company</a><a href="imprint.html">Imprint</a><a href="privacy.html">Privacy</a></footer>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var scenes = [].slice.call(document.querySelectorAll('.scene'));
+  function setScene(sc, idx){
+    if (sc._idx === idx) return; sc._idx = idx;
+    var lis = sc.querySelectorAll('.steps li');
+    for (var i=0;i<lis.length;i++){
+      lis[i].classList.toggle('on', i===idx);
+      lis[i].classList.toggle('done', i<idx);
+    }
+    var gs = sc.querySelectorAll('.viz .g');
+    for (var j=0;j<gs.length;j++){
+      var s = +gs[j].getAttribute('data-s');
+      gs[j].classList.toggle('off', s>idx);
+    }
+    var viz = sc.querySelector('.viz');
+    if (sc.getAttribute('data-scene')==='p') viz.classList.toggle('focus', idx>=3);
+  }
+  function update(){
+    var vh = window.innerHeight;
+    scenes.forEach(function(sc){
+      var n = +getComputedStyle(sc).getPropertyValue('--steps') || sc.querySelectorAll('.steps li').length;
+      if (reduce){ setScene(sc, n-1); return; }
+      var r = sc.querySelector('.track').getBoundingClientRect();
+      var total = r.height - vh;
+      var p = total>0 ? Math.min(1, Math.max(0, -r.top/total)) : 1;
+      setScene(sc, Math.min(n-1, Math.floor(p*n)));
+    });
+  }
+  var ticking=false;
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(function(){ ticking=false; update(); }); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Kopfzeile
+  var bar=document.getElementById('topbar');
+  function onS(){ bar.classList.toggle('scrolled', window.scrollY>12); }
+  window.addEventListener('scroll',onS,{passive:true}); onS();
+  // Aufgaben: Titel werden beim Lesen dunkel
+  var tasks=[].slice.call(document.querySelectorAll('.task'));
+  if(reduce || !('IntersectionObserver' in window)){ tasks.forEach(function(t){t.classList.add('lit')}); }
+  else { var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting || e.boundingClientRect.bottom < window.innerHeight*0.62){ e.target.classList.add('lit'); io.unobserve(e.target);} });},{rootMargin:'-38% 0px -38% 0px'}); tasks.forEach(function(t){io.observe(t)}); }
+  // Zahlen zählen hoch
+  var cnts=[].slice.call(document.querySelectorAll('.cnt'));
+  if(!reduce && 'IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){ if(!e.isIntersecting) return; io2.unobserve(e.target);
+      var el=e.target, to=+el.getAttribute('data-to'), t0=null;
+      function step(ts){ if(!t0) t0=ts; var p=Math.min(1,(ts-t0)/1300); var v=Math.round(to*(1-Math.pow(1-p,3))); el.textContent=v; if(p<1) requestAnimationFrame(step); }
+      el.textContent='0'; requestAnimationFrame(step);
+    });},{threshold:.6});
+    cnts.forEach(function(c){io2.observe(c)});
+  }
+  // Feld im Hero: Striche richten sich zum Mauszeiger aus
+  var cv=document.getElementById('field'); if(!cv) return;
+  var zone=cv.parentNode, ctx=cv.getContext('2d'), dpr=Math.min(2,window.devicePixelRatio||1);
+  var W=0,H=0,cells=[],GAP=30,LEN=9,R=170;
+  var mouse={x:-9999,y:-9999,active:false}, virt=false, tStart=performance.now(), running=false, visible=true;
+  function rnd(i){ var x=Math.sin(i*12.9898)*43758.5453; return x-Math.floor(x); }
+  function build(){
+    var r=zone.getBoundingClientRect(); W=r.width; H=r.height;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+    cells=[]; var k=0;
+    for(var y=GAP/2;y<H;y+=GAP){ for(var x=GAP/2;x<W;x+=GAP){ var a=rnd(++k)*Math.PI; cells.push({x:x,y:y,b:a,a:a,w:0}); } }
+    draw(true);
+  }
+  function draw(force){
+    ctx.clearRect(0,0,W,H);
+    var moving=false, mx=mouse.x, my=mouse.y;
+    for(var i=0;i<cells.length;i++){
+      var c=cells[i], dx=mx-c.x, dy=my-c.y, d=Math.sqrt(dx*dx+dy*dy);
+      var inf = (mouse.active||virt) ? Math.max(0,1-d/R) : 0; inf=inf*inf*(3-2*inf);
+      var target = inf>0 ? Math.atan2(dy,dx) : c.b;
+      var diff=target-c.a; while(diff>Math.PI) diff-=2*Math.PI; while(diff<-Math.PI) diff+=2*Math.PI;
+      if(inf<=0){ diff=c.b-c.a; while(diff>Math.PI/2) diff-=Math.PI; while(diff<-Math.PI/2) diff+=Math.PI; }
+      var step = reduce ? diff : diff*(0.025+0.04*inf);
+      c.a+=step; c.w+= (inf*0.6-c.w)*0.05;
+      if(Math.abs(step)>0.002 || Math.abs(inf-c.w)>0.01) moving=true;
+      var len=LEN+c.w*2, ca=Math.cos(c.a)*len/2, sa=Math.sin(c.a)*len/2;
+      ctx.strokeStyle = c.w>0.04 ? 'rgba(169,96,79,'+(0.08+c.w*0.22).toFixed(3)+')' : 'rgba(21,23,28,0.07)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(c.x-ca,c.y-sa); ctx.lineTo(c.x+ca,c.y+sa); ctx.stroke();
+    }
+    return moving;
+  }
+  function loop(ts){
+    if(!visible){ running=false; return; }
+    if(virt){ var t=(ts-tStart)/1000; mouse.x=W*(0.55+0.28*Math.sin(t*0.35)); mouse.y=H*(0.5+0.32*Math.sin(t*0.53)); }
+    var m=draw(false);
+    if(m || virt || mouse.active){ requestAnimationFrame(loop); } else running=false;
+  }
+  function kick(){ if(!running && !reduce){ running=true; requestAnimationFrame(loop); } }
+  zone.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse') return; var r=zone.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true; virt=false; kick(); });
+  zone.addEventListener('pointerleave',function(){ mouse.active=false; kick(); });
+  var coarse = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if(coarse && !reduce){ virt=true; }
+  if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible) kick(); }).observe(zone); }
+  window.addEventListener('resize',function(){ build(); kick(); });
+  build(); kick();
+})();
+</script>
+
+<script>
+(function(){
+  var b=document.getElementById('copyLink'); if(!b) return;
+  b.addEventListener('click',function(){
+    var url=b.getAttribute('data-url');
+    function done(t){ b.textContent=t; setTimeout(function(){ b.textContent='Copy link'; },2200); }
+    function fallback(){ var r=document.createRange(); r.selectNodeContents(document.getElementById('referUrl')); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); done('Selected, now copy'); }
+    try{ navigator.clipboard.writeText(url).then(function(){ done('Copied'); },fallback); }catch(e){ fallback(); }
+  });
+})();
+</script>
+<dialog class="book" id="book" aria-label="Pick a time">
+  <header><p><b>Find your next step</b><span> · 30-minute video call</span></p><button class="x" type="button" data-close>Close <span aria-hidden="true">×</span></button></header>
+  <div class="frame"><p>Loading calendar …</p></div>
+  <footer>Booking runs via Google Calendar. Prefer email? <a href="mailto:justus@weweler.co">justus@weweler.co</a></footer>
+</dialog>
+<script>
+(()=>{
+  const d=document.getElementById('book');if(!d||!d.showModal)return;
+  const SRC='https://calendar.google.com/calendar/appointments/schedules/AcZssZ15i3uDz-lYIv4BfL1gzwH23WUJxa2zpYApJYp9HRCJ1WYsIhIb3t-ENgOsb08lnleToMV5co23?gv=true';
+  let last=null;
+  const open=e=>{
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;
+    e.preventDefault();last=e.currentTarget;
+    const box=d.querySelector('.frame');
+    if(!box.querySelector('iframe')){const f=document.createElement('iframe');f.title='Book a call';f.src=SRC;f.onload=()=>f.classList.add('ready');box.appendChild(f)}
+    d.showModal();document.documentElement.classList.add('lock');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>d.classList.add('show')));
+  };
+  const close=()=>{
+    if(!d.open)return;d.classList.remove('show');
+    const done=()=>{d.close();document.documentElement.classList.remove('lock');last&&last.focus()};
+    matchMedia('(prefers-reduced-motion:reduce)').matches?done():setTimeout(done,380);
+  };
+  document.querySelectorAll('[data-book]').forEach(a=>a.addEventListener('click',open));
+  d.querySelector('[data-close]').addEventListener('click',close);
+  d.addEventListener('cancel',e=>{e.preventDefault();close()});
+  d.addEventListener('click',e=>{if(e.target===d)close()});
+})();
+</script>
+</body>
+</html>
