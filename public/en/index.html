@@ -68,6 +68,7 @@ p{margin:0;max-width:60ch}
 .hero .label,.hero h1,.hero .lead,.hero .actions{grid-column:1}
 .hero .portrait{grid-column:2;grid-row:2 / span 3;margin-top:calc(clamp(3.1rem,9.2vw,8.4rem) * .08)}
 .hero .label{margin-bottom:28px}
+.pill{display:inline-block;padding:7px 14px 6px;border-radius:999px;background:var(--rose-tint);border:1px solid var(--rose-line);color:var(--rose);font-weight:600;letter-spacing:.16em;line-height:1}
 .hero h1{font-size:clamp(3.1rem,9.2vw,8.4rem);line-height:.94;letter-spacing:-.05em}
 .hero h1 .l{display:block}
 .hero h1 em.s{position:relative;display:inline-block}
@@ -277,7 +278,7 @@ html.lock{overflow:hidden}
   <div class="wrap">
   <section class="hero" aria-labelledby="h1">
     <div>
-      <p class="label"><span style="color:var(--rose);font-weight:600">AI-First</span></p>
+      <p class="label"><span class="pill">AI-First</span></p>
       <h1 id="h1"><span class="l">Smaller team.</span><span class="l"><em class="s">More profit.</em></span></h1>
       <p class="lead">Your team was built for a world without AI. With new workflows, a team of the right size and sales that close, you do more with fewer people. <b>And whoever stays is glad to stay.</b></p>
       <div class="actions">
