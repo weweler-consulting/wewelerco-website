@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Justus Weweler · Kleineres Team. Mehr Gewinn.</title>
-  <meta name="description" content="Justus Weweler baut eure Firma mit KI um: neue Abläufe, ein Team in der richtigen Größe und ein Vertrieb, der abschließt. Mit weniger Leuten mehr schaffen.">
+  <title>Justus Weweler · Mehr Gewinn. Mit dem Team, das ihr habt.</title>
+  <meta name="description" content="Justus Weweler baut eure Firma mit KI um: neue Abläufe, ein Vertrieb, der abschließt, und ein Team, das mehr schafft. Wachsen, ohne neu einzustellen.">
   <link rel="canonical" href="https://weweler.co/">
   <link rel="alternate" hreflang="de" href="https://weweler.co/">
   <link rel="alternate" hreflang="en" href="https://weweler.co/en/">
   <link rel="alternate" hreflang="x-default" href="https://weweler.co/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://weweler.co/">
-  <meta property="og:title" content="Justus Weweler · Kleineres Team. Mehr Gewinn.">
-  <meta property="og:description" content="Justus Weweler baut eure Firma mit KI um: neue Abläufe, ein Team in der richtigen Größe und ein Vertrieb, der abschließt. Mit weniger Leuten mehr schaffen.">
+  <meta property="og:title" content="Justus Weweler · Mehr Gewinn. Mit dem Team, das ihr habt.">
+  <meta property="og:description" content="Justus Weweler baut eure Firma mit KI um: neue Abläufe, ein Vertrieb, der abschließt, und ein Team, das mehr schafft. Wachsen, ohne neu einzustellen.">
   <meta property="og:image" content="https://weweler.co/assets/img/justus-weweler.jpg">
   <meta name="theme-color" content="#ffffff">
   <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -66,10 +66,10 @@ p{margin:0;max-width:60ch}
 .hero>*{min-width:0}
 .hero>div:first-child{display:contents}
 .hero .label,.hero h1,.hero .lead,.hero .actions{grid-column:1}
-.hero .portrait{grid-column:2;grid-row:2 / span 3;margin-top:calc(clamp(3.1rem,9.2vw,8.4rem) * .08)}
+.hero .portrait{grid-column:2;grid-row:2 / span 3;margin-top:calc(clamp(3.1rem,7vw,6.6rem) * .08)}
 .hero .label{margin-bottom:28px}
 .pill{display:inline-block;padding:7px 14px 6px;border-radius:999px;background:var(--rose-tint);border:1px solid var(--rose-line);color:var(--rose);font-weight:600;letter-spacing:.16em;line-height:1}
-.hero h1{font-size:clamp(3.1rem,9.2vw,8.4rem);line-height:.94;letter-spacing:-.05em}
+.hero h1{font-size:clamp(3.1rem,7vw,6.6rem);line-height:.94;letter-spacing:-.05em}
 .hero h1 .l{display:block}
 .hero h1 em.s{position:relative;display:inline-block}
 .hero h1 svg.ul{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.28em;overflow:visible}
@@ -114,6 +114,45 @@ p{margin:0;max-width:60ch}
 .viz .dim{transition:opacity .7s}
 .viz.focus .dim{opacity:.28}
 .viz .lead .ring{transition-delay:.75s;transition-duration:1.4s}
+
+/* KI-Team mobil: Organigramm aus Text statt Scroll-Szene */
+.mteam{display:none;padding-block:clamp(72px,16vw,112px)}
+.morg{list-style:none;margin:8px 0 0;padding:0}
+.morg .lv{padding:40px 0;border-bottom:1px solid var(--hair)}
+.dia{display:flex;flex-direction:column;align-items:center}
+.nd{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--ink);border-radius:2px;background:var(--paper);padding:10px 16px;min-width:11.5em;line-height:1.25;color:var(--ink)}
+.nd b{font-weight:500;font-size:1rem}
+.nd small{font-size:.8rem;color:var(--ink2);margin-top:3px}
+.nd.ghost{border:1px dashed var(--muted);color:var(--ink2);min-width:9em}
+.nd.hl{background:var(--rose-tint);border-color:var(--rose)}
+.nd.chk{border:1px dashed var(--rose)}
+.nd.sm{min-width:0;padding:9px 8px}
+.nd.sm b{font-size:.9rem}
+.nd.sm small{font-size:.72rem;color:var(--muted)}
+.cn{position:relative;width:1px;height:38px;background:var(--ink);margin:7px 0}
+.cn::after,.cn.both::before{content:"";position:absolute;left:-4px;border-left:4.5px solid transparent;border-right:4.5px solid transparent}
+.cn::after{bottom:-2px;border-top:6px solid var(--ink)}
+.cn.both::before{top:-2px;border-bottom:6px solid var(--ink)}
+.cn span{position:absolute;left:14px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.78rem;color:var(--muted)}
+.ag{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+.ag .rev{border-color:var(--rose);box-shadow:inset 0 -3px 0 var(--rose-tint)}
+.tag{margin-top:12px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);text-align:center;max-width:none}
+.tag.mu{color:var(--muted)}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;width:100%}
+.flow i{font-style:normal;color:var(--ink2);flex:none}
+.src{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;margin-top:22px;padding-top:18px;border-top:1px solid var(--hair)}
+.src span{background:var(--hair2);border:1px solid var(--hair);border-radius:2px;padding:9px 6px;font-size:.76rem;line-height:1.3;color:var(--ink2);text-align:center}
+.tx{display:grid;grid-template-columns:2.4em minmax(0,1fr);gap:4px 12px;margin-top:30px}
+.tx .n{font-size:.8rem;letter-spacing:.08em;color:var(--rose);padding-top:.5em;font-variant-numeric:tabular-nums}
+.tx h3{font-size:1.3rem;font-weight:400;letter-spacing:-.02em}
+.tx p{grid-column:2;color:var(--ink2);font-size:.98rem;line-height:1.55}
+.mteam .note{margin-top:32px}
+.mteam.anim .dia>*{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.mteam.anim .lv.in .dia>*{opacity:1;transform:none}
+.mteam.anim .lv.in .dia>*:nth-child(2){transition-delay:.12s}
+.mteam.anim .lv.in .dia>*:nth-child(3){transition-delay:.24s}
+.mteam.anim .lv.in .dia>*:nth-child(4){transition-delay:.36s}
+.mteam.anim .lv.in .dia>*:nth-child(5){transition-delay:.48s}
 
 /* Problemtext und Zahlen */
 .why{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end}
@@ -203,12 +242,17 @@ footer a{color:var(--muted)}
   .hero{grid-template-columns:minmax(0,1fr)}
   .hero .portrait{grid-column:1;grid-row:auto;margin-top:48px;max-width:360px}
   .top nav>a:not(.cta){display:none}
-  .stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;align-content:start;align-items:start;gap:20px;padding-top:calc(72px + env(safe-area-inset-top,0px))}
-  .stage .vizbox{order:-1}
-  .viz{max-height:46svh;margin:0 auto}
-  .steps{gap:10px}
-  .steps li:not(.on){display:none}
-  .steps li.on p{max-height:none}
+  /* Szenen mobil: kein Scroll-Aufbau, alles steht fest */
+  .scene .track{height:auto}
+  .stage{position:relative;height:auto;grid-template-columns:minmax(0,1fr);align-items:start;gap:40px;padding-block:clamp(72px,16vw,112px)}
+  .viz{max-height:none;max-width:460px;margin:0 auto}
+  .steps{gap:22px}
+  .steps li,.steps li.done{color:var(--ink)}
+  .steps li .n{color:var(--rose)}
+  .steps li p{max-height:none;opacity:1;color:var(--ink2)}
+  .viz.focus .dim{opacity:.6}
+  #team .track{display:none}
+  .mteam{display:block}
   .why,.about{grid-template-columns:minmax(0,1fr);gap:32px}
   .figs,.formats{grid-template-columns:minmax(0,1fr)}
   .fig,.format{padding:24px 0 8px}
@@ -279,8 +323,8 @@ html.lock{overflow:hidden}
   <section class="hero" aria-labelledby="h1">
     <div>
       <p class="label"><span class="pill">AI-First</span></p>
-      <h1 id="h1"><span class="l">Kleineres Team.</span><span class="l"><em class="s">Mehr Gewinn.</em></span></h1>
-      <p class="lead">Euer Team ist für eine Welt ohne KI gebaut. Mit neuen Abläufen, einem Team in der richtigen Größe und einem Vertrieb, der abschließt, schafft ihr mit weniger Leuten mehr.</p>
+      <h1 id="h1"><span class="l">Mehr Gewinn.</span><span class="l"><em class="s">Mit dem Team,</em></span><span class="l"><em class="s">das ihr habt.</em></span></h1>
+      <p class="lead">Euer Team ist für eine Welt ohne KI gebaut. Ich baue eure Abläufe so um, dass jeder mehr schafft. Ihr wachst, ohne neu einzustellen, und Stellen, die ihr ohnehin nicht besetzt bekommt, übernimmt KI.</p>
       <div class="actions">
         <a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener" data-book>Kostenloses Erstgespräch <span class="arr" aria-hidden="true">→</span></a>
         <a class="link" href="#rolle">So läuft es ab</a>
@@ -371,7 +415,7 @@ html.lock{overflow:hidden}
         <p class="label" style="margin-bottom:28px">Warum es hakt</p>
         <h2>Euer größter Kostenblock sind Menschen. <em class="s">Der Umsatz wächst nicht mit.</em></h2>
       </div>
-      <p class="body">KI verschiebt gerade, wie viel ein Team schaffen kann. Wer Abläufe und Team darauf neu zuschneidet, liefert dasselbe mit weniger Leuten. Wer wartet, zahlt jeden Monat für eine Struktur von gestern.</p>
+      <p class="body">KI verschiebt gerade, wie viel ein Team schaffen kann. Wer seine Abläufe darauf neu zuschneidet, wächst ohne neue Stellen und fängt auf, wer in Rente geht. Wer wartet, zahlt jeden Monat für eine Struktur von gestern.</p>
     </div>
     <div class="figs">
       <div class="fig"><b><span class="cnt" data-to="59">59</span><small>%</small></b><p>der deutschen Firmen, die KI nutzen, schöpfen sie überhaupt nicht aus.</p><cite><a href="https://www.bitkom.org/Presse/Presseinformation/Erstmals-nutzt-Mehrheit-Unternehmen-KI" target="_blank" rel="noopener">Bitkom 2026</a></cite></div>
@@ -388,7 +432,7 @@ html.lock{overflow:hidden}
     <ol class="tasks">
       <li class="task"><span class="tn">01</span><h3>Bestandsaufnahme</h3><div class="td"><p>In zwei Wochen: Wer macht was, was kostet es, wo liegt der Hebel. Mit Zahlen, nicht mit Gefühl.</p><p class="out"><span>Ergebnis</span>Ein Plan mit Zielzahlen, freigegeben von der Geschäftsführung</p></div></li>
       <li class="task"><span class="tn">02</span><h3>Arbeit neu verteilen</h3><div class="td"><p>Pro Ablauf entscheiden: Was übernimmt KI, wo prüft ein Mensch, was bleibt beim Menschen. Umgebaut mit den Leuten, die die Arbeit heute machen.</p><p class="out"><span>Ergebnis</span>Für jeden Ablauf klar: KI, Prüfung, Mensch</p></div></li>
-      <li class="task"><span class="tn">03</span><h3>Team neu zuschneiden</h3><div class="td"><p>Wer bleibt wofür, welche Rollen fallen weg, welche Stellen werden nicht nachbesetzt. Offen, fair und mit Blick auf die, die bleiben.</p><p class="out"><span>Ergebnis</span>Ein Team in der richtigen Größe, das dem Umbau vertraut</p></div></li>
+      <li class="task"><span class="tn">03</span><h3>Rollen neu schneiden</h3><div class="td"><p>Wer macht künftig was, welche Aufgaben übernimmt KI, welche Stellen werden nicht nachbesetzt. Offen, fair und gemeinsam mit dem Team.</p><p class="out"><span>Ergebnis</span>Klare Rollen und ein Team, das dem Umbau vertraut</p></div></li>
       <li class="task"><span class="tn">04</span><h3>Vertrieb schärfen</h3><div class="td"><p>Für wen macht ihr was? Welche Schritte geht ein Kunde bis zum Abschluss? Wie viel Wert schafft ihr in Euro? Weniger Kosten allein machen keine Firma gesund.</p><p class="out"><span>Ergebnis</span>Klare Zielgruppe, klarer Weg zum Abschluss</p></div></li>
       <li class="task"><span class="tn">05</span><h3>Messen</h3><div class="td"><p>Gewinn pro Kopf vorher und nachher, dazu eine Zahl für jeden umgebauten Ablauf. Jeden Monat ein kurzer Bericht an die Geschäftsführung.</p><p class="out"><span>Ergebnis</span>Eine Zahl vorher, eine nachher, jeden Monat</p></div></li>
     </ol>
@@ -397,6 +441,17 @@ html.lock{overflow:hidden}
 
 <!-- Szene 2: Lösung -->
 <section class="scene rule" id="team" data-scene="s" style="--steps:5" aria-label="So arbeitet ein geführtes KI-Team">
+  <div class="mteam wrap">
+    <p class="label">Der Beweis: So arbeitet Kideon</p>
+    <ol class="morg">
+      <li class="lv"><div class="dia"><div class="nd ghost">Kunden</div><div class="cn both"><span>nur Mensch zu Mensch</span></div><div class="nd hl"><b>Mensch</b><small>entscheidet und gibt frei</small></div></div><div class="tx"><span class="n">01</span><h3>Ein Mensch entscheidet.</h3><p>Agenten bereiten vor, Menschen entscheiden. Kein Agent spricht mit Kunden.</p></div></li>
+      <li class="lv"><div class="dia"><div class="nd"><b>Orchestrierung</b><small>eine Aufgabe, ein Agent</small></div><div class="cn"></div><div class="ag"><div class="nd sm rev"><b>Vertrieb</b><small>bis Abschluss</small></div><div class="nd sm rev"><b>Betreuung</b><small>ab Abschluss</small></div><div class="nd sm"><b>Umsetzung</b><small>Projekte</small></div><div class="nd sm"><b>Inhalte</b><small>Texte</small></div><div class="nd sm"><b>Recherche</b><small>Markt</small></div><div class="nd sm"><b>Verwaltung</b><small>Fristen</small></div></div><p class="tag">Umsatzkette hat Vorrang</p></div><div class="tx"><span class="n">02</span><h3>Jede Aufgabe hat genau eine Rolle.</h3><p>Die Orchestrierung gibt jede Aufgabe an genau einen Agenten, mit Rollenbeschreibung, Regeln und Gedächtnis.</p></div></li>
+      <li class="lv"><div class="dia"><div class="flow"><span class="nd sm"><b>Agent</b></span><i>→</i><span class="nd sm chk"><b>Prüfung</b></span><i>→</i><span class="nd sm hl"><b>Mensch</b></span></div><p class="tag">Prüft, erstellt nichts selbst</p></div><div class="tx"><span class="n">03</span><h3>Wer erstellt, prüft nicht.</h3><p>Wichtige Entwürfe gehen durch eine eigene Prüfrolle, bevor ein Mensch sie sieht.</p></div></li>
+      <li class="lv"><div class="dia"><div class="flow"><span class="nd sm"><b>Aufsicht</b><small>Zusagen, Fristen</small></span><i>→</i><span class="nd sm hl"><b>Mensch</b></span></div><p class="tag">Morgens max. 5 Entscheidungen</p></div><div class="tx"><span class="n">04</span><h3>Jeden Morgen höchstens fünf Entscheidungen.</h3><p>Eine Aufsicht bündelt, was offen ist, und legt es mit fertigem Entwurf vor.</p></div></li>
+      <li class="lv"><div class="dia"><div class="flow"><span class="nd sm ghost"><b>Eingang</b></span><i>→</i><span class="nd sm hl"><b>Schleuse</b></span><i>→</i><span class="nd sm"><b>Agenten</b></span></div><p class="tag">Sensible Daten bleiben draußen</p><div class="src"><span>Vertrieb &amp; Kunden</span><span>Projekte &amp; Technik</span><span>Regeln &amp; Gedächtnis</span></div><p class="tag mu">Wahrheitsquellen · eine je Fakt</p></div><div class="tx"><span class="n">05</span><h3>Jeder Fakt hat eine Quelle.</h3><p>Sensible Daten gehen durch eine Schleuse. Was fehlt, wird nachgefragt, nicht erfunden.</p></div></li>
+    </ol>
+    <p class="note">Zwei Gründer, acht KI-Agenten. Vereinfachtes Modell, im Erstgespräch seht ihr ein Demo-Setup live.</p>
+  </div>
   <div class="track">
     <div class="stage wrap">
       <div>
@@ -499,8 +554,8 @@ html.lock{overflow:hidden}
         <ul class="gains">
           <li><p class="g1">Beide Seiten der Rechnung.</p><p class="g2">Ich komme aus dem Vertrieb. Kosten senken allein macht keine Firma gesund, deshalb schaue ich genauso auf den Umsatz.</p></li>
           <li><p class="g1">Jemand, der euren Druck kennt.</p><p class="g2">Fünf Firmen gegründet, die letzte auf 120 Mitarbeiter aufgebaut und 2024 verkauft. Ich kenne Umbau bei laufendem Geschäft aus Sicht der Geschäftsführung.</p></li>
-          <li><p class="g1">Umbau, dem das Team vertraut.</p><p class="g2">Ich habe in meiner letzten Firma Umbauten mit Stellenabbau selbst geführt. Ich war dort die Person, der im Team am meisten vertraut wurde. Ohne Vertrauen nutzt niemand die neuen Abläufe.</p></li>
-          <li><p class="g1">Erprobt, nicht angelesen.</p><p class="g2">Bei <a href="https://kideon.de" target="_blank" rel="noopener">Kideon</a> arbeiten wir zu zweit mit acht KI-Agenten. Kleineres Team, mehr Output, jeden Tag.</p></li>
+          <li><p class="g1">Umbau, dem das Team vertraut.</p><p class="g2">Ich habe in meiner letzten Firma auch schwierige Umbauten selbst geführt. Ich war dort die Person, der im Team am meisten vertraut wurde. Ohne Vertrauen nutzt niemand die neuen Abläufe.</p></li>
+          <li><p class="g1">Erprobt, nicht angelesen.</p><p class="g2">Bei <a href="https://kideon.de" target="_blank" rel="noopener">Kideon</a> arbeiten wir zu zweit mit acht KI-Agenten. Zwei Leute mit dem Output eines ganzen Teams, jeden Tag.</p></li>
         </ul>
       </div>
     </div>
@@ -510,7 +565,7 @@ html.lock{overflow:hidden}
     <p class="label" style="margin-bottom:28px">Fragen</p>
     <h2>Was Geschäftsführer <em class="s">fragen</em></h2>
     <div class="faq">
-      <details><summary>Heißt das, wir entlassen Leute?</summary><p>Manchmal. Oft heißt es: Stellen nicht nachbesetzen, Rollen neu schneiden, ohne neue Einstellungen wachsen. Wir entscheiden das gemeinsam, mit Zahlen, und offen gegenüber dem Team.</p></details>
+      <details><summary>Heißt das, wir entlassen Leute?</summary><p>Selten. Meist reicht es, Stellen nicht nachzubesetzen und ohne Neueinstellungen zu wachsen. Wenn doch, entscheiden wir das gemeinsam, mit Zahlen und offen gegenüber dem Team.</p></details>
       <details><summary>Was, wenn die Guten gehen?</summary><p>Wer bleibt, bekommt mehr Hebel und weniger Kleinkram. Das macht gute Leute eher froh als nervös. Deshalb bauen sie den neuen Ablauf mit.</p></details>
       <details><summary>Ist das nicht Chefsache?</summary><p>Ja, die Verantwortung bleibt bei euch. Was ihr spart, ist die Zeit, euch selbst durch jede Abteilung zu arbeiten.</p></details>
       <details><summary>Warum keine KI-Agentur?</summary><p>Eine Agentur liefert Tools. Ihr bekommt einen Umbau eurer Firma, Kosten und Umsatz, an festen Tagen in eurem Team. Wenn größere Systeme gebraucht werden, holen wir den passenden Partner dazu.</p></details>
@@ -547,6 +602,7 @@ html.lock{overflow:hidden}
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var narrow = window.matchMedia('(max-width:900px)');
   var scenes = [].slice.call(document.querySelectorAll('.scene'));
   function setScene(sc, idx){
     if (sc._idx === idx) return; sc._idx = idx;
@@ -567,7 +623,7 @@ html.lock{overflow:hidden}
     var vh = window.innerHeight;
     scenes.forEach(function(sc){
       var n = +getComputedStyle(sc).getPropertyValue('--steps') || sc.querySelectorAll('.steps li').length;
-      if (reduce){ setScene(sc, n-1); return; }
+      if (reduce || narrow.matches){ setScene(sc, n-1); return; }
       var r = sc.querySelector('.track').getBoundingClientRect();
       var total = r.height - vh;
       var p = total>0 ? Math.min(1, Math.max(0, -r.top/total)) : 1;
@@ -602,6 +658,13 @@ html.lock{overflow:hidden}
       el.textContent='0'; requestAnimationFrame(step);
     });},{threshold:.6});
     cnts.forEach(function(c){io2.observe(c)});
+  }
+  // KI-Team mobil: Ebenen blenden beim Scrollen ein
+  var mt=document.querySelector('.mteam');
+  if(mt && !reduce && 'IntersectionObserver' in window){
+    mt.classList.add('anim');
+    var io3=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io3.unobserve(e.target);} });},{rootMargin:'0px 0px -15% 0px'});
+    [].slice.call(mt.querySelectorAll('.lv')).forEach(function(l){io3.observe(l)});
   }
   // Feld im Hero: Striche richten sich zum Mauszeiger aus
   var cv=document.getElementById('field'); if(!cv) return;
