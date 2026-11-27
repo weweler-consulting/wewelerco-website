@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Justus Weweler · Beispiel-Bauplan eines KI-Teams</title>
+  <meta name="description" content="So sieht das Ergebnis der Bestandsaufnahme aus: der Bauplan eines KI-Teams mit Rollen, Gedächtnis, Datenquellen, Routinen, Freigaben und Messung. Beispiel aus einem Coaching-Business.">
+  <link rel="canonical" href="https://weweler.co/bauplan.html">
+  <link rel="alternate" hreflang="de" href="https://weweler.co/bauplan.html">
+  <link rel="alternate" hreflang="en" href="https://weweler.co/en/blueprint.html">
+  <link rel="alternate" hreflang="x-default" href="https://weweler.co/bauplan.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Geist";font-style:normal;font-weight:300 600;font-display:swap;src:url("assets/fonts/geist-latin.woff2") format("woff2")}
+/* Gleiche Gestaltung wie die Startseite: weiße Fläche, leichte Grotesk, Auszeichnung nur in Rosenholz. */
+:root{
+  --paper:#FFFFFF; --ink:#15171C; --ink2:#454A54; --muted:#8B9099; --hair:#E9E7E4; --hair2:#F3F1EE;
+  --rose:#A9604F; --rose-tint:#F7EEEA; --rose-line:#D9A99B;
+  --sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:1.0625rem;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+em.s{font-style:normal;color:var(--rose)}
+.label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0}
+p{margin:0;max-width:60ch}
+h1,h2,h3{margin:0;font-weight:300;text-wrap:balance}
+h3{font-weight:500;font-size:1.05rem;letter-spacing:-.01em;line-height:1.3}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;padding-top:calc(20px + env(safe-area-inset-top,0px))}
+.mark{font-weight:500;letter-spacing:-.01em;text-decoration:none;font-size:1rem}
+.mark span{color:var(--muted);font-weight:400}
+.top a.back{text-decoration:none;color:var(--ink2);font-size:.95rem}
+.top a.back:hover{color:var(--ink)}
+.top .tr{display:flex;align-items:center;gap:24px}
+.lang{display:flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.08em;color:var(--hair)}
+.lang a,.lang span{text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--ink)}
+.lang [aria-current]{color:var(--ink)}
+@media (max-width:480px){.top{flex-wrap:wrap;row-gap:4px}.top .tr{display:contents}.top a.back{order:3;flex-basis:100%}.mark span{display:none}}
+.intro{padding-block:clamp(56px,10vw,128px) clamp(48px,7vw,88px)}
+h1{margin-top:22px;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.045em;max-width:14ch}
+.lead{margin-top:28px;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink2);line-height:1.5;max-width:40em;font-weight:300}
+.lead b{color:var(--ink);font-weight:400}
+
+/* Abschnitte */
+.blk{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--hair)}
+.blk:first-of-type{border-top-color:var(--ink)}
+.bh{display:grid;grid-template-columns:3.4rem minmax(0,1fr);gap:0 0;margin-bottom:clamp(28px,4vw,44px)}
+.bh .n{font-size:.85rem;color:var(--rose);padding-top:.9em;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.bh h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.05;letter-spacing:-.035em;max-width:20ch}
+.bh p{grid-column:2;margin-top:14px;color:var(--ink2)}
+.body{margin-left:3.4rem}
+
+/* Kästen */
+.nd{border:1px solid var(--ink);border-radius:2px;background:var(--paper);padding:14px 16px;text-align:center;line-height:1.3}
+.nd b{display:block;font-weight:500}
+.nd small{display:block;margin-top:3px;font-size:.84rem;color:var(--ink2)}
+.nd.hl{background:var(--rose-tint);border-color:var(--rose)}
+.nd.soft{background:var(--hair2);border-color:var(--hair)}
+.nd.ghost{border:1px dashed var(--muted)}
+.nd.chk{border:1px dashed var(--rose)}
+.dn{text-align:center;color:var(--muted);line-height:1;padding:8px 0}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+.chips span{font-size:.8rem;color:var(--ink2);border:1px solid var(--hair);background:var(--paper);border-radius:2px;padding:4px 8px}
+.lyr{max-width:760px}
+.lyr .top1{max-width:420px;margin:0 auto}
+
+/* Organigramm */
+.org{max-width:980px}
+.org .head{max-width:380px;margin:0 auto}
+.grp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:4px}
+.grp>div{display:grid;gap:8px;align-content:start}
+.grp h3{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);text-align:center;font-weight:500;margin-bottom:2px}
+.grp .nd{padding:12px 10px}
+.grp .nd b{font-size:.98rem}
+.tech{margin-top:16px}
+
+/* Raster */
+.kit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.kit div{padding:20px 20px 22px 0;border-bottom:1px solid var(--hair);min-width:0}
+.kit div+div{padding-left:20px;border-left:1px solid var(--hair)}
+.kit div:nth-child(4n+1){padding-left:0;border-left:0}
+.kit p{margin-top:6px;color:var(--ink2);font-size:.95rem}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,56px);align-items:start}
+.split>*{min-width:0}
+.fold{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.fold li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid var(--hair)}
+.fold .i{font-size:.8rem;color:var(--rose);padding-top:.15em;font-variant-numeric:tabular-nums}
+.fold small{display:block;color:var(--muted);font-size:.85rem}
+.rules{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.rules li{padding:18px 0;border-bottom:1px solid var(--hair)}
+.rules p{margin-top:6px;color:var(--ink2);font-size:.98rem}
+
+/* Tabellen */
+.tbl{overflow-x:auto;border-top:1px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:.98rem;text-align:left}
+th,td{padding:14px 18px 14px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td{color:var(--ink2)}
+td:first-child{color:var(--ink);font-weight:500}
+
+/* Freigaben */
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.flow .nd{padding:12px 8px}
+.flow .nd b{font-size:.95rem}
+.flow .nd small{font-size:.78rem}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--ink)}
+.trio div{padding:22px 24px 4px 0;min-width:0}
+.trio div+div{padding-left:24px;border-left:1px solid var(--hair)}
+.trio p{margin-top:8px;color:var(--ink2);font-size:.98rem}
+.trio .key{background:var(--rose-tint);margin-top:-1px;border-top:1px solid var(--rose);padding-right:20px}
+.note{margin-top:24px;color:var(--muted);font-size:.95rem;max-width:62ch}
+
+/* Schluss */
+.end{padding-block:clamp(80px,12vw,140px);border-top:1px solid var(--hair)}
+.end h2{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.035em;max-width:16ch}
+.end p{margin-top:24px;font-size:1.15rem;color:var(--ink2);font-weight:300}
+.actions{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;text-decoration:none;padding:16px 26px;border-radius:999px;font-weight:500;font-size:1rem}
+.btn:hover{background:#000}
+.link{text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;color:var(--ink2)}
+.link:hover{border-color:var(--ink);color:var(--ink)}
+footer{border-top:1px solid var(--hair);padding-block:28px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--muted)}
+
+@media (max-width:900px){
+  .body{margin-left:0}
+  .bh{grid-template-columns:2.4rem minmax(0,1fr)}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kit div:nth-child(4n+1){padding-left:20px;border-left:1px solid var(--hair)}
+  .kit div:nth-child(2n+1){padding-left:0;border-left:0}
+  .flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .trio{grid-template-columns:minmax(0,1fr)}
+  .trio div,.trio div+div{padding:20px 0 6px;border-left:0}
+  .trio div+div{border-top:1px solid var(--hair)}
+  .trio .key{padding:20px 16px 12px}
+}
+@media (max-width:640px){
+  .grp{grid-template-columns:minmax(0,1fr)}
+  .row2{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="index.html">Justus Weweler <span>· Profitabler mit KI</span></a>
+    <div class="tr"><a class="back" href="index.html#rolle">Zum Vorgehen →</a><span class="lang"><span aria-current="true">DE</span>/<a href="en/blueprint.html" hreflang="en" lang="en" aria-label="English">EN</a></span></div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="label">Beispiel · Ergebnis der Bestandsaufnahme</p>
+      <h1>So sieht ein <em class="s">Bauplan</em> aus.</h1>
+      <p class="lead">Am Ende der Bestandsaufnahme habt ihr den Bauplan eures KI-Teams: <b>welche Rollen es gibt, wo das Wissen liegt, welche Daten angebunden sind, wer freigibt und was gemessen wird.</b> Dieses Beispiel stammt aus einem Coaching-Business mit Online-Kursen. Namen sind entfernt, Details vereinfacht.</p>
+    </section>
+
+    <section class="blk" aria-labelledby="b1">
+      <div class="bh"><span class="n">01</span><h2 id="b1">Die Ebenen</h2><p>Ein zusammenhängendes System statt vieler einzelner Chats. Jede Ebene hat eine Aufgabe.</p></div>
+      <div class="body lyr">
+        <div class="nd hl top1"><b>Geschäftsführung</b><small>Aufträge, Entscheidungen, Freigaben, Feedback</small></div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="nd"><b>KI-Arbeitsplatz</b><small>Ein gemeinsamer Arbeitsraum, hier ChatGPT Business. Eine Teamleitung verteilt die Aufträge an neun feste Rollen.</small></div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="row2">
+          <div class="nd soft"><b>Gedächtnis</b><small>Eine Wissensbasis, hier Notion: Regeln, Methoden, Entscheidungen, Entwürfe</small></div>
+          <div class="nd soft"><b>Schnittstellen</b><small>Kontrollierter Zugriff auf Werkzeuge und Daten, mit Minimalrechten</small></div>
+        </div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="nd"><b>Geschäftssysteme</b><small>Die Software, die schon da ist</small>
+          <div class="chips"><span>CRM</span><span>Zahlungen</span><span>Kalender</span><span>E-Mail</span><span>Dateiablage</span><span>Webanalyse</span><span>Kursplattform</span><span>Gesprächsarchiv</span><span>Website</span></div>
+        </div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="nd ghost"><b>Routinen</b><small>Wiederkehrende Arbeit auf Zuruf, nach Zeitplan oder bei einem Ereignis</small></div>
+        <p class="note">Die Rollen sind spezialisierte KI-Arbeitsplätze, keine selbstständig laufenden Agenten. Was ohne Zuruf laufen soll, wird vorher getestet und freigegeben.</p>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b2">
+      <div class="bh"><span class="n">02</span><h2 id="b2">Das Team</h2><p>Eine verantwortliche Rolle pro Auftrag. Die Teamleitung koordiniert, die Geschäftsführung entscheidet, eine Prüfrolle schaut teamübergreifend drauf.</p></div>
+      <div class="body org">
+        <div class="head">
+          <div class="nd hl"><b>Geschäftsführung</b><small>entscheidet und gibt frei</small></div>
+          <div class="dn" aria-hidden="true">↓</div>
+          <div class="nd"><b>Teamleitung</b><small>verteilt Aufträge, bündelt Entscheidungen</small></div>
+          <div class="dn" aria-hidden="true">↓</div>
+        </div>
+        <div class="grp">
+          <div><h3>Wachstum</h3><div class="nd"><b>Content</b><small>Marketing, Social Media</small></div><div class="nd"><b>Funnel</b><small>Launches, Kennzahlen</small></div><div class="nd"><b>Vertrieb</b><small>Angebote, Nachfassen</small></div></div>
+          <div><h3>Leistung</h3><div class="nd"><b>Kundenbetreuung</b><small>Betreuung, Kundenbindung</small></div><div class="nd"><b>Programme</b><small>Kurse, Fachwissen</small></div><div class="nd chk"><b>Prüfung</b><small>prüft teamübergreifend, erstellt nichts selbst</small></div></div>
+          <div><h3>Organisation</h3><div class="nd"><b>Tagesplanung</b><small>Prioritäten, Zusagen</small></div><div class="nd"><b>Backoffice</b><small>Datenschutz, Verwaltung</small></div><div class="nd"><b>Eingang</b><small>Posteingang, Wissen verteilen</small></div></div>
+        </div>
+        <div class="nd ghost tech"><b>Technik</b><small>Schnittstellen und Betrieb, extern betreut. Keine eigene Freigabe.</small></div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b3">
+      <div class="bh"><span class="n">03</span><h2 id="b3">Was jede Rolle mitbringt</h2><p>Jede Rolle bekommt dieselbe Ausstattung, wie eine neue Mitarbeiterin am ersten Tag.</p></div>
+      <div class="body kit">
+        <div><h3>Personalakte</h3><p>Aufgabe, Verantwortung, Grenzen</p></div>
+        <div><h3>Methoden</h3><p>Arbeitsanweisungen für ihr Fach</p></div>
+        <div><h3>Gedächtnis</h3><p>Feedback, Erkenntnisse, Entscheidungen</p></div>
+        <div><h3>Kontext</h3><p>Strategie, Produkte, Zielgruppe</p></div>
+        <div><h3>Werkzeuge</h3><p>Nur die geprüften Schnittstellen, die sie braucht</p></div>
+        <div><h3>Routinen</h3><p>Ihre wiederkehrenden Aufgaben</p></div>
+        <div><h3>Freigabestufe</h3><p>Wie viel sie selbst tun darf</p></div>
+        <div><h3>Prüfmaßstab</h3><p>Woran ihre Arbeit gemessen wird</p></div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b4">
+      <div class="bh"><span class="n">04</span><h2 id="b4">Ein Gedächtnis für die ganze Firma</h2><p>Das Wissen liegt in einer Wissensbasis, nicht in einzelnen Chats. So hängt es nicht an einem KI-Anbieter.</p></div>
+      <div class="body split">
+        <ol class="fold">
+          <li><span class="i">00</span><div>Teamsteuerung<small>übergeordnete Betriebsanweisung</small></div></li>
+          <li><span class="i">01</span><div>Rollen<small>Personalakten und Zuständigkeiten</small></div></li>
+          <li><span class="i">02</span><div>Methoden<small>standardisierte Arbeitsanleitungen</small></div></li>
+          <li><span class="i">03</span><div>Firmenkontext<small>Produkte, Zielgruppen, Strategie</small></div></li>
+          <li><span class="i">04</span><div>Gedächtnis je Rolle<small>Erkenntnisse und Feedback</small></div></li>
+          <li><span class="i">05</span><div>Entscheidungen<small>verbindliche Beschlüsse und Lehren</small></div></li>
+          <li><span class="i">06</span><div>Routinen<small>wiederkehrende Abläufe</small></div></li>
+          <li><span class="i">07</span><div>Schnittstellen<small>Zugriffe und Berechtigungen</small></div></li>
+          <li><span class="i">08</span><div>Entwürfe und Freigaben<small>versionierte Arbeitsergebnisse</small></div></li>
+        </ol>
+        <ul class="rules">
+          <li><h3>Jeder Eintrag hat eine Herkunft.</h3><p>Quelle, Datum und Status stehen dabei. Nichts wird still überschrieben.</p></li>
+          <li><h3>Kundendaten bleiben, wo sie hingehören.</h3><p>Geschützte Daten bleiben im geprüften System. Ins gemeinsame Gedächtnis kommen nur zulässige, geprüfte Ableitungen.</p></li>
+          <li><h3>Feedback verbessert das Wissen, nicht das Modell.</h3><p>Eine Korrektur wird als Regel festgehalten. Neue Methoden gelten erst nach Prüfung und Freigabe.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b5">
+      <div class="bh"><span class="n">05</span><h2 id="b5">Eine Quelle je Fakt</h2><p>Daten werden nicht kopiert, sondern dort abgefragt, wo sie stimmen.</p></div>
+      <div class="body tbl">
+        <table>
+          <thead><tr><th scope="col">Information</th><th scope="col">Führendes System</th><th scope="col">Wofür die KI es nutzt</th></tr></thead>
+          <tbody>
+            <tr><td>Kunden und Umsatz</td><td>CRM</td><td>Funnel-Kennzahlen, Betreuung</td></tr>
+            <tr><td>Zahlungen und Abos</td><td>Zahlungsanbieter</td><td>Produktkennzahlen</td></tr>
+            <tr><td>Gespräche</td><td>Gesprächsarchiv</td><td>geprüfte Erkenntnisse aus zulässigen Gesprächen</td></tr>
+            <tr><td>Termine</td><td>Kalender</td><td>Tagesplanung</td></tr>
+            <tr><td>Kommunikation</td><td>E-Mail</td><td>Entwürfe, Kontext</td></tr>
+            <tr><td>Dokumente</td><td>Dateiablage</td><td>freigegebene Unterlagen</td></tr>
+            <tr><td>Besucher und Anfragen</td><td>Webanalyse</td><td>Marketing- und Funnel-Analyse</td></tr>
+            <tr><td>Kurse</td><td>Kursplattform</td><td>Programmentwicklung</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b6">
+      <div class="bh"><span class="n">06</span><h2 id="b6">Routinen</h2><p>Jede wiederkehrende Aufgabe ist beschrieben: Auslöser, Rolle, Quellen, Ergebnis und was bei einem Fehler passiert.</p></div>
+      <div class="body tbl">
+        <table>
+          <thead><tr><th scope="col">Wann</th><th scope="col">Rolle</th><th scope="col">Routine</th></tr></thead>
+          <tbody>
+            <tr><td>Morgens, auf Zuruf</td><td>Tagesplanung</td><td>Prioritäten und offene Zusagen des Tages</td></tr>
+            <tr><td>Täglich, 8 Uhr</td><td>Content</td><td>Story des Tages als Entwurf</td></tr>
+            <tr><td>Montags, 8 Uhr</td><td>Content</td><td>Inhalte für die Woche als Entwurf</td></tr>
+            <tr><td>Täglich, abends</td><td>Eingang, Teamleitung</td><td>neue Erkenntnisse aus Gesprächen ins Gedächtnis</td></tr>
+            <tr><td>Während Launches</td><td>Funnel</td><td>Launch- und Funnel-Check</td></tr>
+            <tr><td>Wöchentlich</td><td>Teamleitung</td><td>Methoden und Quellen pflegen</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b7">
+      <div class="bh"><span class="n">07</span><h2 id="b7">Freigaben</h2><p>Die Geschäftsführung behält die Entscheidung. Auftrag, Entwurf, Prüfung, Freigabe und Ausführung sind getrennte Schritte.</p></div>
+      <div class="body">
+        <div class="flow">
+          <div class="nd"><b>1 · Auftrag</b><small>Geschäftsführung oder Teamleitung</small></div>
+          <div class="nd"><b>2 · Entwurf</b><small>Fachrolle</small></div>
+          <div class="nd chk"><b>3 · Prüfung</b><small>Prüfrolle</small></div>
+          <div class="nd hl"><b>4 · Freigabe</b><small>Geschäftsführung</small></div>
+          <div class="nd"><b>5 · Ausführung</b><small>berechtigte Person oder geprüfter Ablauf</small></div>
+          <div class="nd soft"><b>6 · Feedback</b><small>ins Gedächtnis</small></div>
+        </div>
+        <div class="trio">
+          <div><h3>Start mit Stufe 1</h3><p>Nur Entwürfe. Nichts wird selbst verschickt, veröffentlicht oder geändert.</p></div>
+          <div class="key"><h3>Mehr Spielraum wird verdient.</h3><p>Nach zehn Ergebnissen in Folge ohne Korrektur schlägt die Teamleitung eine höhere Stufe vor. Die Geschäftsführung entscheidet, nie automatisch.</p></div>
+          <div><h3>Freigabe ist nicht Ausführung.</h3><p>Ein freigegebener Text ist noch kein Recht, ihn zu versenden. Rechte werden technisch begrenzt, nicht nur per Anweisung.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b8">
+      <div class="bh"><span class="n">08</span><h2 id="b8">Messen</h2><p>Jeder Ablauf bekommt eine Zahl vorher und nachher. Die Zahlen vorher erheben wir in der Bestandsaufnahme.</p></div>
+      <div class="body kit">
+        <div><h3>Zeitaufwand</h3><p>Stunden pro Woche je Ablauf</p></div>
+        <div><h3>Korrekturen</h3><p>Wie oft ein Mensch nacharbeiten muss</p></div>
+        <div><h3>Qualität</h3><p>Ergebnis gegen den Prüfmaßstab</p></div>
+        <div><h3>Wirkung</h3><p>Umsatz, Anfragen oder Kosten, je nach Ablauf</p></div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b9">
+      <div class="bh"><span class="n">09</span><h2 id="b9">Was bei euch anders ist</h2><p>Der Aufbau bleibt gleich. Rollen, Datenquellen und Methoden richten sich nach eurem Geschäft.</p></div>
+      <div class="body split">
+        <ul class="rules">
+          <li><h3>Bleibt gleich</h3><p>Arbeitsplatz, Teamleitung und feste Rollen, ein Gedächtnis, eine Quelle je Fakt, Routinen, Freigaben, Messung.</p></li>
+        </ul>
+        <ul class="rules">
+          <li><h3>Wird für euch gebaut</h3><p>Welche Rollen ihr braucht, welche Software ihr anbindet, wie euer Vertrieb und eure Leistung laufen, welche Zahlen zählen und welche Regeln für eure Branche gelten.</p></li>
+          <li><h3>Klein anfangen</h3><p>Teamleitung, Assistenz und zwei Fachrollen, zwei bis drei angebundene Systeme, zwei Routinen mit klarem Nutzen. Erst messen, dann erweitern.</p></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <section class="end">
+    <p class="label" style="margin-bottom:28px">Euer Bauplan</p>
+    <h2>In zwei Wochen habt ihr euren <em class="s">eigenen</em>.</h2>
+    <p>Die Bestandsaufnahme hat einen Festpreis. Im Erstgespräch schauen wir, ob sie sich für euch lohnt.</p>
+    <div class="actions"><a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener">Kostenloses Erstgespräch <span aria-hidden="true">→</span></a><a class="link" href="index.html#rolle">Zum Vorgehen</a></div>
+  </section>
+
+  <footer><span>Weweler Consulting</span><a href="unternehmen.html">Unternehmen</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></footer>
+</div>
+</body>
+</html>

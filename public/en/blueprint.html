@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Justus Weweler · Sample blueprint of an AI team</title>
+  <meta name="description" content="What the assessment delivers: the blueprint of an AI team with roles, memory, data sources, routines, approvals and measurement. Example from a coaching business.">
+  <link rel="canonical" href="https://weweler.co/en/blueprint.html">
+  <link rel="alternate" hreflang="de" href="https://weweler.co/bauplan.html">
+  <link rel="alternate" hreflang="en" href="https://weweler.co/en/blueprint.html">
+  <link rel="alternate" hreflang="x-default" href="https://weweler.co/bauplan.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preload" href="../assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Geist";font-style:normal;font-weight:300 600;font-display:swap;src:url("../assets/fonts/geist-latin.woff2") format("woff2")}
+/* Gleiche Gestaltung wie die Startseite: weiße Fläche, leichte Grotesk, Auszeichnung nur in Rosenholz. */
+:root{
+  --paper:#FFFFFF; --ink:#15171C; --ink2:#454A54; --muted:#8B9099; --hair:#E9E7E4; --hair2:#F3F1EE;
+  --rose:#A9604F; --rose-tint:#F7EEEA; --rose-line:#D9A99B;
+  --sans:"Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:1.0625rem;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+em.s{font-style:normal;color:var(--rose)}
+.label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0}
+p{margin:0;max-width:60ch}
+h1,h2,h3{margin:0;font-weight:300;text-wrap:balance}
+h3{font-weight:500;font-size:1.05rem;letter-spacing:-.01em;line-height:1.3}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;padding-top:calc(20px + env(safe-area-inset-top,0px))}
+.mark{font-weight:500;letter-spacing:-.01em;text-decoration:none;font-size:1rem}
+.mark span{color:var(--muted);font-weight:400}
+.top a.back{text-decoration:none;color:var(--ink2);font-size:.95rem}
+.top a.back:hover{color:var(--ink)}
+.top .tr{display:flex;align-items:center;gap:24px}
+.lang{display:flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.08em;color:var(--hair)}
+.lang a,.lang span{text-decoration:none;color:var(--muted)}
+.lang a:hover{color:var(--ink)}
+.lang [aria-current]{color:var(--ink)}
+@media (max-width:480px){.top{flex-wrap:wrap;row-gap:4px}.top .tr{display:contents}.top a.back{order:3;flex-basis:100%}.mark span{display:none}}
+.intro{padding-block:clamp(56px,10vw,128px) clamp(48px,7vw,88px)}
+h1{margin-top:22px;font-size:clamp(2.6rem,7vw,5.6rem);line-height:1;letter-spacing:-.045em;max-width:14ch}
+.lead{margin-top:28px;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--ink2);line-height:1.5;max-width:40em;font-weight:300}
+.lead b{color:var(--ink);font-weight:400}
+
+/* Abschnitte */
+.blk{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--hair)}
+.blk:first-of-type{border-top-color:var(--ink)}
+.bh{display:grid;grid-template-columns:3.4rem minmax(0,1fr);gap:0 0;margin-bottom:clamp(28px,4vw,44px)}
+.bh .n{font-size:.85rem;color:var(--rose);padding-top:.9em;font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.bh h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.05;letter-spacing:-.035em;max-width:20ch}
+.bh p{grid-column:2;margin-top:14px;color:var(--ink2)}
+.body{margin-left:3.4rem}
+
+/* Kästen */
+.nd{border:1px solid var(--ink);border-radius:2px;background:var(--paper);padding:14px 16px;text-align:center;line-height:1.3}
+.nd b{display:block;font-weight:500}
+.nd small{display:block;margin-top:3px;font-size:.84rem;color:var(--ink2)}
+.nd.hl{background:var(--rose-tint);border-color:var(--rose)}
+.nd.soft{background:var(--hair2);border-color:var(--hair)}
+.nd.ghost{border:1px dashed var(--muted)}
+.nd.chk{border:1px dashed var(--rose)}
+.dn{text-align:center;color:var(--muted);line-height:1;padding:8px 0}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+.chips span{font-size:.8rem;color:var(--ink2);border:1px solid var(--hair);background:var(--paper);border-radius:2px;padding:4px 8px}
+.lyr{max-width:760px}
+.lyr .top1{max-width:420px;margin:0 auto}
+
+/* Organigramm */
+.org{max-width:980px}
+.org .head{max-width:380px;margin:0 auto}
+.grp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:4px}
+.grp>div{display:grid;gap:8px;align-content:start}
+.grp h3{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);text-align:center;font-weight:500;margin-bottom:2px}
+.grp .nd{padding:12px 10px}
+.grp .nd b{font-size:.98rem}
+.tech{margin-top:16px}
+
+/* Raster */
+.kit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.kit div{padding:20px 20px 22px 0;border-bottom:1px solid var(--hair);min-width:0}
+.kit div+div{padding-left:20px;border-left:1px solid var(--hair)}
+.kit div:nth-child(4n+1){padding-left:0;border-left:0}
+.kit p{margin-top:6px;color:var(--ink2);font-size:.95rem}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,56px);align-items:start}
+.split>*{min-width:0}
+.fold{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.fold li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:10px;padding:12px 0;border-bottom:1px solid var(--hair)}
+.fold .i{font-size:.8rem;color:var(--rose);padding-top:.15em;font-variant-numeric:tabular-nums}
+.fold small{display:block;color:var(--muted);font-size:.85rem}
+.rules{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.rules li{padding:18px 0;border-bottom:1px solid var(--hair)}
+.rules p{margin-top:6px;color:var(--ink2);font-size:.98rem}
+
+/* Tabellen */
+.tbl{overflow-x:auto;border-top:1px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:.98rem;text-align:left}
+th,td{padding:14px 18px 14px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+th{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td{color:var(--ink2)}
+td:first-child{color:var(--ink);font-weight:500}
+
+/* Freigaben */
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.flow .nd{padding:12px 8px}
+.flow .nd b{font-size:.95rem}
+.flow .nd small{font-size:.78rem}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(28px,4vw,44px);border-top:1px solid var(--ink)}
+.trio div{padding:22px 24px 4px 0;min-width:0}
+.trio div+div{padding-left:24px;border-left:1px solid var(--hair)}
+.trio p{margin-top:8px;color:var(--ink2);font-size:.98rem}
+.trio .key{background:var(--rose-tint);margin-top:-1px;border-top:1px solid var(--rose);padding-right:20px}
+.note{margin-top:24px;color:var(--muted);font-size:.95rem;max-width:62ch}
+
+/* Schluss */
+.end{padding-block:clamp(80px,12vw,140px);border-top:1px solid var(--hair)}
+.end h2{font-size:clamp(2.2rem,5vw,4.2rem);line-height:1.02;letter-spacing:-.035em;max-width:16ch}
+.end p{margin-top:24px;font-size:1.15rem;color:var(--ink2);font-weight:300}
+.actions{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:#fff;text-decoration:none;padding:16px 26px;border-radius:999px;font-weight:500;font-size:1rem}
+.btn:hover{background:#000}
+.link{text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:2px;color:var(--ink2)}
+.link:hover{border-color:var(--ink);color:var(--ink)}
+footer{border-top:1px solid var(--hair);padding-block:28px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.85rem;color:var(--muted)}
+footer a{color:var(--muted)}
+
+@media (max-width:900px){
+  .body{margin-left:0}
+  .bh{grid-template-columns:2.4rem minmax(0,1fr)}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kit div:nth-child(4n+1){padding-left:20px;border-left:1px solid var(--hair)}
+  .kit div:nth-child(2n+1){padding-left:0;border-left:0}
+  .flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .trio{grid-template-columns:minmax(0,1fr)}
+  .trio div,.trio div+div{padding:20px 0 6px;border-left:0}
+  .trio div+div{border-top:1px solid var(--hair)}
+  .trio .key{padding:20px 16px 12px}
+}
+@media (max-width:640px){
+  .grp{grid-template-columns:minmax(0,1fr)}
+  .row2{grid-template-columns:minmax(0,1fr)}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="index.html">Justus Weweler <span>· More profitable with AI</span></a>
+    <div class="tr"><a class="back" href="index.html#rolle">How it works →</a><span class="lang"><a href="../bauplan.html" hreflang="de" lang="de" aria-label="Deutsch">DE</a>/<span aria-current="true">EN</span></span></div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="label">Example · Outcome of the assessment</p>
+      <h1>This is what a <em class="s">blueprint</em> looks like.</h1>
+      <p class="lead">At the end of the assessment you have the blueprint of your AI team: <b>which roles exist, where the knowledge lives, which data is connected, who signs off and what gets measured.</b> This example comes from a coaching business with online courses. Names removed, details simplified.</p>
+    </section>
+
+    <section class="blk" aria-labelledby="b1">
+      <div class="bh"><span class="n">01</span><h2 id="b1">The layers</h2><p>One connected system instead of many separate chats. Each layer has one job.</p></div>
+      <div class="body lyr">
+        <div class="nd hl top1"><b>Management</b><small>Assignments, decisions, approvals, feedback</small></div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="nd"><b>AI workspace</b><small>One shared workspace, here ChatGPT Business. A team lead routes assignments to nine fixed roles.</small></div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="row2">
+          <div class="nd soft"><b>Memory</b><small>One knowledge base, here Notion: rules, methods, decisions, drafts</small></div>
+          <div class="nd soft"><b>Interfaces</b><small>Controlled access to tools and data, with minimal rights</small></div>
+        </div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="nd"><b>Business systems</b><small>The software you already have</small>
+          <div class="chips"><span>CRM</span><span>Payments</span><span>Calendar</span><span>Email</span><span>File storage</span><span>Web analytics</span><span>Course platform</span><span>Call archive</span><span>Website</span></div>
+        </div>
+        <div class="dn" aria-hidden="true">↓</div>
+        <div class="nd ghost"><b>Routines</b><small>Recurring work on request, on a schedule or triggered by an event</small></div>
+        <p class="note">The roles are specialised AI workspaces, not agents running on their own. Anything meant to run without a request is tested and signed off first.</p>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b2">
+      <div class="bh"><span class="n">02</span><h2 id="b2">The team</h2><p>One responsible role per assignment. The team lead coordinates, management decides, a review role checks across the team.</p></div>
+      <div class="body org">
+        <div class="head">
+          <div class="nd hl"><b>Management</b><small>decides and signs off</small></div>
+          <div class="dn" aria-hidden="true">↓</div>
+          <div class="nd"><b>Team lead</b><small>routes assignments, bundles decisions</small></div>
+          <div class="dn" aria-hidden="true">↓</div>
+        </div>
+        <div class="grp">
+          <div><h3>Growth</h3><div class="nd"><b>Content</b><small>Marketing, social media</small></div><div class="nd"><b>Funnel</b><small>Launches, metrics</small></div><div class="nd"><b>Sales</b><small>Offers, follow-ups</small></div></div>
+          <div><h3>Delivery</h3><div class="nd"><b>Client care</b><small>Support, retention</small></div><div class="nd"><b>Programmes</b><small>Courses, expertise</small></div><div class="nd chk"><b>Review</b><small>checks across the team, creates nothing itself</small></div></div>
+          <div><h3>Operations</h3><div class="nd"><b>Day planning</b><small>Priorities, commitments</small></div><div class="nd"><b>Back office</b><small>Data protection, admin</small></div><div class="nd"><b>Intake</b><small>Inbox, routing knowledge</small></div></div>
+        </div>
+        <div class="nd ghost tech"><b>Technology</b><small>Interfaces and operations, looked after externally. No sign-off rights.</small></div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b3">
+      <div class="bh"><span class="n">03</span><h2 id="b3">What every role comes with</h2><p>Every role gets the same kit, like a new hire on day one.</p></div>
+      <div class="body kit">
+        <div><h3>Personnel file</h3><p>Job, responsibility, limits</p></div>
+        <div><h3>Methods</h3><p>Working instructions for its field</p></div>
+        <div><h3>Memory</h3><p>Feedback, insights, decisions</p></div>
+        <div><h3>Context</h3><p>Strategy, products, target group</p></div>
+        <div><h3>Tools</h3><p>Only the vetted interfaces it needs</p></div>
+        <div><h3>Routines</h3><p>Its recurring tasks</p></div>
+        <div><h3>Approval level</h3><p>How much it may do on its own</p></div>
+        <div><h3>Review standard</h3><p>What its work is measured against</p></div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b4">
+      <div class="bh"><span class="n">04</span><h2 id="b4">One memory for the whole company</h2><p>Knowledge lives in one knowledge base, not in individual chats. That way it isn’t tied to one AI vendor.</p></div>
+      <div class="body split">
+        <ol class="fold">
+          <li><span class="i">00</span><div>Team control<small>overall operating instructions</small></div></li>
+          <li><span class="i">01</span><div>Roles<small>personnel files and responsibilities</small></div></li>
+          <li><span class="i">02</span><div>Methods<small>standard working instructions</small></div></li>
+          <li><span class="i">03</span><div>Company context<small>products, target groups, strategy</small></div></li>
+          <li><span class="i">04</span><div>Memory per role<small>insights and feedback</small></div></li>
+          <li><span class="i">05</span><div>Decisions<small>binding resolutions and lessons</small></div></li>
+          <li><span class="i">06</span><div>Routines<small>recurring workflows</small></div></li>
+          <li><span class="i">07</span><div>Interfaces<small>access and permissions</small></div></li>
+          <li><span class="i">08</span><div>Drafts and approvals<small>versioned work results</small></div></li>
+        </ol>
+        <ul class="rules">
+          <li><h3>Every entry has a source.</h3><p>Source, date and status are recorded. Nothing is silently overwritten.</p></li>
+          <li><h3>Client data stays where it belongs.</h3><p>Protected data stays in the vetted system. Only permitted, reviewed takeaways go into the shared memory.</p></li>
+          <li><h3>Feedback improves the knowledge, not the model.</h3><p>A correction is recorded as a rule. New methods apply only after review and sign-off.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b5">
+      <div class="bh"><span class="n">05</span><h2 id="b5">One source per fact</h2><p>Data isn’t copied; it’s queried where it is correct.</p></div>
+      <div class="body tbl">
+        <table>
+          <thead><tr><th scope="col">Information</th><th scope="col">Leading system</th><th scope="col">What the AI uses it for</th></tr></thead>
+          <tbody>
+            <tr><td>Clients and revenue</td><td>CRM</td><td>Funnel metrics, client care</td></tr>
+            <tr><td>Payments and subscriptions</td><td>Payment provider</td><td>Product metrics</td></tr>
+            <tr><td>Calls</td><td>Call archive</td><td>Reviewed insights from permitted calls</td></tr>
+            <tr><td>Appointments</td><td>Calendar</td><td>Day planning</td></tr>
+            <tr><td>Communication</td><td>Email</td><td>Drafts, context</td></tr>
+            <tr><td>Documents</td><td>File storage</td><td>Approved documents</td></tr>
+            <tr><td>Visitors and enquiries</td><td>Web analytics</td><td>Marketing and funnel analysis</td></tr>
+            <tr><td>Courses</td><td>Course platform</td><td>Programme development</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b6">
+      <div class="bh"><span class="n">06</span><h2 id="b6">Routines</h2><p>Every recurring task is written down: trigger, role, sources, output and what happens on failure.</p></div>
+      <div class="body tbl">
+        <table>
+          <thead><tr><th scope="col">When</th><th scope="col">Role</th><th scope="col">Routine</th></tr></thead>
+          <tbody>
+            <tr><td>Mornings, on request</td><td>Day planning</td><td>Priorities and open commitments for the day</td></tr>
+            <tr><td>Daily, 8 am</td><td>Content</td><td>Story of the day as a draft</td></tr>
+            <tr><td>Mondays, 8 am</td><td>Content</td><td>Content for the week as drafts</td></tr>
+            <tr><td>Daily, evenings</td><td>Intake, team lead</td><td>New insights from calls into the memory</td></tr>
+            <tr><td>During launches</td><td>Funnel</td><td>Launch and funnel check</td></tr>
+            <tr><td>Weekly</td><td>Team lead</td><td>Maintain methods and sources</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b7">
+      <div class="bh"><span class="n">07</span><h2 id="b7">Approvals</h2><p>Management keeps the decision. Assignment, draft, review, approval and execution are separate steps.</p></div>
+      <div class="body">
+        <div class="flow">
+          <div class="nd"><b>1 · Assignment</b><small>Management or team lead</small></div>
+          <div class="nd"><b>2 · Draft</b><small>Specialist role</small></div>
+          <div class="nd chk"><b>3 · Review</b><small>Review role</small></div>
+          <div class="nd hl"><b>4 · Approval</b><small>Management</small></div>
+          <div class="nd"><b>5 · Execution</b><small>Authorised person or tested workflow</small></div>
+          <div class="nd soft"><b>6 · Feedback</b><small>into the memory</small></div>
+        </div>
+        <div class="trio">
+          <div><h3>Start at level 1</h3><p>Drafts only. Nothing is sent, published or changed on its own.</p></div>
+          <div class="key"><h3>More room is earned.</h3><p>After ten results in a row without correction, the team lead proposes a higher level. Management decides, never automatically.</p></div>
+          <div><h3>Approval is not execution.</h3><p>An approved text is not yet the right to send it. Rights are limited technically, not just by instruction.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b8">
+      <div class="bh"><span class="n">08</span><h2 id="b8">Measure</h2><p>Every workflow gets a number before and after. We take the before numbers during the assessment.</p></div>
+      <div class="body kit">
+        <div><h3>Time spent</h3><p>Hours per week per workflow</p></div>
+        <div><h3>Corrections</h3><p>How often a person has to rework</p></div>
+        <div><h3>Quality</h3><p>Result against the review standard</p></div>
+        <div><h3>Impact</h3><p>Revenue, enquiries or costs, depending on the workflow</p></div>
+      </div>
+    </section>
+
+    <section class="blk" aria-labelledby="b9">
+      <div class="bh"><span class="n">09</span><h2 id="b9">What’s different for you</h2><p>The structure stays the same. Roles, data sources and methods follow your business.</p></div>
+      <div class="body split">
+        <ul class="rules">
+          <li><h3>Stays the same</h3><p>Workspace, team lead and fixed roles, one memory, one source per fact, routines, approvals, measurement.</p></li>
+        </ul>
+        <ul class="rules">
+          <li><h3>Built for you</h3><p>Which roles you need, which software you connect, how your sales and delivery run, which numbers count and which rules apply in your industry.</p></li>
+          <li><h3>Start small</h3><p>Team lead, assistant and two specialist roles, two to three connected systems, two routines with a clear benefit. Measure first, then expand.</p></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <section class="end">
+    <p class="label" style="margin-bottom:28px">Your blueprint</p>
+    <h2>In two weeks you have <em class="s">your own</em>.</h2>
+    <p>The assessment has a fixed price. In a first call we look at whether it pays off for you.</p>
+    <div class="actions"><a class="btn" href="https://calendar.app.google/aNSzQGWuxgk5R4H2A" target="_blank" rel="noopener">Book a free call <span aria-hidden="true">→</span></a><a class="link" href="index.html#rolle">How it works</a></div>
+  </section>
+
+  <footer><span>Weweler Consulting</span><a href="company.html">Company</a><a href="imprint.html">Imprint</a><a href="privacy.html">Privacy</a></footer>
+</div>
+</body>
+</html>

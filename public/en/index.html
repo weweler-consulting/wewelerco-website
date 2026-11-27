@@ -166,7 +166,7 @@ p{margin:0;max-width:60ch}
 .fig p{margin-top:14px;color:var(--ink2);font-size:.98rem}
 .fig cite{display:block;margin-top:10px;font-style:normal;font-size:.8rem;color:var(--muted)}
 .fig cite a{color:var(--muted)}
-.closing{margin-top:clamp(56px,7vw,96px);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-.025em;line-height:1.2;max-width:24ch}
+.closing{margin-top:clamp(56px,7vw,96px);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:-.025em;line-height:1.2;max-width:none}
 
 /* Aufgaben */
 .tasks{list-style:none;margin:clamp(48px,6vw,80px) 0 0;padding:0;border-top:1px solid var(--ink)}
@@ -180,6 +180,7 @@ p{margin:0;max-width:60ch}
 .td p{color:var(--ink2);font-size:1.06rem;line-height:1.6}
 .td .out{margin-top:18px;padding-top:14px;border-top:1px solid var(--hair2);color:var(--ink);font-size:.98rem;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .td .out span{flex:none;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose);font-weight:500}
+.td .ex{margin-top:16px;font-size:.95rem}
 
 /* Lehren */
 .lessons{list-style:none;margin:clamp(48px,6vw,80px) 0 0;padding:0;display:grid;gap:0;border-top:1px solid var(--ink)}
@@ -428,10 +429,10 @@ html.lock{overflow:hidden}
   <section class="sec rule" id="rolle">
     <p class="label" style="margin-bottom:28px">How it works</p>
     <h2>What <em class="s">changes</em> in your company</h2>
-    <p style="margin-top:28px;font-size:1.2rem;font-weight:300;color:var(--ink2);line-height:1.55;max-width:44em">I work on <span style="color:var(--ink)">both sides of your equation</span>: lower costs, more revenue. I’m with you on fixed days, work closely with management and measure success with a number before and after.</p>
+    <p style="margin-top:28px;font-size:1.2rem;font-weight:300;color:var(--ink2);line-height:1.55;max-width:44em">I <span style="color:var(--ink)">cut your costs and bring in more revenue</span>. I’m with you on fixed days, work closely with management and measure success with a number before and after.</p>
     <ol class="tasks">
-      <li class="task"><span class="tn">01</span><h3>Assessment</h3><div class="td"><p>In two weeks: who does what, what it costs, where the leverage is. With numbers, not gut feeling.</p><p class="out"><span>Outcome</span>A plan with target numbers, signed off by management</p></div></li>
-      <li class="task"><span class="tn">02</span><h3>Redistribute the work</h3><div class="td"><p>For each workflow, decide: what AI takes over, where a human checks, what stays with people. Rebuilt together with the people who do the work today.</p><p class="out"><span>Outcome</span>Clear for every workflow: AI, review, human</p></div></li>
+      <li class="task"><span class="tn">01</span><h3>Assessment</h3><div class="td"><p>In two weeks: who does what, what it costs, where the leverage is. With numbers, not gut feeling.</p><p class="out"><span>Outcome</span>The blueprint of your AI team: roles, knowledge, data, approvals and target numbers, signed off by management</p><p class="ex"><a class="link" href="blueprint.html">See what a blueprint looks like →</a></p></div></li>
+      <li class="task"><span class="tn">02</span><h3>Redistribute the work</h3><div class="td"><p>For each workflow, decide: what AI takes over, where a human checks, what stays with people. Rebuilt together with the people who do the work today. AI only gets more room once it has earned it: after ten results in a row without correction, and only with management’s sign-off.</p><p class="out"><span>Outcome</span>Clear for every workflow: AI, review, human</p></div></li>
       <li class="task"><span class="tn">03</span><h3>Reshape roles</h3><div class="td"><p>Who does what from now on, which tasks AI takes over, which positions are not refilled. Open, fair and together with the team.</p><p class="out"><span>Outcome</span>Clear roles and a team that trusts the rebuild</p></div></li>
       <li class="task"><span class="tn">04</span><h3>Sharpen sales</h3><div class="td"><p>Who do you do what for? Which steps does a customer take until they sign? How much value do you create in euros? Cutting costs alone doesn’t make a company healthy.</p><p class="out"><span>Outcome</span>A clear target group, a clear path to the deal</p></div></li>
       <li class="task"><span class="tn">05</span><h3>Measure</h3><div class="td"><p>Profit per head before and after, plus a number for every rebuilt workflow. Every month, a short report to management.</p><p class="out"><span>Outcome</span>One number before, one after, every month</p></div></li>
@@ -552,7 +553,7 @@ html.lock{overflow:hidden}
       </div>
       <div>
         <ul class="gains">
-          <li><p class="g1">Both sides of the equation.</p><p class="g2">I come from sales. Cutting costs alone doesn’t make a company healthy, so I look just as hard at revenue.</p></li>
+          <li><p class="g1">Costs down, revenue up.</p><p class="g2">I come from sales. Cutting costs alone doesn’t make a company healthy, so I look just as hard at revenue.</p></li>
           <li><p class="g1">Someone who knows your pressure.</p><p class="g2">Founded five companies, grew the last one to 120 employees and sold it in 2024. I know what restructuring a running business looks like from the top.</p></li>
           <li><p class="g1">A rebuild your team trusts.</p><p class="g2">In my last company I led difficult restructurings myself. I was the person the team trusted most. Without trust, nobody uses the new workflows.</p></li>
           <li><p class="g1">Proven, not read about.</p><p class="g2">At <a href="https://kideon.de" target="_blank" rel="noopener">Kideon</a> we are two people working with eight AI agents. Two people with the output of a whole team, every day.</p></li>
@@ -574,7 +575,7 @@ html.lock{overflow:hidden}
       <details><summary>Do we need a full-time hire for this?</summary><p>Not right away. The role is covered on fixed days, and whoever is meant to take over internally learns along from day one.</p></details>
       <details><summary>Will we become dependent on you?</summary><p>No. Your people learn along the way, and everything that gets built keeps running on the days without support.</p></details>
       <details><summary>Is this a course?</summary><p>No. The work happens in your team on fixed days, on your workflows, with a number before and after.</p></details>
-      <details><summary>Which tools?</summary><p>The ones you already pay for. A switch only if it pays off.</p></details>
+      <details><summary>Which tools?</summary><p>The ones you already pay for. Often an AI workspace like ChatGPT or Copilot and a knowledge base like Notion are enough. A switch only if it pays off.</p></details>
       <details><summary>What about data protection?</summary><p>Rules come before the first rebuild, not after. Aligned with your IT and your data protection officer.</p></details>
     </div>
   </section>

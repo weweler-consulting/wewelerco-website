@@ -5,6 +5,7 @@ Website der Weweler Consulting S.L.
 - `public/` – alles, was online ist. Push auf `main` deployt automatisch (Cloudron Surfer),
   PRs bekommen eine Vorschau unter `/preview/<branch>/`.
   - `index.html` – KI-Transformation (Startseite)
+  - `bauplan.html` – Beispiel-Bauplan eines KI-Teams (Ergebnis der Bestandsaufnahme)
   - `unternehmen.html`, `impressum.html`, `datenschutz.html`
   - `en/` – englische Fassung (`index.html`, `company.html`, `imprint.html`, `privacy.html`).
     Jede Seite hat oben einen DE/EN-Umschalter und `hreflang`-Verweise auf ihr Gegenstück.
